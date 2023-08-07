@@ -1,0 +1,70 @@
+body{
+  padding: 0;
+  margin: 0;
+  background-color: aliceblue;
+}
+
+.opponent-profile, .player-profile{
+  width: 230px;
+  background-color: rgb(88, 88, 88);
+  display: grid;
+  grid-template-columns: 95px 1fr;
+}
+
+.player-info{
+  display: grid;
+  grid-template-rows: 40px 1fr;
+  row-gap: 6px;
+}
+
+.player-stats{
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  column-gap: 12px;
+}
+
+.remaining-cards{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.remaining-lifes{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.profile-image-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-image{
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+}
+
+.player-name{
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.card-decks-type{
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.remaining-cards-img{
+  width: 25px;
+  height: 25px;
+}
+
+.remaining-life-img{
+  width: 26px;
+  height: 26px;
+  margin-right: 4px;
+}
