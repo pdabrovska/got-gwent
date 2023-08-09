@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GOT Gwent</title>
+    <link rel="stylesheet" href="styles/got-gwent-game.css">
+    <link rel="stylesheet" href="styles/got-gwent-css/card.css">
+  </head>
+  <body>
+    <div class="game-window">
+      <div class="players-panel">
+        <div class="opponent-profile">
+          <div class="profile-image-container">
+            <img class="profile-image" src="images/profile-image-daenerys.jpg">
+          </div>
+          <div class="player-info">
+            <div>
+              <p class="player-name">Opponent</p>
+              <p class="card-decks-type">House Targaryen</p>
+            </div>
+            <div class="player-stats">
+              <span class="remaining-cards">
+                <img class="remaining-cards-img" src="images/cards.png">
+                <p>1</p>
+              </span>
+              <div class="remaining-lifes">
+                <img class="remaining-life-img" src="images/black-crown.png">
+                <img class="remaining-life-img" src="images/gold-crown.png">
+              </div>
+            </div>
+          </div>
+          <div class="opponent-points-container">
+            <p class="opponent-points">23</p>
+          </div>
+        </div>
+        <div class="weather-cards-container">
+        </div>
+        <div class="player-profile">
+          <div class="profile-image-container">
+            <img class="profile-image" src="images/profile-image-cersei.jfif">
+          </div>
+          <div class="player-info">
+            <div>
+              <p class="player-name">Player</p>
+              <p class="card-decks-type">House Lannister</p>
+            </div>
+            <div class="player-stats">
+              <span class="remaining-cards">
+                <img class="remaining-cards-img" src="images/cards.png">
+                <p>1</p>
+              </span>
+              <div class="remaining-lifes">
+                <img class="remaining-life-img" src="images/gold-crown.png">
+                <img class="remaining-life-img" src="images/gold-crown.png">
+              </div>
+            </div>
+          </div>
+          <div class="player-points-container">
+            <p class="player-points">20</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="boards">
+        <div class="opponent-board">
+          <div class="board-row">
+            <div class="row-points-container">
+              <p class="row-points">23</p>
+            </div>
+          </div>
+          <div class="board-row">
+            <div class="row-points-container">
+              <p class="row-points">23</p>
+            </div>
+          </div>
+          <div class="board-row">
+            <div class="row-points-container">
+              <p class="row-points">23</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-board">
+          <div class="board-row">
+            <div class="row-points-container">
+              <p class="row-points">23</p>
+            </div>
+            <div class="card">
+              <img class="card-image" src="images/jaime-lannister.jpg">
+              <span class="card-value-container">
+                <p class="card-value">1</p>
+              </span>
+              <div class="card-attributes-container">
+                <span class="card-ability">
+                  <img class="card-attribute-img" src="images/view.png">
+                </span>
+                <span class="card-type">
+                  <img class="card-attribute-img" src="images/sword.png">
+                </span>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-image" src="images/jaime-lannister.jpg">
+              <span class="card-value-container">
+                <p class="card-value">1</p>
+              </span>
+              <div class="card-attributes-container">
+                <span class="card-ability">
+                  <img class="card-attribute-img" src="images/view.png">
+                </span>
+                <span class="card-type">
+                  <img class="card-attribute-img" src="images/bow.png">
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="board-row">
+            <div class="row-points-container">
+              <p class="row-points">23</p>
+            </div>
+          </div>
+          <div class="board-row">
+            <div class="row-points-container">
+              <p class="row-points">23</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-cards-to-use"></div>
+      </div>
+
+      <div class="right-section">
+        <span>
+          <button class="x">X</button>
+        </span>
+        <div class="cards">
+          <div class="opponent-cards">
+            <div class="used-cards"></div>
+            <div class="card-decks">
+              <img class="opponent-crest" src="images/targaryen-crest.jfif">
+              <p class="number-of-cards">12</p>
+            </div>
+          </div>
+          <div class="player-cards">
+            <div class="used-cards"></div>
+            <div class="card-decks">
+              <img class="player-crest" src="images/lannister-crest.jpg">
+              <p class="number-of-cards">12</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="scripts/got-gwent.js"></script>
+  </body>
+</html>

@@ -1,0 +1,235 @@
+html, body{
+  min-height: 100%;
+}
+
+html{
+  position: relative;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+  font-family: Arial;
+}
+
+html::before{
+  content: "";
+  background-image: url("../images/background-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.7;
+}
+
+.game-window{
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  column-gap: 40px;
+}
+
+.players-panel{
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.opponent-profile, .player-profile{
+  width: 220px;
+  background-color: rgb(192, 191, 191);
+  display: grid;
+  grid-template-columns: 95px 1fr;
+  position: relative;
+}
+
+.player-info{
+  display: grid;
+  grid-template-rows: 40px 1fr;
+  row-gap: 6px;
+}
+
+.player-stats{
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  column-gap: 12px;
+}
+
+.remaining-cards{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.remaining-lifes{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.profile-image-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-image{
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+}
+
+.player-name{
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.card-decks-type{
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.remaining-cards-img{
+  width: 25px;
+  height: 25px;
+}
+
+.remaining-life-img{
+  width: 26px;
+  height: 26px;
+  margin-right: 4px;
+}
+
+.opponent-points-container, .player-points-container{
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  background-color: white;
+  border-radius: 30px;
+  border: 1px solid black;
+  right: -17px;
+  top: 27px;
+}
+
+.opponent-points, .player-points, .row-points{
+  margin: 0;
+  padding: 8px;
+}
+
+.weather-cards-container{
+  width: 180px;
+  height: 100px;
+  margin: 30px 0;
+  background-color: rgb(218, 218, 218);
+}
+
+.boards{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.opponent-board, .player-board{
+  background-color: rgba(100, 92, 106, 0.274);
+  min-width: 582px;
+  height: 270px;
+  display: grid;
+  grid-template-rows: 90px 90px 90px;
+  z-index: 10;
+}
+
+.board-row{
+  justify-content: center;
+  column-gap: 3px;
+  display: flex;
+  border: 1px solid black;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  padding: 2px 20px;
+}
+
+.row-points-container{
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  background-color: white;
+  border-radius: 30px;
+  border: 1px solid black;
+  left: -17px;
+  top: 25px;
+}
+
+.player-cards-to-use{
+  min-width: 582px;
+  height: 80px;
+  background-color: rgba(79, 69, 69, 0.6);
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* right section */
+.cards{
+  height: 100%;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+}
+
+.right-section{
+  position: relative;
+}
+
+.x{
+  position: absolute;
+  top: -10px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.player-cards, .opponent-cards{
+  display: flex;
+  column-gap: 30px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.used-cards{
+  width: 60px;
+  height: 90px;
+  background-color: rgb(200, 200, 200);
+}
+
+.card-decks{
+  width: 65px;
+  height: 100px;
+  position: relative;
+}
+.opponent-crest, .player-crest{
+  width: 65px;
+  height: 100px;
+}
+
+.number-of-cards{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  right: 18px;
+  background-color: rgb(164, 159, 159);
+  color: white;
+  padding: 2px 6px;
+  opacity: 0.9;
+}
