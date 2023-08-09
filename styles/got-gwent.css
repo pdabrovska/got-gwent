@@ -2,22 +2,39 @@ html, body{
   min-height: 100%;
 }
 
+html{
+  position: relative;
+}
+
 body{
-  height: 100%;
-  width: 100%;
   padding: 0;
   margin: 0;
-  background-color: aliceblue;
+  font-family: Arial;
+}
+
+html::before{
+  content: "";
+  background-image: url("../images/background-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.7;
 }
 
 .game-window{
+  margin-top: 18px;
   display: grid;
-  grid-template-columns: 220px 600px 1fr;
+  grid-template-columns: 220px 1fr 220px;
   column-gap: 40px;
 }
 
 .players-panel{
-  min-height: 680px;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,20 +134,28 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   row-gap: 20px;
 }
 
 .opponent-board, .player-board{
-  background-color: rgb(233, 233, 233);
-  width: 582px;
+  background-color: rgba(100, 92, 106, 0.274);
+  min-width: 582px;
   height: 270px;
   display: grid;
   grid-template-rows: 90px 90px 90px;
+  z-index: 10;
 }
 
 .board-row{
+  justify-content: center;
+  column-gap: 3px;
+  display: flex;
   border: 1px solid black;
   position: relative;
+  z-index: 10;
+  cursor: pointer;
+  padding: 2px 20px;
 }
 
 .row-points-container{
@@ -145,15 +170,17 @@ body{
 }
 
 .player-cards-to-use{
-  width: 582px;
+  min-width: 582px;
   height: 80px;
-  background-color: rgb(233, 233, 233);
+  background-color: rgba(79, 69, 69, 0.6);
+  cursor: pointer;
+  z-index: 10;
 }
 
 /* right section */
 .cards{
   height: 100%;
-  margin: 30px;
+  margin: 30px 0;
   display: flex;
   flex-direction: column;
   justify-content:space-between;
@@ -165,8 +192,8 @@ body{
 
 .x{
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -10px;
+  right: 14px;
   width: 30px;
   height: 30px;
   cursor: pointer;
