@@ -130,9 +130,6 @@
   flex-wrap: wrap;
   justify-content: center;
   overflow-y: scroll;
-  scrollbar-gutter: stable;
-  scrollbar-color: #6969dd #651111;
-  scrollbar-width: thin;
 }
 
 /*cards*/
