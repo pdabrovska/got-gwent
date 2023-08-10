@@ -3,18 +3,49 @@
   <head>
     <title>GOT Gwent</title>
     <link rel="stylesheet" href="styles/got-gwent.css">
+    <link rel="stylesheet" href="styles/got-gwent-css/cards-deck.css">
   </head>
   <body>
     <div class="background">
       <div class="menu">
         <span class="title">GOT Gwent</span>
         <div class="menu-options">
-          <button class="option-button">Start</button>
+          <button class="option-button js-button-start">Start</button>
           <button class="option-button">How to play</button>
-          <button class="option-button">Decks of cards</buttonp>
+          <button class="option-button js-button-decks">Decks of cards</buttonp>
+        </div>
+      </div>
+      <div class="action-screen">
+        <div class="cards-deck">
+          <div class="fraction-menu">
+            <p class="fraction-title">Fraction</p>
+            <div class="fraction-wheel">
+              <button class="nav-button">
+                <img class="nav-img" src="images/left-arrow.png">
+              </button>
+              <div class="fraction">
+                <img class="fraction-img" src="images/lannister-crest.jpg">
+                <div class="house-container">
+                  <p class="house-name">House Lannister</p>
+                  <div class="dot-wheel">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                  </div>
+                </div>
+              </div>
+              <button class="nav-button">
+                <img class="nav-img" src="images/right-arrow.png">
+              </button>
+            </div>
+          </div>
+          <div class="cards-panel">
+            <div class="leaders-menu"></div>
+            <div class="cards-menu"></div>
+          </div>
         </div>
       </div>
     </div>
-    <script></script>
+    <script src="scripts/got-gwent.js"></script>
   </body>
 </html>

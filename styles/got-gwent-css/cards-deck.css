@@ -1,0 +1,82 @@
+.cards-deck{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fraction-menu{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fraction-title{
+  font-size: 16px;
+  padding: 0;
+  margin: 16px;
+  margin-bottom: 0px;
+}
+
+.fraction-wheel{
+  display: flex;
+  column-gap: 14px;
+}
+
+.fraction{
+  display: flex;
+}
+
+.fraction-img{
+  width: 40px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.house-name{
+  font-weight: 700;
+  padding: 0 5px;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.dot-wheel{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.dot{
+  border-radius: 40px;
+  width: 8px;
+  height: 8px;
+  background-color: rgb(69, 68, 68);
+  margin: 2px;
+}
+
+.nav-button{
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.nav-img{
+  width: 58px;
+  height: 30px;
+}
+
+.nav-img:hover{
+  width: 61px;
+  height: 35px;
+}
+
+/*cards menu*/
+.cards-menu{
+  display: grid;
+  grid-template-rows: 100px 400px;
+}
+
+.leaders-menu{
+  
+}
