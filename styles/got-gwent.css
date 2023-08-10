@@ -1,5 +1,6 @@
 html, body{
-  min-height: 100%;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 body{
@@ -9,6 +10,8 @@ body{
 }
 
 .background{
+  position: relative;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 480px 1fr;
 }

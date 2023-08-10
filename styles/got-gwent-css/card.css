@@ -2,10 +2,11 @@
   position: relative;
   width: 55px;
   height: 84px;
-  background-color: rgb(36, 59, 79);
+  border-radius: 5px;
 }
 
 .card-image{
+  border-radius: 5px;
   width: 55px;
   height: 84px;
 }
