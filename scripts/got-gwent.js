@@ -36,7 +36,7 @@ buttonElementDecks.addEventListener('click', ()=>{
     <div class="cards-panel">
       <div class="leaders-menu">
         <p class="leaders-title">Leaders</p>
-        <div class="js-leaders-cards"></div>
+        <div class="js-leaders-cards leaders-cards"></div>
       </div>
       <div class="cards-menu">
         <div class="filters-container">

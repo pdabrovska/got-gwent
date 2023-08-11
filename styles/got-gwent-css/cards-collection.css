@@ -83,14 +83,13 @@
 .cards-panel{
   min-height: 75vh;
   display: grid;
-  grid-template-columns: 80px 1fr;
+  grid-template-columns: 90px 1fr;
 }
 
 .leaders-menu{
   background-color: rgba(39, 34, 34, 0.7);
   display: flex;
   flex-direction: column;
-  row-gap: 7px;
   justify-content: flex-start;
   align-items: center;
 }
@@ -141,11 +140,12 @@
 /*cards*/
 
 .card, .card-image{
-  width: 105px;
-  height: 164px;
+  width: 115px;
+  height: 174px;
 }
 
 .leader-card, .leader-card-img{
-  width: 68px;
-  height: 97px;
+  width: 78px;
+  height: 107px;
+  margin-bottom: 12px;
 }

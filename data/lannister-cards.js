@@ -2,8 +2,26 @@ export const houseLannisterCards =[
   {
     name: 'Tywin Lannister',
     description: 'Casterly Rock',
-    img: "jaime-lannister.jpg",
-    value: 50,
+    img: "lannister/tywin-lannister.jpg",
+    value: 0,
+    ability: "",
+    type: "leader",
+    typeImg: ""
+  },
+  {
+    name: 'Cersei Lannister',
+    description: 'Casterly Rock',
+    img: "lannister/cersei-lannister.jpg",
+    value: 0,
+    ability: "",
+    type: "leader",
+    typeImg: ""
+  },
+  {
+    name: 'Tyrion Lannister',
+    description: 'Casterly Rock',
+    img: "lannister/tyrion-lannister.jpg",
+    value: 0,
     ability: "",
     type: "leader",
     typeImg: ""
@@ -11,27 +29,153 @@ export const houseLannisterCards =[
   {
     name: 'Jaime Lannister',
     description: 'ser Jaime',
-    img: "jaime-lannister.jpg",
-    value: 1,
+    img: "lannister/jaime-lannister.jpg",
+    value: 10,
     ability: "view.png",
     type: "sword",
     typeImg: "sword.png"
   },
   {
-    name: 'Tyrion Lannister',
-    description: 'Tyrion',
-    img: "jaime-lannister.jpg",
-    value: 9,
-    ability: "view.png",
+    name: 'Gregor Clegane',
+    description: 'Gregor Clegane',
+    img: "lannister/gregor-clegane.jpg",
+    value: 8,
+    ability: "",
+    type: "sword",
+    typeImg: "sword.png"
+  },
+  {
+    name: 'Lannister Swordsman',
+    description: 'Swordsman',
+    img: "lannister/swordsman.jpg",
+    value: 3,
+    ability: "bond",
+    type: "sword",
+    typeImg: "sword.png"
+  },
+  {
+    name: 'Lannister Swordsman',
+    description: 'Swordsman',
+    img: "lannister/swordsman.jpg",
+    value: 3,
+    ability: "bond",
+    type: "sword",
+    typeImg: "sword.png"
+  },
+  {
+    name: 'Lannister Swordsman',
+    description: 'Swordsman',
+    img: "lannister/swordsman.jpg",
+    value: 3,
+    ability: "bond",
+    type: "sword",
+    typeImg: "sword.png"
+  },
+  {
+    name: 'Lannister Cavalry',
+    description: 'Cavalry',
+    img: "lannister/cavalry.jpg",
+    value: 4,
+    ability: "",
+    type: "sword",
+    typeImg: "sword.png"
+  },
+  {
+    name: 'Lannister Cavalry',
+    description: 'Cavalry',
+    img: "lannister/cavalry.jpg",
+    value: 4,
+    ability: "",
+    type: "sword",
+    typeImg: "sword.png"
+  },
+  {
+    name: 'Lannister Cavalry',
+    description: 'Cavalry',
+    img: "lannister/cavalry.jpg",
+    value: 4,
+    ability: "",
+    type: "sword",
+    typeImg: "sword.png"
+  },
+  {
+    name: 'Lannister archery',
+    description: 'archer',
+    img: "lannister/archery.jpg",
+    value: 6,
+    ability: "",
     type: "bow",
     typeImg: "bow.png"
   },
   {
-    name: 'Tywin Lannister',
+    name: 'Lannister archery',
+    description: 'archer',
+    img: "lannister/archery.jpg",
+    value: 6,
+    ability: "",
+    type: "bow",
+    typeImg: "bow.png"
+  },
+  {
+    name: 'Lannister crossbowman',
+    description: 'handspear',
+    img: "lannister/handspear.jpg",
+    value: 5,
+    ability: "",
+    type: "bow",
+    typeImg: "bow.png"
+  },
+  {
+    name: 'Lannister crossbowman',
+    description: 'handspear',
+    img: "lannister/handspear.jpg",
+    value: 5,
+    ability: "",
+    type: "bow",
+    typeImg: "bow.png"
+  },
+  {
+    name: 'Lannister crossbowman',
+    description: 'handspear',
+    img: "lannister/handspear.jpg",
+    value: 5,
+    ability: "",
+    type: "bow",
+    typeImg: "bow.png"
+  },
+  {
+    name: 'Joffrey Baratheon',
+    description: 'Joffrey Baratheon',
+    img: "lannister/joffrey-baratheon.jpg",
+    value: 6,
+    ability: "",
+    type: "bow",
+    typeImg: "bow.png"
+  },
+  {
+    name: 'Qyburn',
     description: 'Casterly Rock',
-    img: "jaime-lannister.jpg",
-    value: 10,
-    ability: "view.png",
+    img: "lannister/qyburn.jpg",
+    value: 3,
+    ability: "medic.png",
+    type: "catapult",
+    typeImg: "catapult.png"
+  },
+  {
+    name: 'Scorpion',
+    description: 'Casterly Rock',
+    img: "lannister/scorpion.jpg",
+    value: 8,
+    ability: "bond.png",
+    type: "catapult",
+    typeImg: "catapult.png"
+  },
+  {
+    name: 'Scorpion',
+    description: 'Casterly Rock',
+    img: "lannister/scorpion.jpg",
+    value: 8,
+    ability: "bond.png",
     type: "catapult",
     typeImg: "catapult.png"
   },
