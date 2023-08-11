@@ -29,6 +29,7 @@
 
 .fraction{
   display: flex;
+  flex-direction: row-reverse;
 }
 
 .fraction-img{
@@ -120,6 +121,7 @@
 .filter-img{
   width: 33px;
   height: 33px;
+  cursor: pointer;
 }
 
 .cards{
