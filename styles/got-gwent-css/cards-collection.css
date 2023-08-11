@@ -74,6 +74,11 @@
   height: 35px;
 }
 
+.non-active-nav-button{
+  opacity: 0.5;
+  cursor: auto;
+}
+
 /*cards menu*/
 .cards-panel{
   min-height: 75vh;

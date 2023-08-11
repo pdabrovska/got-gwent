@@ -1,5 +1,14 @@
 export const houseLannisterCards =[
   {
+    name: 'Tywin Lannister',
+    description: 'Casterly Rock',
+    img: "jaime-lannister.jpg",
+    value: 50,
+    ability: "",
+    type: "leader",
+    typeImg: ""
+  },
+  {
     name: 'Jaime Lannister',
     description: 'ser Jaime',
     img: "jaime-lannister.jpg",
@@ -27,3 +36,15 @@ export const houseLannisterCards =[
     typeImg: "catapult.png"
   },
 ];
+
+export const houseLannisterInfo = {
+  cards: houseLannisterCards,
+  name: 'House Lannister',
+  crest: "lannister-crest.jpg"
+}
+
+export const houseStarkInfo = {
+  cards: houseLannisterCards,
+  name: 'House Stark',
+  crest: "lannister-crest.jpg"
+}
