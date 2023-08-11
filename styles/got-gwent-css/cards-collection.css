@@ -29,7 +29,6 @@
 
 .fraction{
   display: flex;
-  flex-direction: row-reverse;
 }
 
 .fraction-img{

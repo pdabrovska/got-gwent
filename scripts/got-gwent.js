@@ -14,6 +14,8 @@ buttonElementDecks.addEventListener('click', ()=>{
           <img class="nav-img" src="images/left-arrow.png">
         </button>
         <div class="fraction">
+          <div class="house-image-container">
+          </div>
           <div class="house-container">
             <p class="house-name"></p>
             <div class="dot-wheel">
@@ -86,16 +88,20 @@ buttonElementDecks.addEventListener('click', ()=>{
 
  generateCardsCollection(houseLannisterCards, 'House Lannister', 'lannister');
 
+  document.querySelector('.js-filter-all').addEventListener('click', ()=>{
+    generateCardsCollection(houseLannisterCards, 'House Lannister', 'lannister');
+  });
+
   document.querySelector('.js-filter-sword').addEventListener('click', ()=>{
-    console.log(1);
+    segregateCards(houseLannisterCards, 'sword');
   });
 
   document.querySelector('.js-filter-bow').addEventListener('click', ()=>{
-    console.log(1);
+    segregateCards(houseLannisterCards, 'bow');
   });
 
   document.querySelector('.js-filter-catapult').addEventListener('click', ()=>{
-    console.log(1);
+    segregateCards(houseLannisterCards, 'catapult');
   });
 });
 
@@ -103,7 +109,7 @@ function generateCardsCollection(cardsName, houseName, crest){
   let cardsHTML = '';
 
   cardsName.forEach((card, index) => {
-    const {img, value, ability, type} = card;
+    const {img, value, ability, typeImg} = card;
     const html =  `
     <div class="card">
       <img class="card-image" src="images/${img}">
@@ -115,7 +121,7 @@ function generateCardsCollection(cardsName, houseName, crest){
           <img class="card-attribute-img" src="images/${ability}">
         </span>
         <span class="card-type">
-          <img class="card-attribute-img" src="images/${type}">
+          <img class="card-attribute-img" src="images/${typeImg}">
         </span>
       </div>
     </div>
@@ -124,15 +130,39 @@ function generateCardsCollection(cardsName, houseName, crest){
     cardsHTML += html;
   });
 
-  const divElement = document.querySelector('.cards').innerHTML= cardsHTML;
+  document.querySelector('.cards').innerHTML= cardsHTML;
 
   document.querySelector('.house-name').innerHTML = houseName;
 
-  document.querySelector('.fraction').innerHTML += `<img class="fraction-img" src="images/${crest}-crest.jpg">`
+  document.querySelector('.house-image-container').innerHTML = `<img class="fraction-img" src="images/${crest}-crest.jpg">`
 };
 
-function segregateCards(){
-  houseLannisterCards.forEach((card)=>{
+function segregateCards(cardsName, selectedType){
+  let cardsHTML = '';
 
+  cardsName.forEach((card)=>{
+    const{img, value, ability, type, typeImg} = card;
+    if(type === selectedType){
+      const html =`
+      <div class="card">
+        <img class="card-image" src="images/${img}">
+        <span class="card-value-container">
+          <p class="card-value">${value}</p>
+        </span>
+        <div class="card-attributes-container">
+          <span class="card-ability">
+            <img class="card-attribute-img" src="images/${ability}">
+          </span>
+          <span class="card-type">
+            <img class="card-attribute-img" src="images/${typeImg}">
+          </span>
+        </div>
+      </div>
+    `;
+
+    cardsHTML += html;
+    };
   });
+
+  document.querySelector('.cards').innerHTML= cardsHTML;
 }

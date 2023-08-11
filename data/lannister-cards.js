@@ -5,7 +5,8 @@ export const houseLannisterCards =[
     img: "jaime-lannister.jpg",
     value: 1,
     ability: "view.png",
-    type: "sword.png"
+    type: "sword",
+    typeImg: "sword.png"
   },
   {
     name: 'Tyrion Lannister',
@@ -13,7 +14,8 @@ export const houseLannisterCards =[
     img: "jaime-lannister.jpg",
     value: 9,
     ability: "view.png",
-    type: "bow.png"
+    type: "bow",
+    typeImg: "bow.png"
   },
   {
     name: 'Tywin Lannister',
@@ -21,6 +23,7 @@ export const houseLannisterCards =[
     img: "jaime-lannister.jpg",
     value: 10,
     ability: "view.png",
-    type: "catapult.png"
+    type: "catapult",
+    typeImg: "catapult.png"
   },
 ];
