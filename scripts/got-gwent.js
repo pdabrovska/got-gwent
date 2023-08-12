@@ -213,13 +213,15 @@ function navigatingInFractions(direction){
 
     const newCardCollectionIndex = cardsCollection.indexOf(cardFractionInfo) + direction;
 
-    if(newCardCollectionIndex >= cardsCollection.length -1){
+    if(newCardCollectionIndex === cardsCollection.length -1){
       document.querySelector('.js-nav-right').classList.add('non-active-nav-button');
       document.querySelector('.js-nav-left').classList.remove('non-active-nav-button');
     }
-    else if(newCardCollectionIndex <= 0){
+    else if(newCardCollectionIndex === 0){
       document.querySelector('.js-nav-left').classList.add('non-active-nav-button');
       document.querySelector('.js-nav-right').classList.remove('non-active-nav-button');
+    } else if((newCardCollectionIndex < 0) ||(newCardCollectionIndex >= cardsCollection.length)){
+      return;
     } else{
       document.querySelector('.js-nav-right').classList.remove('non-active-nav-button');
       document.querySelector('.js-nav-left').classList.remove('non-active-nav-button');
