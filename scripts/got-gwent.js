@@ -95,7 +95,7 @@ function generateCardsCollection(cardsName, houseName, crest){
   let leadersHTML = '';
 
   cardsName.forEach((card, index) => {
-    const {img, value, ability, typeImg, type} = card;
+    const {img, value, ability, abilityImg, typeImg, type} = card;
 
     if(type === 'leader'){
       const html = `
@@ -105,7 +105,23 @@ function generateCardsCollection(cardsName, houseName, crest){
       `;
 
       leadersHTML += html;
-    } else {
+    } else if(ability === ''){
+      const html =  `
+      <div class="card">
+        <img class="card-image" src="images/cards-images/${img}">
+        <span class="card-value-container">
+          <p class="card-value">${value}</p>
+        </span>
+        <div class="card-attributes-container">
+          <span class="card-type">
+            <img class="card-attribute-img" src="images/icons/${typeImg}">
+          </span>
+        </div>
+      </div>
+      `;
+
+      cardsHTML += html;
+    }else {
       const html =  `
       <div class="card">
         <img class="card-image" src="images/cards-images/${img}">
@@ -114,7 +130,7 @@ function generateCardsCollection(cardsName, houseName, crest){
         </span>
         <div class="card-attributes-container">
           <span class="card-ability">
-            <img class="card-attribute-img" src="images/icons/${ability}">
+            <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
           </span>
           <span class="card-type">
             <img class="card-attribute-img" src="images/icons/${typeImg}">
@@ -141,24 +157,42 @@ function segregateCards(cardsName, selectedType){
   cardsName.forEach((card)=>{
     const{img, value, ability, type, typeImg} = card;
     if(type === selectedType){
-      const html =`
+      if(ability === ''){
+        const html =  `
       <div class="card">
         <img class="card-image" src="images/cards-images/${img}">
         <span class="card-value-container">
           <p class="card-value">${value}</p>
         </span>
         <div class="card-attributes-container">
-          <span class="card-ability">
-            <img class="card-attribute-img" src="images/icons/${ability}">
-          </span>
           <span class="card-type">
             <img class="card-attribute-img" src="images/icons/${typeImg}">
           </span>
         </div>
       </div>
-    `;
+      `;
 
-    cardsHTML += html;
+      cardsHTML += html;
+      } else{
+        const html =`
+        <div class="card">
+          <img class="card-image" src="images/cards-images/${img}">
+          <span class="card-value-container">
+            <p class="card-value">${value}</p>
+          </span>
+          <div class="card-attributes-container">
+            <span class="card-ability">
+              <img class="card-attribute-img" src="images/icons/${ability}">
+            </span>
+            <span class="card-type">
+              <img class="card-attribute-img" src="images/icons/${typeImg}">
+            </span>
+          </div>
+        </div>
+      `;
+
+      cardsHTML += html;
+      }
     };
   });
 

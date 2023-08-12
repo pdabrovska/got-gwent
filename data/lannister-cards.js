@@ -31,7 +31,8 @@ export const houseLannisterCards =[
     description: 'ser Jaime',
     img: "lannister/jaime-lannister.jpg",
     value: 10,
-    ability: "view.png",
+    ability: 'spy',
+    abilityImg: "spy.png",
     type: "sword",
     typeImg: "sword.png"
   },
@@ -50,6 +51,7 @@ export const houseLannisterCards =[
     img: "lannister/swordsman.jpg",
     value: 3,
     ability: "bond",
+    abilityImg: 'bond.png',
     type: "sword",
     typeImg: "sword.png"
   },
@@ -59,6 +61,7 @@ export const houseLannisterCards =[
     img: "lannister/swordsman.jpg",
     value: 3,
     ability: "bond",
+    abilityImg: 'bond.png',
     type: "sword",
     typeImg: "sword.png"
   },
@@ -68,6 +71,7 @@ export const houseLannisterCards =[
     img: "lannister/swordsman.jpg",
     value: 3,
     ability: "bond",
+    abilityImg: 'bond.png',
     type: "sword",
     typeImg: "sword.png"
   },
@@ -157,7 +161,8 @@ export const houseLannisterCards =[
     description: 'Casterly Rock',
     img: "lannister/qyburn.jpg",
     value: 3,
-    ability: "medic.png",
+    ability: 'medic',
+    abilityImg: "medic.png",
     type: "catapult",
     typeImg: "catapult.png"
   },
@@ -166,7 +171,8 @@ export const houseLannisterCards =[
     description: 'Casterly Rock',
     img: "lannister/scorpion.jpg",
     value: 8,
-    ability: "bond.png",
+    ability: "bond",
+    abilityImg: 'bond.png',
     type: "catapult",
     typeImg: "catapult.png"
   },
@@ -175,7 +181,8 @@ export const houseLannisterCards =[
     description: 'Casterly Rock',
     img: "lannister/scorpion.jpg",
     value: 8,
-    ability: "bond.png",
+    ability: "bond",
+    abilityImg: 'bond.png',
     type: "catapult",
     typeImg: "catapult.png"
   },
