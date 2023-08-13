@@ -7,7 +7,7 @@ export function generateCardsCollection(cardsName, houseName, crest){
 
     if(type === 'leader'){
       const html = `
-      <div class="card leader-card">
+      <div class="card leader-card js-leader-card">
         <img class="card-image leader-card-img" src="images/cards-images/${img}">
       </div>
       `;
@@ -57,6 +57,30 @@ export function generateCardsCollection(cardsName, houseName, crest){
   document.querySelector('.house-name').innerHTML = houseName;
 
   document.querySelector('.house-image-container').innerHTML = `<img class="fraction-img" src="images/${crest}">`
+
+  document.querySelectorAll('.js-leader-card').forEach((leaderCard) =>{
+    leaderCard.addEventListener('click', ()=>{
+      document.querySelector('.js-cards-panel').innerHTML += 
+      `<div class="cards-wheel js-cards-wheel"></div>`;
+      const leadersCardsWheel = document.querySelector('.js-cards-wheel');
+      let leadersWheelHTML = '';
+      cardsName.forEach((card) =>{
+        const {img, type} = card;
+
+        if(type === 'leader'){
+          const html = `
+          <div class="card leader-card js-leader-card">
+            <img class="card-image leader-card-img" src="images/cards-images/${img}">
+          </div>
+          `;
+
+          leadersWheelHTML += html;
+        }
+
+        leadersCardsWheel.innerHTML = leadersWheelHTML;
+      });
+    });
+  });
 };
 
 export function segregateCards(cardsName, selectedType){
@@ -182,7 +206,7 @@ export function generateCardsCollectionMenu(divElement, houseLannisterCards, car
         </button>
       </div>
     </div>
-    <div class="cards-panel">
+    <div class="cards-panel js-cards-panel">
       <div class="leaders-menu">
         <p class="leaders-title">Leaders</p>
         <div class="js-leaders-cards leaders-cards"></div>
