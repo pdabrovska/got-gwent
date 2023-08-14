@@ -153,15 +153,18 @@
 
 /*leaders cards wheel*/
 .cards-wheel{
-  z-index: 10;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(54, 51, 48, 0.6);
   display: flex;
   align-items: center;
-  justify-content: center;
-  column-gap: 12px;
+  background-color: rgba(62, 52, 38, 0.782);
+  overflow-x: scroll;
+  z-index: 100;
+}
+
+.cards-wheel-non-active{
+  display: none;
 }

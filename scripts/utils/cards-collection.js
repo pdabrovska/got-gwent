@@ -15,7 +15,7 @@ export function generateCardsCollection(cardsName, houseName, crest){
       leadersHTML += html;
     } else if(ability === ''){
       const html =  `
-      <div class="card">
+      <div class="card js-card">
         <img class="card-image" src="images/cards-images/${img}">
         <span class="card-value-container">
           <p class="card-value">${value}</p>
@@ -31,7 +31,7 @@ export function generateCardsCollection(cardsName, houseName, crest){
       cardsHTML += html;
     }else {
       const html =  `
-      <div class="card">
+      <div class="card js-card">
         <img class="card-image" src="images/cards-images/${img}">
         <span class="card-value-container">
           <p class="card-value">${value}</p>
@@ -57,30 +57,6 @@ export function generateCardsCollection(cardsName, houseName, crest){
   document.querySelector('.house-name').innerHTML = houseName;
 
   document.querySelector('.house-image-container').innerHTML = `<img class="fraction-img" src="images/${crest}">`
-
-  document.querySelectorAll('.js-leader-card').forEach((leaderCard) =>{
-    leaderCard.addEventListener('click', ()=>{
-      document.querySelector('.js-cards-panel').innerHTML += 
-      `<div class="cards-wheel js-cards-wheel"></div>`;
-      const leadersCardsWheel = document.querySelector('.js-cards-wheel');
-      let leadersWheelHTML = '';
-      cardsName.forEach((card) =>{
-        const {img, type} = card;
-
-        if(type === 'leader'){
-          const html = `
-          <div class="card leader-card js-leader-card">
-            <img class="card-image leader-card-img" src="images/cards-images/${img}">
-          </div>
-          `;
-
-          leadersWheelHTML += html;
-        }
-
-        leadersCardsWheel.innerHTML = leadersWheelHTML;
-      });
-    });
-  });
 };
 
 export function segregateCards(cardsName, selectedType){
@@ -91,7 +67,7 @@ export function segregateCards(cardsName, selectedType){
     if(type === selectedType){
       if(ability === ''){
         const html =  `
-      <div class="card">
+      <div class="card js-card">
         <img class="card-image" src="images/cards-images/${img}">
         <span class="card-value-container">
           <p class="card-value">${value}</p>
@@ -107,7 +83,7 @@ export function segregateCards(cardsName, selectedType){
       cardsHTML += html;
       } else{
         const html =`
-        <div class="card">
+        <div class="card js-card">
           <img class="card-image" src="images/cards-images/${img}">
           <span class="card-value-container">
             <p class="card-value">${value}</p>
@@ -129,6 +105,13 @@ export function segregateCards(cardsName, selectedType){
   });
 
   document.querySelector('.cards').innerHTML= cardsHTML;
+  document.querySelectorAll('.js-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      console.log(0)
+      document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
+      displayCardsWheel(cardsName, selectedType);
+    });
+  });
 };
 
 export function navigatingInFractions(direction, cardsCollection, houseTargaryenInfo, houseLannisterInfo, houseStarkInfo){
@@ -178,6 +161,21 @@ export function navigatingInFractions(direction, cardsCollection, houseTargaryen
     document.querySelector('.js-filter-catapult').addEventListener('click', ()=>{
       segregateCards(cards, 'catapult');
     });
+
+    document.querySelectorAll('.js-leader-card').forEach((leaderCard) => {
+      leaderCard.addEventListener('click', () => {
+        document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
+        displayCardsWheel(cards, 'leader');
+      });
+    });
+
+    document.querySelectorAll('.js-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        console.log(0)
+        document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
+        displayCardsWheel(cards);
+      });
+    });
 };
 
 export function generateCardsCollectionMenu(divElement, houseLannisterCards, cardsCollection, houseTargaryenInfo, houseLannisterInfo, houseStarkInfo){
@@ -207,6 +205,7 @@ export function generateCardsCollectionMenu(divElement, houseLannisterCards, car
       </div>
     </div>
     <div class="cards-panel js-cards-panel">
+      <div class="cards-wheel js-cards-wheel cards-wheel-non-active"></div>
       <div class="leaders-menu">
         <p class="leaders-title">Leaders</p>
         <div class="js-leaders-cards leaders-cards"></div>
@@ -259,5 +258,204 @@ export function generateCardsCollectionMenu(divElement, houseLannisterCards, car
 
   document.querySelector('.js-nav-right').addEventListener('click', ()=>{
     navigatingInFractions(1, cardsCollection, houseTargaryenInfo, houseLannisterInfo, houseStarkInfo);
+  });
+
+  document.querySelectorAll('.js-leader-card').forEach((leaderCard) => {
+    leaderCard.addEventListener('click', () => {
+      document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
+      displayCardsWheel(houseLannisterCards, 'leader');
+    });
+  });
+
+  document.querySelectorAll('.js-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      console.log(0)
+      document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
+      displayCardsWheel(houseLannisterCards);
+    });
+  });
+};
+
+function displayCardsWheel(cardsName, selectedType){
+  let cardsWheelHTML ='';
+
+  if(selectedType === 'leader'){
+    cardsName.forEach((card)=>{
+      const {img, type} = card;
+      if(type === selectedType){
+        const html = `
+        <div class="card leader-card">
+            <img class="card-image leader-card-img" src="images/cards-images/${img}">
+          </div>
+        `;
+  
+        cardsWheelHTML += html;
+      }
+    });
+  } else if(selectedType === 'sword'){
+    cardsName.forEach((card) =>{
+      const {img, value, ability, abilityImg, typeImg, type} = card;
+      if(type === selectedType && ability ===''){
+        const html =  `
+        <div class="card js-card">
+          <img class="card-image" src="images/cards-images/${img}">
+          <span class="card-value-container">
+            <p class="card-value">${value}</p>
+          </span>
+          <div class="card-attributes-container">
+            <span class="card-type">
+              <img class="card-attribute-img" src="images/icons/${typeImg}">
+            </span>
+          </div>
+        </div>
+        `;
+        cardsWheelHTML += html;
+      }
+      else if(type === selectedType){
+        const html =  `
+        <div class="card js-card">
+          <img class="card-image" src="images/cards-images/${img}">
+          <span class="card-value-container">
+            <p class="card-value">${value}</p>
+          </span>
+          <div class="card-attributes-container">
+            <span class="card-ability">
+              <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
+            </span>
+            <span class="card-type">
+              <img class="card-attribute-img" src="images/icons/${typeImg}">
+            </span>
+          </div>
+        </div>
+        `;
+        cardsWheelHTML += html;
+      }
+    });
+  } else if(selectedType === 'bow'){
+    cardsName.forEach((card) =>{
+      const {img, value, ability, abilityImg, typeImg, type} = card;
+      if(type === selectedType && ability ===''){
+        const html =  `
+        <div class="card js-card">
+          <img class="card-image" src="images/cards-images/${img}">
+          <span class="card-value-container">
+            <p class="card-value">${value}</p>
+          </span>
+          <div class="card-attributes-container">
+            <span class="card-type">
+              <img class="card-attribute-img" src="images/icons/${typeImg}">
+            </span>
+          </div>
+        </div>
+        `;
+        cardsWheelHTML += html;
+      }
+      else if(type === selectedType){
+        const html =  `
+        <div class="card js-card">
+          <img class="card-image" src="images/cards-images/${img}">
+          <span class="card-value-container">
+            <p class="card-value">${value}</p>
+          </span>
+          <div class="card-attributes-container">
+            <span class="card-ability">
+              <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
+            </span>
+            <span class="card-type">
+              <img class="card-attribute-img" src="images/icons/${typeImg}">
+            </span>
+          </div>
+        </div>
+        `;
+        cardsWheelHTML += html;
+      }
+    });
+  } else if(selectedType === 'catapult'){
+    cardsName.forEach((card) =>{
+      const {img, value, ability, abilityImg, typeImg, type} = card;
+      if(type === selectedType && ability ===''){
+        const html =  `
+        <div class="card js-card">
+          <img class="card-image" src="images/cards-images/${img}">
+          <span class="card-value-container">
+            <p class="card-value">${value}</p>
+          </span>
+          <div class="card-attributes-container">
+            <span class="card-type">
+              <img class="card-attribute-img" src="images/icons/${typeImg}">
+            </span>
+          </div>
+        </div>
+        `;
+        cardsWheelHTML += html;
+      }
+      else if(type === selectedType){
+        const html =  `
+        <div class="card js-card">
+          <img class="card-image" src="images/cards-images/${img}">
+          <span class="card-value-container">
+            <p class="card-value">${value}</p>
+          </span>
+          <div class="card-attributes-container">
+            <span class="card-ability">
+              <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
+            </span>
+            <span class="card-type">
+              <img class="card-attribute-img" src="images/icons/${typeImg}">
+            </span>
+          </div>
+        </div>
+        `;
+        cardsWheelHTML += html;
+      }
+    });
+  } else {
+    cardsName.forEach((card)=>{
+      const {img, value, ability, abilityImg, typeImg, type} = card;
+      if(type !== 'leader' && ability ===''){
+        const html =  `
+        <div class="card js-card">
+          <img class="card-image" src="images/cards-images/${img}">
+          <span class="card-value-container">
+            <p class="card-value">${value}</p>
+          </span>
+          <div class="card-attributes-container">
+            <span class="card-type">
+              <img class="card-attribute-img" src="images/icons/${typeImg}">
+            </span>
+          </div>
+        </div>
+        `;
+        cardsWheelHTML += html;
+      }
+      else if(type !== 'leader'){
+        const html =  `
+        <div class="card js-card">
+          <img class="card-image" src="images/cards-images/${img}">
+          <span class="card-value-container">
+            <p class="card-value">${value}</p>
+          </span>
+          <div class="card-attributes-container">
+            <span class="card-ability">
+              <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
+            </span>
+            <span class="card-type">
+              <img class="card-attribute-img" src="images/icons/${typeImg}">
+            </span>
+          </div>
+        </div>
+        `;
+        cardsWheelHTML += html;
+      }
+    });
+  }
+
+  document.querySelector('.js-cards-wheel').innerHTML = cardsWheelHTML;
+
+  document.body.addEventListener('keydown', (event) =>{
+    if(event.key === 'Escape'){
+      document.querySelector('.js-cards-wheel').innerHTML = '';
+      document.querySelector('.js-cards-wheel').classList.add('cards-wheel-non-active');
+    }
   });
 };

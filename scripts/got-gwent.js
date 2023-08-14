@@ -1,6 +1,6 @@
 import { houseLannisterCards, houseLannisterInfo, houseStarkInfo } from "../data/lannister-cards.js";
 import {houseTargaryenInfo } from "../data/targaryen-cards.js";
-import { generateCardsCollection, segregateCards, navigatingInFractions, generateCardsCollectionMenu} from "./utils/cards-collection.js";
+import {generateCardsCollectionMenu} from "./utils/cards-collection.js";
 
 const cardsCollection = [houseStarkInfo,houseLannisterInfo, houseTargaryenInfo];
 
