@@ -6,3 +6,12 @@
   background-color: rgba(157, 116, 73, 0.793);
   border-radius: 5px;
 }
+
+.cards-wheel::-webkit-scrollbar{
+  background-color: rgba(39, 34, 34, 0.037);;
+}
+
+.cards-wheel::-webkit-scrollbar-thumb{
+  background-color: rgba(157, 116, 73, 0.793);
+  border-radius: 5px;
+}
