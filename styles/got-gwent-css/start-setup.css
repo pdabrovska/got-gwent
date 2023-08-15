@@ -1,0 +1,39 @@
+.crest-radio-img{
+  width: 55px;
+  height: 88px;
+}
+
+input[type=radio]{
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+input[type=radio] + label>.crest-radio-img {
+  cursor: pointer;
+}
+
+input[type=radio]:checked + label>.crest-radio-img {
+  outline: 2px solid rgb(21, 0, 255);
+}
+
+.leaders-wheel{
+  display: flex;
+  column-gap: 15px;
+}
+
+.leader[type=radio]{
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.leader[type=radio] + label>.card-wheel{
+  cursor: pointer;
+}
+
+.leader[type=radio]:checked + label>.card-wheel{
+  outline: 5px solid rgb(21, 0, 255);
+}

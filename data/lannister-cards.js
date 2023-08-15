@@ -1,5 +1,6 @@
 export const houseLannisterCards =[
   {
+    id: 'L01l',
     name: 'Tywin Lannister',
     description: 'Casterly Rock',
     img: "lannister/tywin-lannister.jpg",
@@ -9,6 +10,7 @@ export const houseLannisterCards =[
     typeImg: ""
   },
   {
+    id: 'L02l',
     name: 'Cersei Lannister',
     description: 'Casterly Rock',
     img: "lannister/cersei-lannister.jpg",
@@ -18,6 +20,7 @@ export const houseLannisterCards =[
     typeImg: ""
   },
   {
+    id: 'L03l',
     name: 'Tyrion Lannister',
     description: 'Casterly Rock',
     img: "lannister/tyrion-lannister.jpg",
@@ -27,6 +30,7 @@ export const houseLannisterCards =[
     typeImg: ""
   },
   {
+    id: 'L01s',
     name: 'Jaime Lannister',
     description: 'ser Jaime',
     img: "lannister/jaime-lannister.jpg",
@@ -37,6 +41,7 @@ export const houseLannisterCards =[
     typeImg: "sword.png"
   },
   {
+    id: 'L02s',
     name: 'Gregor Clegane',
     description: 'Gregor Clegane',
     img: "lannister/gregor-clegane.jpg",
@@ -46,6 +51,7 @@ export const houseLannisterCards =[
     typeImg: "sword.png"
   },
   {
+    id: 'L04s',
     name: 'Lannister Swordsman',
     description: 'Swordsman',
     img: "lannister/swordsman.jpg",
@@ -56,6 +62,7 @@ export const houseLannisterCards =[
     typeImg: "sword.png"
   },
   {
+    id: 'L05s',
     name: 'Lannister Swordsman',
     description: 'Swordsman',
     img: "lannister/swordsman.jpg",
@@ -66,6 +73,7 @@ export const houseLannisterCards =[
     typeImg: "sword.png"
   },
   {
+    id: 'L06s',
     name: 'Lannister Swordsman',
     description: 'Swordsman',
     img: "lannister/swordsman.jpg",
@@ -76,6 +84,7 @@ export const houseLannisterCards =[
     typeImg: "sword.png"
   },
   {
+    id: 'L07s',
     name: 'Lannister Cavalry',
     description: 'Cavalry',
     img: "lannister/cavalry.jpg",
@@ -85,6 +94,7 @@ export const houseLannisterCards =[
     typeImg: "sword.png"
   },
   {
+    id: 'L08s',
     name: 'Lannister Cavalry',
     description: 'Cavalry',
     img: "lannister/cavalry.jpg",
@@ -94,6 +104,7 @@ export const houseLannisterCards =[
     typeImg: "sword.png"
   },
   {
+    id: 'L09s',
     name: 'Lannister Cavalry',
     description: 'Cavalry',
     img: "lannister/cavalry.jpg",
@@ -103,6 +114,7 @@ export const houseLannisterCards =[
     typeImg: "sword.png"
   },
   {
+    id: 'L01b',
     name: 'Lannister archery',
     description: 'archer',
     img: "lannister/archery.jpg",
@@ -112,6 +124,7 @@ export const houseLannisterCards =[
     typeImg: "bow.png"
   },
   {
+    id: 'L02b',
     name: 'Lannister archery',
     description: 'archer',
     img: "lannister/archery.jpg",
@@ -121,6 +134,7 @@ export const houseLannisterCards =[
     typeImg: "bow.png"
   },
   {
+    id: 'L03b',
     name: 'Lannister crossbowman',
     description: 'handspear',
     img: "lannister/handspear.jpg",
@@ -130,6 +144,7 @@ export const houseLannisterCards =[
     typeImg: "bow.png"
   },
   {
+    id: 'L04b',
     name: 'Lannister crossbowman',
     description: 'handspear',
     img: "lannister/handspear.jpg",
@@ -139,6 +154,7 @@ export const houseLannisterCards =[
     typeImg: "bow.png"
   },
   {
+    id: 'L06b',
     name: 'Lannister crossbowman',
     description: 'handspear',
     img: "lannister/handspear.jpg",
@@ -148,6 +164,7 @@ export const houseLannisterCards =[
     typeImg: "bow.png"
   },
   {
+    id: 'L07b',
     name: 'Joffrey Baratheon',
     description: 'Joffrey Baratheon',
     img: "lannister/joffrey-baratheon.jpg",
@@ -157,6 +174,7 @@ export const houseLannisterCards =[
     typeImg: "bow.png"
   },
   {
+    id: 'L01c',
     name: 'Qyburn',
     description: 'Casterly Rock',
     img: "lannister/qyburn.jpg",
@@ -167,6 +185,7 @@ export const houseLannisterCards =[
     typeImg: "catapult.png"
   },
   {
+    id: 'L02c',
     name: 'Scorpion',
     description: 'Casterly Rock',
     img: "lannister/scorpion.jpg",
@@ -177,6 +196,7 @@ export const houseLannisterCards =[
     typeImg: "catapult.png"
   },
   {
+    id: 'L02c',
     name: 'Scorpion',
     description: 'Casterly Rock',
     img: "lannister/scorpion.jpg",

@@ -312,10 +312,16 @@ export function generateCardsCollectionMenu(divElement, houseLannisterCards, car
 
   document.querySelector('.js-nav-left').addEventListener('click', ()=>{
     navigatingInFractions(-1, cardsCollection, houseTargaryenInfo, houseLannisterInfo, houseStarkInfo);
+    document.querySelector('.js-cards-wheel').innerHTML = '';
+    document.querySelector('.js-cards-wheel').classList.add('cards-wheel-non-active');
+    document.querySelector('.js-escape-button').classList.add('cards-wheel-non-active');
   });
 
   document.querySelector('.js-nav-right').addEventListener('click', ()=>{
     navigatingInFractions(1, cardsCollection, houseTargaryenInfo, houseLannisterInfo, houseStarkInfo);
+    document.querySelector('.js-cards-wheel').innerHTML = '';
+    document.querySelector('.js-cards-wheel').classList.add('cards-wheel-non-active');
+    document.querySelector('.js-escape-button').classList.add('cards-wheel-non-active');
   });
 
   document.querySelectorAll('.js-leader-card').forEach((leaderCard) => {
@@ -347,15 +353,21 @@ export function generateCardsCollectionMenu(divElement, houseLannisterCards, car
     }
     if(event.key === 'ArrowLeft'){
       navigatingInFractions(-1, cardsCollection, houseTargaryenInfo, houseLannisterInfo, houseStarkInfo);
+      document.querySelector('.js-cards-wheel').innerHTML = '';
+      document.querySelector('.js-cards-wheel').classList.add('cards-wheel-non-active');
+      document.querySelector('.js-escape-button').classList.add('cards-wheel-non-active');
     }
     if(event.key === 'ArrowRight'){
       navigatingInFractions(1, cardsCollection, houseTargaryenInfo, houseLannisterInfo, houseStarkInfo);
+      document.querySelector('.js-cards-wheel').innerHTML = '';
+      document.querySelector('.js-cards-wheel').classList.add('cards-wheel-non-active');
+      document.querySelector('.js-escape-button').classList.add('cards-wheel-non-active');
     }
   });
 };
 
 
-function displayCardsWheel(cardsName, selectedType){
+export function displayCardsWheel(cardsName, selectedType){
   let cardsWheelHTML ='';
 
   if(selectedType === 'leader'){
