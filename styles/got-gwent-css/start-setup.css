@@ -1,6 +1,6 @@
 .crest-radio-img{
-  width: 55px;
-  height: 88px;
+  width: 45px;
+  height: 55px;
 }
 
 input[type=radio]{
@@ -30,10 +30,45 @@ input[type=radio]:checked + label>.crest-radio-img {
   height: 0;
 }
 
-.leader[type=radio] + label>.card-wheel{
+.leader[type=radio] + label>.leader-card{
   cursor: pointer;
 }
 
-.leader[type=radio]:checked + label>.card-wheel{
-  outline: 5px solid rgb(21, 0, 255);
+.leader[type=radio]:checked + label>.leader-card{
+  outline: 1px solid rgb(21, 0, 255);
+}
+
+.choose-leader .leader-card-img{
+  width: 55px;
+  height: 84px;
+  border-radius: 8px;
+}
+
+.choose-leader .leader-card{
+  width: 55px;
+  height: 84px;
+}
+
+/*choose army styling*/
+
+.cards-selection{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+}
+
+.choose-team .filter-img{
+  width: 23px;
+  height: 23px;
+}
+
+.cards-to-use .cards{
+  min-width: 200px;
+  height: 100%;
+  min-height: 30vh;
+}
+
+.choose-team .cards-menu{
+  max-width: 500px;
+  max-height: 50vh;
 }

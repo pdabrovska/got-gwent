@@ -1,4 +1,4 @@
-export function generateCardsCollection(cardsName, houseName, crest){
+export function generateCardsCollection(cardsName, houseName, crest, show){
   let cardsHTML = '';
   let leadersHTML = '';
 
@@ -50,13 +50,15 @@ export function generateCardsCollection(cardsName, houseName, crest){
       cardsHTML += html;
     }
   });
-  document.querySelector('.js-leaders-cards').innerHTML= leadersHTML;
+
+  if (show === 'yes'){
+    document.querySelector('.js-leaders-cards').innerHTML= leadersHTML;
+    document.querySelector('.house-name').innerHTML = houseName;
+    document.querySelector('.house-image-container').innerHTML = `<img class="fraction-img" src="images/${crest}">`
+  }
+  
 
   document.querySelector('.cards').innerHTML= cardsHTML;
-
-  document.querySelector('.house-name').innerHTML = houseName;
-
-  document.querySelector('.house-image-container').innerHTML = `<img class="fraction-img" src="images/${crest}">`
 
   document.querySelectorAll('.js-card').forEach((card) => {
     card.addEventListener('click', () => {
@@ -168,10 +170,10 @@ export function navigatingInFractions(direction, cardsCollection, houseTargaryen
     }
       const newCardCollection = cardsCollection[newCardCollectionIndex];
     const {cards, name, crest} = newCardCollection;
-    generateCardsCollection(cards, name, crest);
+    generateCardsCollection(cards, name, crest, 'yes');
 
     document.querySelector('.js-filter-all').addEventListener('click', ()=>{
-      generateCardsCollection(cards, name, crest);
+      generateCardsCollection(cards, name, crest, 'yes');
       document.body.addEventListener('keydown', (event) =>{
         if(event.key === 'q' || event.key === 'Q'){
           document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
@@ -285,7 +287,7 @@ export function generateCardsCollectionMenu(divElement, houseLannisterCards, car
   `
  ;
 
- generateCardsCollection(houseLannisterCards, 'House Lannister', 'lannister-crest.jpg');
+ generateCardsCollection(houseLannisterCards, 'House Lannister', 'lannister-crest.jpg', 'yes');
 
   document.querySelector('.js-filter-all').addEventListener('click', ()=>{
     generateCardsCollection(houseLannisterCards, 'House Lannister', 'lannister-crest.jpg');

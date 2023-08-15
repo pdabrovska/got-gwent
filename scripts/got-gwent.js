@@ -1,6 +1,6 @@
 import { houseLannisterCards, houseLannisterInfo, houseStarkInfo } from "../data/lannister-cards.js";
 import {houseTargaryenCards, houseTargaryenInfo } from "../data/targaryen-cards.js";
-import {displayCardsWheel, generateCardsCollectionMenu} from "./utils/cards-collection.js";
+import {generateCardsCollectionMenu, generateCardsCollection} from "./utils/cards-collection.js";
 
 const cardsCollection = [houseStarkInfo,houseLannisterInfo, houseTargaryenInfo];
 
@@ -26,6 +26,7 @@ buttonElementStart.addEventListener('click', ()=>{
         </label>
       </div>
       <div class="choose-leader js-choose-leader"></div>
+      <div class="choose-team js-choose-team"></div>
     </form>
   </div>
   `
@@ -76,14 +77,10 @@ function chooseLeader(fraction){
 
     if(type === 'leader'){
       const html = `
-      <input class="leader" type="radio" name="leader" id="${id}" value="${id}">
+      <input class="leader js-leader" type="radio" name="leader" id="${id}" value="${id}">
         <label for="${id}">
-          <div class="card card-wheel">
-          <img class="card-wheel-img" src="images/cards-images/${img}">
-          <div class="details-container">
-            <p class="card-name">${name}</p>
-            <p class="card-description">${description}</p>
-          </div>
+          <div class="leader-card">
+          <img class="leader-card-img" src="images/cards-images/${img}">
         </div>
         </label>
       `;
@@ -96,4 +93,60 @@ function chooseLeader(fraction){
   <div class="leaders-wheel js-leaders-wheel"></div>
   `;
   document.querySelector('.js-leaders-wheel').innerHTML += leadersHTML;
+
+  document.querySelectorAll('.js-leader').forEach((radio) =>{
+    radio.addEventListener('click', ()=>{
+      displayCardsMenu(cardsName);
+    });
+  });
+};
+
+function displayCardsMenu(fraction){
+      document.querySelector('.js-choose-team').innerHTML =`
+      <p>Choose your army:</p>
+      <div class="cards-selection">
+        <div class="cards-in-collection">
+          <p>Cards collection</p>
+          <div class="cards-menu">
+            <div class="filters-container">
+              <button class="filter-button js-filter-all">
+                <img class="filter-img" src="images/icons/cards.png">
+              </button>
+              <button class="filter-button js-filter-sword">
+                <img class="filter-img"  src="images/icons/sword.png">
+              </button>
+              <button class="filter-button js-filter-bow">
+                <img class="filter-img"  src="images/icons/bow.png">
+              </button>
+              <button class="filter-button js-filter-catapult">
+                <img class="filter-img"  src="images/icons/catapult.png">
+              </button>
+            </div>
+          <div class="cards"></div>
+        </div>
+      </div>
+      <div class="cards-to-use">
+      <p>Cards in the deck</p>
+        <div class="cards-menu">
+          <div class="filters-container">
+            <button class="filter-button js-filter-all">
+              <img class="filter-img" src="images/icons/cards.png">
+            </button>
+            <button class="filter-button js-filter-sword">
+              <img class="filter-img"  src="images/icons/sword.png">
+            </button>
+            <button class="filter-button js-filter-bow">
+              <img class="filter-img"  src="images/icons/bow.png">
+            </button>
+            <button class="filter-button js-filter-catapult">
+              <img class="filter-img"  src="images/icons/catapult.png">
+            </button>
+          </div>
+          <div class="cards"></div>
+        </div>
+      </div>
+      </div>
+      `;
+
+  generateCardsCollection(fraction);
 };
