@@ -1,4 +1,4 @@
-export const houseTargaryenCards =[
+export let houseTargaryenCards =[
   {
     id: 'T01l',
     name: 'Daenerys Targaryen',

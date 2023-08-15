@@ -1,8 +1,8 @@
-.cards::-webkit-scrollbar{
+.cards::-webkit-scrollbar, .cards-in-deck-container::-webkit-scrollbar{
   background-color: rgba(39, 34, 34, 0.037);;
 }
 
-.cards::-webkit-scrollbar-thumb{
+.cards::-webkit-scrollbar-thumb, .cards-in-deck-container::-webkit-scrollbar-thumb{
   background-color: rgba(157, 116, 73, 0.793);
   border-radius: 5px;
 }

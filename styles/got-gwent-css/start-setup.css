@@ -62,13 +62,25 @@ input[type=radio]:checked + label>.crest-radio-img {
   height: 23px;
 }
 
-.cards-to-use .cards{
+.cards-in-deck-container{
   min-width: 200px;
   height: 100%;
   min-height: 30vh;
+  padding: 5px;
+  display: flex;
+  column-gap: 9px;
+  row-gap: 9px;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: scroll;
 }
 
 .choose-team .cards-menu{
   max-width: 500px;
   max-height: 50vh;
+}
+
+/*cards*/
+.cards-in-collection .card:hover, .cards-in-deck-container .card:hover{
+  outline: 4px inset  rgb(185, 136, 63);
 }

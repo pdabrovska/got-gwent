@@ -3,7 +3,7 @@ export function generateCardsCollection(cardsName, houseName, crest, show){
   let leadersHTML = '';
 
   cardsName.forEach((card, index) => {
-    const {img, value, ability, abilityImg, typeImg, type} = card;
+    const {img, value, ability, abilityImg, typeImg, type, id} = card;
 
     if(type === 'leader'){
       const html = `
@@ -15,7 +15,8 @@ export function generateCardsCollection(cardsName, houseName, crest, show){
       leadersHTML += html;
     } else if(ability === ''){
       const html =  `
-      <div class="card js-card">
+      <div class="card js-card" 
+      data-card-id=${id}>
         <img class="card-image" src="images/cards-images/${img}">
         <span class="card-value-container">
           <p class="card-value">${value}</p>
@@ -31,7 +32,8 @@ export function generateCardsCollection(cardsName, houseName, crest, show){
       cardsHTML += html;
     }else {
       const html =  `
-      <div class="card js-card">
+      <div class="card js-card"
+      data-card-id=${id}>
         <img class="card-image" src="images/cards-images/${img}">
         <span class="card-value-container">
           <p class="card-value">${value}</p>
@@ -51,31 +53,29 @@ export function generateCardsCollection(cardsName, houseName, crest, show){
     }
   });
 
+  document.querySelector('.cards').innerHTML= cardsHTML;
+
   if (show === 'yes'){
     document.querySelector('.js-leaders-cards').innerHTML= leadersHTML;
     document.querySelector('.house-name').innerHTML = houseName;
     document.querySelector('.house-image-container').innerHTML = `<img class="fraction-img" src="images/${crest}">`
-  }
+
+    document.querySelectorAll('.js-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
+        document.querySelector('.js-escape-button').classList.remove('cards-wheel-non-active');
+        displayCardsWheel(cardsName);
+      });
+    });
   
-
-  document.querySelector('.cards').innerHTML= cardsHTML;
-
-  document.querySelectorAll('.js-card').forEach((card) => {
-    card.addEventListener('click', () => {
-      console.log(0)
-      document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
-      document.querySelector('.js-escape-button').classList.remove('cards-wheel-non-active');
-      displayCardsWheel(cardsName);
+    document.querySelectorAll('.js-leader-card').forEach((leaderCard) => {
+      leaderCard.addEventListener('click', () => {
+        document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
+        document.querySelector('.js-escape-button').classList.remove('cards-wheel-non-active');
+        displayCardsWheel(cardsName, 'leader');
+      });
     });
-  });
-
-  document.querySelectorAll('.js-leader-card').forEach((leaderCard) => {
-    leaderCard.addEventListener('click', () => {
-      document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
-      document.querySelector('.js-escape-button').classList.remove('cards-wheel-non-active');
-      displayCardsWheel(cardsName, 'leader');
-    });
-  });
+  }  
 };
 
 export function segregateCards(cardsName, selectedType){

@@ -1,6 +1,7 @@
 import { houseLannisterCards, houseLannisterInfo, houseStarkInfo } from "../data/lannister-cards.js";
 import {houseTargaryenCards, houseTargaryenInfo } from "../data/targaryen-cards.js";
 import {generateCardsCollectionMenu, generateCardsCollection} from "./utils/cards-collection.js";
+import { cardsInDeck } from "../data/cards-in-deck.js";
 
 const cardsCollection = [houseStarkInfo,houseLannisterInfo, houseTargaryenInfo];
 
@@ -142,11 +143,103 @@ function displayCardsMenu(fraction){
               <img class="filter-img"  src="images/icons/catapult.png">
             </button>
           </div>
-          <div class="cards"></div>
+          <div class="cards-in-deck-container js-cards-in-deck-container"></div>
         </div>
       </div>
       </div>
       `;
 
   generateCardsCollection(fraction);
+  displayCardsInDeck();
+  document.querySelectorAll('.js-card').forEach((card) =>{
+    card.addEventListener('dblclick', () =>{
+      const cardId =card.dataset.cardId;
+      addCard(fraction, cardId);
+    });
+  });
+
+  document.querySelectorAll('.js-card-in-deck').forEach((card) =>{
+    card.addEventListener('dblclick', () =>{
+      let cardId =card.dataset.cardId;
+      removeCard(fraction, cardId);
+    });
+  });
+};
+
+function addCard(fraction, cardId){
+      let newCardsCollection =[];
+
+      fraction.forEach((fractionCard) =>{
+        if(fractionCard.id === cardId){
+          cardsInDeck.push(fractionCard);
+        }
+        if(fractionCard.id !== cardId){
+          newCardsCollection.push(fractionCard);
+        }
+      });
+      fraction = newCardsCollection;
+      displayCardsInDeck();
+      displayCardsMenu(fraction);
+};
+
+function removeCard(fraction, cardId){
+  let newCardsCollection =[];
+
+  cardsInDeck.forEach((deckCard) =>{
+    if(deckCard.id === cardId){
+      fraction.push(deckCard);
+    }else if(deckCard.id !== cardId){
+      newCardsCollection.push(deckCard);
+    }
+  });
+
+  cardsInDeck = newCardsCollection;
+  displayCardsInDeck();
+  displayCardsMenu(fraction);
+};
+
+function displayCardsInDeck(){
+  let cardsInDeckHTML = '';
+  cardsInDeck.forEach((card) =>{
+    const {img, value, ability, abilityImg, typeImg, type, id} = card;
+    if(ability === ''){
+      const html =  `
+      <div class="card js-card-in-deck"
+      data-card-id=${id}>
+        <img class="card-image" src="images/cards-images/${img}">
+        <span class="card-value-container">
+          <p class="card-value">${value}</p>
+        </span>
+        <div class="card-attributes-container">
+          <span class="card-type">
+            <img class="card-attribute-img" src="images/icons/${typeImg}">
+          </span>
+        </div>
+      </div>
+      `;
+
+      cardsInDeckHTML += html;
+    }else {
+      const html =  `
+      <div class="card js-card-in-deck"
+      data-card-id=${id}>
+        <img class="card-image" src="images/cards-images/${img}">
+        <span class="card-value-container">
+          <p class="card-value">${value}</p>
+        </span>
+        <div class="card-attributes-container">
+          <span class="card-ability">
+            <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
+          </span>
+          <span class="card-type">
+            <img class="card-attribute-img" src="images/icons/${typeImg}">
+          </span>
+        </div>
+      </div>
+      `;
+
+      cardsInDeckHTML += html;
+    }
+  });
+  document.querySelector('.js-cards-in-deck-container').innerHTML = cardsInDeckHTML;
 };
