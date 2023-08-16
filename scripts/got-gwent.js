@@ -1,7 +1,7 @@
 import { houseLannisterCards, houseLannisterInfo, houseStarkInfo } from "../data/lannister-cards.js";
 import {houseTargaryenCards, houseTargaryenInfo } from "../data/targaryen-cards.js";
 import {generateCardsCollectionMenu, generateCardsCollection} from "./utils/cards-collection.js";
-import {cardsInDeck, removeCard} from "../data/cards-in-deck.js";
+import {cardsInDeck, removeCard, resetCardsInDeck} from "../data/cards-in-deck.js";
 
 const cardsCollection = [houseStarkInfo,houseLannisterInfo, houseTargaryenInfo];
 
@@ -44,22 +44,24 @@ function addSetting(){
     const inputValue = document.querySelector('#house-lannister').value;
     const divElement = document.querySelector('.js-choose-leader');
     if(divElement.innerHTML === ''){
-      console.log(0);
       chooseLeader(inputValue);
     } else {
       divElement.innerHTML ='';
+      document.querySelector('.js-choose-team').innerHTML ='';
       chooseLeader(inputValue);
+      resetCardsInDeck();
     }
   });
   document.querySelector('#house-targaryen').addEventListener('click', () =>{
     const inputValue = document.querySelector('#house-targaryen').value;
     const divElement = document.querySelector('.js-choose-leader');
     if(divElement.innerHTML === ''){
-      console.log(0);
       chooseLeader(inputValue);
     } else {
       divElement.innerHTML ='';
+      document.querySelector('.js-choose-team').innerHTML ='';
       chooseLeader(inputValue);
+      resetCardsInDeck();
     }
   });
 };
@@ -95,9 +97,13 @@ function chooseLeader(fraction){
   `;
   document.querySelector('.js-leaders-wheel').innerHTML += leadersHTML;
 
+  let onclickEvent = 0;
   document.querySelectorAll('.js-leader').forEach((radio) =>{
     radio.addEventListener('click', ()=>{
-      displayCardsMenu(cardsName);
+      onclickEvent++;
+      if(onclickEvent <= 1){
+        displayCardsMenu(cardsName);
+      }
     });
   });
 };
@@ -151,6 +157,11 @@ function displayCardsMenu(fraction){
 
   generateCardsCollection(fraction);
   displayCardsInDeck();
+
+  document.querySelector('.js-filter-sword').addEventListener('click', () =>{
+    console.log(40);
+  });
+
   document.querySelectorAll('.js-card').forEach((card) =>{
     card.addEventListener('dblclick', () =>{
       const cardId =card.dataset.cardId;

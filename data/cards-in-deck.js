@@ -11,5 +11,8 @@ export function removeCard(fraction, cardId){
     });
     
     cardsInDeck = newCardsInDeck;
-    console.log(cardsInDeck)
 };
+
+export function resetCardsInDeck(){
+  cardsInDeck = [];
+}
