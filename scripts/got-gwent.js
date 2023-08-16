@@ -1,7 +1,7 @@
 import { houseLannisterCards, houseLannisterInfo, houseStarkInfo } from "../data/lannister-cards.js";
 import {houseTargaryenCards, houseTargaryenInfo } from "../data/targaryen-cards.js";
 import {generateCardsCollectionMenu, generateCardsCollection} from "./utils/cards-collection.js";
-import { cardsInDeck } from "../data/cards-in-deck.js";
+import {cardsInDeck, removeCard} from "../data/cards-in-deck.js";
 
 const cardsCollection = [houseStarkInfo,houseLannisterInfo, houseTargaryenInfo];
 
@@ -162,6 +162,8 @@ function displayCardsMenu(fraction){
     card.addEventListener('dblclick', () =>{
       let cardId =card.dataset.cardId;
       removeCard(fraction, cardId);
+      displayCardsInDeck();
+      displayCardsMenu(fraction);
     });
   });
 };
@@ -180,22 +182,6 @@ function addCard(fraction, cardId){
       fraction = newCardsCollection;
       displayCardsInDeck();
       displayCardsMenu(fraction);
-};
-
-function removeCard(fraction, cardId){
-  let newCardsCollection =[];
-
-  cardsInDeck.forEach((deckCard) =>{
-    if(deckCard.id === cardId){
-      fraction.push(deckCard);
-    }else if(deckCard.id !== cardId){
-      newCardsCollection.push(deckCard);
-    }
-  });
-
-  cardsInDeck = newCardsCollection;
-  displayCardsInDeck();
-  displayCardsMenu(fraction);
 };
 
 function displayCardsInDeck(){
