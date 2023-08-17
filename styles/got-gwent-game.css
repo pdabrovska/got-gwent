@@ -1,18 +1,19 @@
 html, body{
-  min-height: 100%;
+  /*min-height: 100%;*/
 }
 
 html{
-  position: relative;
+  /*position: relative;*/
 }
 
 body{
   padding: 0;
   margin: 0;
   font-family: Arial;
+  background-image: url("../images/backgrounds/background-image.jpg");
 }
 
-html::before{
+/*html::before{
   content: "";
   background-image: url("../images/backgrounds/background-image.jpg");
   background-repeat: no-repeat;
@@ -24,7 +25,7 @@ html::before{
   bottom: 0px;
   left: 0px;
   opacity: 0.7;
-}
+}*/
 
 .game-window{
   margin-top: 18px;

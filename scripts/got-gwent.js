@@ -155,9 +155,11 @@ function displayCardsMenu(fraction){
         </div>
       </div>
       </div>
-      <button class="play-button js-play-button" type=button"">
-        <a href="got-gwent-game.html">Play</a>
-      </button>
+      <div class="play-button-container">
+        <button class="play-button js-play-button" type=button"">
+          <a href="got-gwent-game.html">Play</a>
+        </button>
+      </div>
       `;
 
   generateCardsCollection(fraction);
