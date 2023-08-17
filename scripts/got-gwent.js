@@ -86,7 +86,7 @@ function chooseLeader(fraction){
         <label for="${id}">
           <div class="leader-card">
           <img class="leader-card-img" src="images/cards-images/${img}">
-        </div>
+          </div>
         </label>
       `;
 
