@@ -157,8 +157,8 @@ function displayCardsMenu(fraction){
       </div>
       <div class="play-button-container">
         <div class="card-count-container">
-          <img src="images/icons/cards.png">
-          <p class="cards-count">0/5</p>
+          <img id="cards-count-img" src="images/icons/cards(red).png">
+          <p class="cards-count js-cards-count">0/5</p>
         </div>
         <button class="play-button js-play-button" type=button"">
           <a href="got-gwent-game.html">Play</a>
@@ -173,8 +173,6 @@ function displayCardsMenu(fraction){
     card.addEventListener('dblclick', () =>{
       const cardId =card.dataset.cardId;
       addCard(fraction, cardId);
-      displayCardsInDeck()
-      displayCardsMenu(fraction);
     });
   });
 
@@ -184,6 +182,7 @@ function displayCardsMenu(fraction){
       removeCard(fraction, cardId);
       displayCardsInDeck();
       displayCardsMenu(fraction);
+      updateCardCount();
     });
   });
 };
@@ -202,6 +201,7 @@ function addCard(fraction, cardId){
       fraction = newCardsCollection;
       displayCardsInDeck()
       displayCardsMenu(fraction);
+      updateCardCount();
 };
 
 function displayCardsInDeck(){
@@ -439,3 +439,21 @@ function segregateCardsCollection(cardsName, selectedType){
     });
   });
 };*/
+
+function updateCardCount(){
+  let cardsInDeckNumber = 0;
+
+  cardsInDeck.forEach(()=>{
+    cardsInDeckNumber++;
+  });
+
+  if(cardsInDeckNumber >= 5){
+    document.querySelector('.js-cards-count').classList.add('cards-count-is-enough');
+    document.getElementById("cards-count-img").src="images/icons/cards.png";
+  } else if(cardsInDeckNumber <5){
+    document.querySelector('.js-cards-count').classList.remove('cards-count-is-enough');
+  }
+
+  document.querySelector('.js-cards-count').innerHTML = `${cardsInDeckNumber}/5`;
+  console.log(cardsInDeckNumber);
+};

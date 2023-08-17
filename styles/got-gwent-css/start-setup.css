@@ -73,6 +73,7 @@ input[type=radio]:checked + label>.crest-radio-img {
 }
 
 .play-button-container{
+  margin-top: 4px;
   display: flex;
   justify-content: right;
   align-items: center;
@@ -101,8 +102,13 @@ input[type=radio]:checked + label>.crest-radio-img {
 }
 
 .card-count-container{
+  color: red;
   display: flex;
   align-items: center;
+}
+
+.cards-count-is-enough{
+  color: green;
 }
 
 .card-count-container img{
