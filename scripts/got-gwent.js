@@ -1,6 +1,6 @@
 import { houseLannisterCards, houseLannisterInfo, houseStarkInfo } from "../data/lannister-cards.js";
 import {houseTargaryenCards, houseTargaryenInfo } from "../data/targaryen-cards.js";
-import {generateCardsCollectionMenu, generateCardsCollection} from "./utils/cards-collection.js";
+import {generateCardsCollectionMenu,generateCardsCollection} from "./utils/cards-collection.js";
 import {cardsInDeck, removeCard, resetCardsInDeck} from "../data/cards-in-deck.js";
 
 const cardsCollection = [houseStarkInfo,houseLannisterInfo, houseTargaryenInfo];
@@ -17,14 +17,16 @@ buttonElementStart.addEventListener('click', ()=>{
     <form class="settings-form">
       <div class="choose-house">
         <p>Choose your house:</p>
-        <input type="radio" name="house" id="house-lannister" value="house-lannister">
-        <label for="house-lannister">
-          <img class="crest-radio-img" src="images/lannister-crest.jpg" alt="House Lannister">
-        </label>
-        <input type="radio" name="house" id="house-targaryen" value="house-targaryen">
-        <label for="house-targaryen">
-          <img class="crest-radio-img" src="images/targaryen-crest.jfif" alt="House Targaryen">
-        </label>
+        <div>
+          <input type="radio" name="house" id="house-lannister" value="house-lannister">
+          <label for="house-lannister">
+            <img class="crest-radio-img" src="images/lannister-crest.jpg" alt="House Lannister">
+          </label>
+          <input type="radio" name="house" id="house-targaryen" value="house-targaryen">
+          <label for="house-targaryen">
+            <img class="crest-radio-img" src="images/targaryen-crest.jfif" alt="House Targaryen">
+          </label>
+        </div>
       </div>
       <div class="choose-leader js-choose-leader"></div>
       <div class="choose-team js-choose-team"></div>
@@ -110,62 +112,63 @@ function chooseLeader(fraction){
 
 function displayCardsMenu(fraction){
       document.querySelector('.js-choose-team').innerHTML =`
-      <p>Choose your army:</p>
+      <p class="question">Choose your army:</p>
       <div class="cards-selection">
         <div class="cards-in-collection">
-          <p>Cards collection</p>
+          <p class="info">Cards collection</p>
           <div class="cards-menu">
             <div class="filters-container">
-              <button class="filter-button js-filter-all">
+              <div type="button" class="filter-button js-filter-all">
                 <img class="filter-img" src="images/icons/cards.png">
-              </button>
-              <button class="filter-button js-filter-sword">
+              </div>
+              <button type="button" class="filter-button js-filter-sword">
                 <img class="filter-img"  src="images/icons/sword.png">
               </button>
-              <button class="filter-button js-filter-bow">
+              <button type="button" class="filter-button js-filter-bow">
                 <img class="filter-img"  src="images/icons/bow.png">
               </button>
-              <button class="filter-button js-filter-catapult">
-                <img class="filter-img"  src="images/icons/catapult.png">
+              <button type="button" class="filter-button js-filter-catapult">
+                <img class="filter-img" src="images/icons/catapult.png">
               </button>
             </div>
           <div class="cards"></div>
         </div>
       </div>
       <div class="cards-to-use">
-      <p>Cards in the deck</p>
+      <p class="info">Cards in the deck</p>
         <div class="cards-menu">
           <div class="filters-container">
-            <button class="filter-button js-filter-all">
+            <div type="button" class="filter-button js-filter-all-cd">
               <img class="filter-img" src="images/icons/cards.png">
-            </button>
-            <button class="filter-button js-filter-sword">
+            </div>
+            <button type="button" class="filter-button js-filter-sword-cd">
               <img class="filter-img"  src="images/icons/sword.png">
             </button>
-            <button class="filter-button js-filter-bow">
+            <button type="button" class="filter-button js-filter-bow-cd">
               <img class="filter-img"  src="images/icons/bow.png">
             </button>
-            <button class="filter-button js-filter-catapult">
-              <img class="filter-img"  src="images/icons/catapult.png">
+            <button type="button" class="filter-button js-filter-catapult-cd">
+              <img class="filter-img" src="images/icons/catapult.png">
             </button>
           </div>
           <div class="cards-in-deck-container js-cards-in-deck-container"></div>
         </div>
       </div>
       </div>
+      <button class="play-button js-play-button" type=button"">
+        <a href="got-gwent-game.html">Play</a>
+      </button>
       `;
 
   generateCardsCollection(fraction);
   displayCardsInDeck();
 
-  document.querySelector('.js-filter-sword').addEventListener('click', () =>{
-    console.log(40);
-  });
-
   document.querySelectorAll('.js-card').forEach((card) =>{
     card.addEventListener('dblclick', () =>{
       const cardId =card.dataset.cardId;
       addCard(fraction, cardId);
+      displayCardsInDeck()
+      displayCardsMenu(fraction);
     });
   });
 
@@ -191,7 +194,7 @@ function addCard(fraction, cardId){
         }
       });
       fraction = newCardsCollection;
-      displayCardsInDeck();
+      displayCardsInDeck()
       displayCardsMenu(fraction);
 };
 
@@ -240,3 +243,193 @@ function displayCardsInDeck(){
   });
   document.querySelector('.js-cards-in-deck-container').innerHTML = cardsInDeckHTML;
 };
+/*
+function segregateCardsCollection(cardsName, selectedType){
+  let cardsHTML = '';
+
+  if(cardsName === cardsInDeck){
+    cardsName.forEach((card)=>{
+      const{img, value, ability, abilityImg, type, typeImg, id} = card;
+      if(type === selectedType){
+        if(ability === ''){
+          const html =  `
+          <div class="card js-card-in-deck"
+          data-card-id=${id}>
+            <img class="card-image" src="images/cards-images/${img}">
+            <span class="card-value-container">
+              <p class="card-value">${value}</p>
+            </span>
+            <div class="card-attributes-container">
+              <span class="card-type">
+                <img class="card-attribute-img" src="images/icons/${typeImg}">
+              </span>
+            </div>
+          </div>
+        `;
+  
+        cardsHTML += html;
+        } else{
+          const html =`
+          <div class="card js-card-in-deck"
+          data-card-id=${id}>
+            <img class="card-image" src="images/cards-images/${img}">
+            <span class="card-value-container">
+              <p class="card-value">${value}</p>
+            </span>
+            <div class="card-attributes-container">
+              <span class="card-ability">
+                <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
+              </span>
+              <span class="card-type">
+                <img class="card-attribute-img" src="images/icons/${typeImg}">
+              </span>
+            </div>
+          </div>
+        `;
+  
+        cardsHTML += html;
+        }
+      } else if (selectedType === 'all'){
+        if(ability === '' && type !== 'leader'){
+          const html =  `
+          <div class="card js-card-in-deck"
+          data-card-id=${id}>
+            <img class="card-image" src="images/cards-images/${img}">
+            <span class="card-value-container">
+              <p class="card-value">${value}</p>
+            </span>
+            <div class="card-attributes-container">
+              <span class="card-type">
+                <img class="card-attribute-img" src="images/icons/${typeImg}">
+              </span>
+            </div>
+          </div>
+        `;
+        cardsHTML += html;
+        } else if (type !== 'leader'){
+          const html =`
+          <div class="card js-card-in-deck"
+          data-card-id=${id}>
+            <img class="card-image" src="images/cards-images/${img}">
+            <span class="card-value-container">
+              <p class="card-value">${value}</p>
+            </span>
+            <div class="card-attributes-container">
+              <span class="card-ability">
+                <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
+              </span>
+              <span class="card-type">
+                <img class="card-attribute-img" src="images/icons/${typeImg}">
+              </span>
+            </div>
+          </div>
+        `;
+  
+        cardsHTML += html;
+        }
+      }
+    });
+
+    document.querySelector('.js-cards-in-deck-container').innerHTML= cardsHTML;
+  } else{
+    cardsName.forEach((card)=>{
+      const{img, value, ability, abilityImg, type, typeImg, id} = card;
+      if(type === selectedType){
+        if(ability === ''){
+          const html =  `
+          <div class="card js-card" 
+          data-card-id=${id}>
+            <img class="card-image" src="images/cards-images/${img}">
+            <span class="card-value-container">
+              <p class="card-value">${value}</p>
+            </span>
+            <div class="card-attributes-container">
+              <span class="card-type">
+                <img class="card-attribute-img" src="images/icons/${typeImg}">
+              </span>
+            </div>
+          </div>
+        `;
+  
+        cardsHTML += html;
+        } else {
+          const html =`
+          <div class="card js-card"
+          data-card-id=${id}>
+            <img class="card-image" src="images/cards-images/${img}">
+            <span class="card-value-container">
+              <p class="card-value">${value}</p>
+            </span>
+            <div class="card-attributes-container">
+              <span class="card-ability">
+                <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
+              </span>
+              <span class="card-type">
+                <img class="card-attribute-img" src="images/icons/${typeImg}">
+              </span>
+            </div>
+          </div>
+        `;
+  
+        cardsHTML += html;
+        }
+      } else if (selectedType === 'all'){
+        if(ability === '' && type !== 'leader'){
+          const html =  `
+          <div class="card js-card" 
+          data-card-id=${id}>
+            <img class="card-image" src="images/cards-images/${img}">
+            <span class="card-value-container">
+              <p class="card-value">${value}</p>
+            </span>
+            <div class="card-attributes-container">
+              <span class="card-type">
+                <img class="card-attribute-img" src="images/icons/${typeImg}">
+              </span>
+            </div>
+          </div>
+        `;
+  
+        cardsHTML += html;
+        } else if(type !== 'leader') {
+          const html =`
+          <div class="card js-card"
+          data-card-id=${id}>
+            <img class="card-image" src="images/cards-images/${img}">
+            <span class="card-value-container">
+              <p class="card-value">${value}</p>
+            </span>
+            <div class="card-attributes-container">
+              <span class="card-ability">
+                <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
+              </span>
+              <span class="card-type">
+                <img class="card-attribute-img" src="images/icons/${typeImg}">
+              </span>
+            </div>
+          </div>
+        `;
+  
+        cardsHTML += html;
+        }
+      }
+    });
+
+    document.querySelector('.cards').innerHTML= cardsHTML;
+  }
+
+ document.querySelectorAll('.js-card-in-deck').forEach((card) =>{
+    card.addEventListener('dblclick', () =>{
+      let cardId =card.dataset.cardId;
+      console.log(cardId);
+      
+    });
+  });
+
+  document.querySelectorAll('.js-card').forEach((card) => {
+    card.addEventListener('dblclick', () => {
+      const cardId =card.dataset.cardId;
+      addCard(cardsName, cardId, selectedType);
+    });
+  });
+};*/

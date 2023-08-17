@@ -1,3 +1,21 @@
+.settings-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
+}
+
+.choose-house{
+  text-align: left;
+  width: 195px;
+}
+
+.choose-house div{
+  display: flex;
+  justify-content: center;
+  column-gap: 14px;
+}
+
 .crest-radio-img{
   width: 45px;
   height: 55px;
@@ -15,7 +33,7 @@ input[type=radio] + label>.crest-radio-img {
 }
 
 input[type=radio]:checked + label>.crest-radio-img {
-  outline: 2px solid rgb(21, 0, 255);
+  outline: 4px outset  rgb(214, 156, 68);
 }
 
 .leaders-wheel{
@@ -35,7 +53,7 @@ input[type=radio]:checked + label>.crest-radio-img {
 }
 
 .leader[type=radio]:checked + label>.leader-card{
-  outline: 1px solid rgb(21, 0, 255);
+  outline: 4px outset  rgb(214, 156, 68);
 }
 
 .choose-leader .leader-card-img{
@@ -50,6 +68,33 @@ input[type=radio]:checked + label>.crest-radio-img {
 }
 
 /*choose army styling*/
+.choose-team{
+  position: relative;
+}
+
+.play-button{
+  position: absolute;
+  right: 28px;
+  bottom: -50px;
+  width: 80px;
+  height: 35px;
+  font-size: 24px;
+  font-weight: 500;
+  background-color: rgb(214, 156, 68);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(160, 139, 56, 0.727);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.play-button a{
+  text-decoration: none;
+  color: black;
+}
+
+.play-button:hover{
+  background-color: rgba(157, 116, 73, 0.793);
+}
 
 .cards-selection{
   display: grid;
@@ -78,6 +123,20 @@ input[type=radio]:checked + label>.crest-radio-img {
 .choose-team .cards-menu{
   max-width: 500px;
   max-height: 50vh;
+}
+
+.choose-team .question{
+  margin-bottom: 0;
+  margin-top: 8px
+}
+
+.cards-selection .info{
+  margin-bottom: 3px;
+  margin-top: 8px
+}
+
+.cards-selection p{
+ font-weight: 500;
 }
 
 /*cards*/

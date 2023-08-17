@@ -78,7 +78,7 @@ export function generateCardsCollection(cardsName, houseName, crest, show){
   }  
 };
 
-export function segregateCards(cardsName, selectedType){
+export function segregateCards(cardsName, selectedType, isInCardsInDeck){
   let cardsHTML = '';
 
   cardsName.forEach((card)=>{
@@ -123,21 +123,22 @@ export function segregateCards(cardsName, selectedType){
     };
   });
 
-  document.querySelector('.cards').innerHTML= cardsHTML;
-  document.querySelectorAll('.js-card').forEach((card) => {
-    card.addEventListener('click', () => {
-      console.log(0)
-      document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
-      displayCardsWheel(cardsName, selectedType);
+    document.querySelector('.cards').innerHTML= cardsHTML;
+    document.querySelectorAll('.js-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
+        document.querySelector('.js-escape-button').classList.remove('cards-wheel-non-active');
+        displayCardsWheel(cardsName, selectedType);
+      });
     });
-  });
 
-  document.body.addEventListener('keydown', (event) =>{
-    if(event.key === 'q' || event.key === 'Q'){
-      document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
-      displayCardsWheel(cardsName, selectedType);
-    }
-  });
+    document.body.addEventListener('keydown', (event) =>{
+      if(event.key === 'q' || event.key === 'Q'){
+        document.querySelector('.js-cards-wheel').classList.remove('cards-wheel-non-active');
+        document.querySelector('.js-escape-button').classList.remove('cards-wheel-non-active');
+        displayCardsWheel(cardsName, selectedType);
+      }
+    });
 };
 
 export function navigatingInFractions(direction, cardsCollection, houseTargaryenInfo, houseLannisterInfo, houseStarkInfo){
