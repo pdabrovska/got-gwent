@@ -101,7 +101,7 @@
 }
 
 .cards-menu{
-  max-height: 75vh;
+  height: 75vh;
   background-color: rgba(39, 34, 34, 0.7);
   max-width: 800px;
   display: grid;

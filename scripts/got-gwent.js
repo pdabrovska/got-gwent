@@ -105,6 +105,7 @@ function chooseLeader(fraction){
       onclickEvent++;
       if(onclickEvent <= 1){
         displayCardsMenu(cardsName);
+        //sessionStorage.setItem('leader', JSON.stringify());
       }
     });
   });
@@ -112,7 +113,7 @@ function chooseLeader(fraction){
 
 function displayCardsMenu(fraction){
       document.querySelector('.js-choose-team').innerHTML =`
-      <p class="question">Choose your army:</p>
+      <p class="question">Choose your army (double click to add or remove card):</p>
       <div class="cards-selection">
         <div class="cards-in-collection">
           <p class="info">Cards collection</p>
@@ -158,16 +159,17 @@ function displayCardsMenu(fraction){
       <div class="play-button-container">
         <div class="card-count-container">
           <img id="cards-count-img" src="images/icons/cards(red).png">
-          <p class="cards-count js-cards-count">0/5</p>
+          <p class="cards-count js-cards-count"></p>
         </div>
-        <button class="play-button js-play-button" type=button"">
-          <a href="got-gwent-game.html">Play</a>
+        <button class="play-button js-play-button" type="button">
+          Play
         </button>
       </div>
       `;
 
   generateCardsCollection(fraction);
   displayCardsInDeck();
+  updateCardCount();
 
   document.querySelectorAll('.js-card').forEach((card) =>{
     card.addEventListener('dblclick', () =>{
@@ -182,7 +184,6 @@ function displayCardsMenu(fraction){
       removeCard(fraction, cardId);
       displayCardsInDeck();
       displayCardsMenu(fraction);
-      updateCardCount();
     });
   });
 };
@@ -201,7 +202,6 @@ function addCard(fraction, cardId){
       fraction = newCardsCollection;
       displayCardsInDeck()
       displayCardsMenu(fraction);
-      updateCardCount();
 };
 
 function displayCardsInDeck(){
@@ -450,10 +450,24 @@ function updateCardCount(){
   if(cardsInDeckNumber >= 5){
     document.querySelector('.js-cards-count').classList.add('cards-count-is-enough');
     document.getElementById("cards-count-img").src="images/icons/cards.png";
+
+    document.querySelector('.js-play-button').addEventListener('click', () =>{
+      playGame();
+    });
   } else if(cardsInDeckNumber <5){
     document.querySelector('.js-cards-count').classList.remove('cards-count-is-enough');
+    document.querySelector('.js-play-button').addEventListener('click', () =>{
+      alert('The cards in deck number has to be equal or greater than 5.');
+    });
   }
 
   document.querySelector('.js-cards-count').innerHTML = `${cardsInDeckNumber}/5`;
-  console.log(cardsInDeckNumber);
+  return cardsInDeckNumber;
 };
+
+function playGame(){
+  const leaderId = document.querySelector('input[name="leader"]:checked').value;
+  sessionStorage.setItem('leader', JSON.stringify(leaderId));
+  sessionStorage.setItem('cards-in-deck', JSON.stringify(cardsInDeck));
+  window.location.replace( "./got-gwent-game.html");
+}
