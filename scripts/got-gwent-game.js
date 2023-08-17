@@ -15,8 +15,12 @@ function displayPlayerLeader(){
 
   if(house === 'house-lannister'){
     cardsName = houseLannisterCards;
+    document.querySelector('.js-player-card-decks-type').innerHTML = 'House Lannister';
+    document.getElementById("js-player-crest").src="images/lannister-crest.jpg";
   } else if (house === 'house-targaryen'){
     cardsName = houseTargaryenCards;
+    document.querySelector('.js-player-card-decks-type').innerHTML = 'House Targaryen';
+    document.getElementById("js-player-crest").src="images/targaryen-crest.jfif";
   }
   
   cardsName.forEach((card) =>{
