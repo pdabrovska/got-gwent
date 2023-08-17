@@ -466,7 +466,9 @@ function updateCardCount(){
 };
 
 function playGame(){
+  const houseId = document.querySelector('input[name="house"]:checked').value;
   const leaderId = document.querySelector('input[name="leader"]:checked').value;
+  sessionStorage.setItem('house', JSON.stringify(houseId));
   sessionStorage.setItem('leader', JSON.stringify(leaderId));
   sessionStorage.setItem('cards-in-deck', JSON.stringify(cardsInDeck));
   window.location.replace( "./got-gwent-game.html");
