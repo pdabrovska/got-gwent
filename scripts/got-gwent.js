@@ -156,6 +156,10 @@ function displayCardsMenu(fraction){
       </div>
       </div>
       <div class="play-button-container">
+        <div class="card-count-container">
+          <img src="images/icons/cards.png">
+          <p class="cards-count">0/5</p>
+        </div>
         <button class="play-button js-play-button" type=button"">
           <a href="got-gwent-game.html">Play</a>
         </button>

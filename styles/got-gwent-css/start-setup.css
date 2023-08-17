@@ -75,10 +75,11 @@ input[type=radio]:checked + label>.crest-radio-img {
 .play-button-container{
   display: flex;
   justify-content: right;
+  align-items: center;
 }
 
 .play-button{
-  margin-right: 15px;
+  margin: 0 15px;
   width: 80px;
   height: 35px;
   font-size: 24px;
@@ -97,6 +98,16 @@ input[type=radio]:checked + label>.crest-radio-img {
 
 .play-button:hover{
   background-color: rgba(157, 116, 73, 0.793);
+}
+
+.card-count-container{
+  display: flex;
+  align-items: center;
+}
+
+.card-count-container img{
+  width: 32px;
+  height: 32px;
 }
 
 .cards-selection{
