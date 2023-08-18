@@ -10,6 +10,7 @@
 }
 
 .details-container{
+  width: 175px;
   background-color: rgba(118, 96, 73, 0.864);
   display: flex;
   border-radius: 3px;

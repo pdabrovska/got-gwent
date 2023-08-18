@@ -2,7 +2,7 @@ export function generateCardsCollection(cardsName, houseName, crest, show){
   let cardsHTML = '';
   let leadersHTML = '';
 
-  cardsName.forEach((card, index) => {
+  cardsName.forEach((card) => {
     const {img, value, ability, abilityImg, typeImg, type, id} = card;
 
     if(type === 'leader'){
