@@ -10,11 +10,32 @@ window.addEventListener('beforeunload', function (event) {
 //playing game
 displayPlayerLeader();
 displayOpponentLeader();
-let playersCardsToPlay = chooseCards(4, cardsInDeck);
-let playerLeftCardsInDeck = leftCardsInDeck(cardsInDeck, playersCardsToPlay);
-let opponentCardsInDeck = chooseCards(8, houseLannisterCards);
-let opponentCardsToPlay = chooseCards(4, opponentCardsInDeck);
-let opponentLeftCardsToPlay = leftCardsInDeck(opponentCardsInDeck, opponentCardsToPlay);
+let playersCardsToPlay = JSON.parse(sessionStorage.getItem('players-cards-to-play'));
+if(!playersCardsToPlay){
+  playersCardsToPlay = chooseCards(4, cardsInDeck);
+  sessionStorage.setItem('players-cards-to-play', JSON.stringify(playersCardsToPlay));
+}
+let playerLeftCardsInDeck = JSON.parse(sessionStorage.getItem('players-left-cards'));
+if(!playerLeftCardsInDeck){
+  playerLeftCardsInDeck = leftCardsInDeck(cardsInDeck, playersCardsToPlay);
+  sessionStorage.setItem('players-left-cards', JSON.stringify(playerLeftCardsInDeck));
+}
+let opponentCardsInDeck = JSON.parse(sessionStorage.getItem('opponent-cards-in-deck'));
+if(!opponentCardsInDeck){
+  opponentCardsInDeck = chooseCards(8, houseLannisterCards);
+  sessionStorage.setItem('opponent-cards-in-deck', JSON.stringify(opponentCardsInDeck));
+}
+let opponentCardsToPlay = JSON.parse(sessionStorage.getItem('opponent-cards-to-play'));
+if(!opponentCardsToPlay){
+  opponentCardsToPlay = chooseCards(4, opponentCardsInDeck);
+  sessionStorage.setItem('opponent-cards-to-play', JSON.stringify(opponentCardsToPlay));
+}
+let opponentLeftCardsToPlay = JSON.parse(sessionStorage.getItem('opponent-left-cards-to-play'));
+if(!opponentLeftCardsToPlay){
+  opponentLeftCardsToPlay = leftCardsInDeck(opponentCardsInDeck, opponentCardsToPlay);
+  sessionStorage.setItem('opponent-left-cards-to-play', JSON.stringify(opponentLeftCardsToPlay));
+}
+
 displayCards(playersCardsToPlay);
 //
 
@@ -115,18 +136,9 @@ function chooseCards(numberOfCardsToChoose, cardsName){
 };
 
 function leftCardsInDeck(cardsInDeck, cardsToPlay){
-  let leftCards = [];
-
-  cardsInDeck.forEach((card) => {
-      if(card.id !== cardsToPlay[0].id &&
-        card.id !== cardsToPlay[1].id &&
-        card.id !== cardsToPlay[2].id &&
-        card.id !== cardsToPlay[3].id){
-        leftCards.push(card);
-      }
-  });
-
-  return leftCards;
+  return cardsInDeck.filter(card => 
+    !cardsToPlay.some(playCard => playCard.id === card.id)
+  );
 };
 
 function displayCards(cardsName){
