@@ -7,6 +7,7 @@ window.addEventListener('beforeunload', function (event) {
 });
 
 displayPlayerLeader();
+displayOpponentLeader();
 
 function displayPlayerLeader(){
   const house = JSON.parse(sessionStorage.getItem('house'));
@@ -26,10 +27,56 @@ function displayPlayerLeader(){
   cardsName.forEach((card) =>{
     const {id, img} = card;
     if(leader === id){
-      console.log(10);
       document.querySelector('.js-profile-img').innerHTML =`
       <img class="profile-image" src="images/cards-images/${img}">
       `;
     }
   });
 }
+
+function displayOpponentLeader(){
+  let opponentHouse = document.querySelector('.js-opponent-card-decks-type');
+  let opponentCrest = document.getElementById("js-opponent-crest");
+  let opponentLeader = document.querySelector('.js-opponent-progile-img');
+
+  let cardsName = JSON.parse(sessionStorage.getItem('opponent-cards'));
+  opponentHouse.innerHTML = JSON.parse(sessionStorage.getItem('opponent-house'));
+  opponentCrest.src = JSON.parse(sessionStorage.getItem('opponent-crest'));
+  opponentLeader.innerHTML = JSON.parse(sessionStorage.getItem('opponent-leader'));
+
+  if(!cardsName){
+    const randomNumber = Math.random();
+
+    if(randomNumber >= 0 && randomNumber < 1/2){
+      cardsName = houseLannisterCards;
+      opponentHouse.innerHTML = 'House Lannister';
+      opponentCrest.src="images/lannister-crest.jpg";
+    } else if(randomNumber >= 1/2 && randomNumber <= 1){
+      cardsName = houseTargaryenCards;
+      opponentHouse.innerHTML = 'House Targaryen';
+      opponentCrest.src="images/targaryen-crest.jfif";
+    }
+
+    if(randomNumber >= 0 && randomNumber < 1/3){
+      const leaderCard = cardsName[0];
+      opponentLeader.innerHTML =`
+        <img class="profile-image" src="images/cards-images/${leaderCard.img}">
+        `;
+    } else if(randomNumber >= 1/3 && randomNumber < 2/3){
+      const leaderCard = cardsName[1];
+      opponentLeader.innerHTML =`
+        <img class="profile-image" src="images/cards-images/${leaderCard.img}">
+        `;
+    } else if(randomNumber >= 2/3 && randomNumber <= 1){
+      const leaderCard = cardsName[2];
+      opponentLeader.innerHTML =`
+        <img class="profile-image" src="images/cards-images/${leaderCard.img}">
+        `;
+    }
+
+    sessionStorage.setItem('opponent-leader', JSON.stringify(opponentLeader.innerHTML));
+    sessionStorage.setItem('opponent-cards', JSON.stringify(cardsName));
+    sessionStorage.setItem('opponent-house', JSON.stringify(opponentHouse.innerHTML));
+    sessionStorage.setItem('opponent-crest', JSON.stringify(opponentCrest.src));
+  }
+};

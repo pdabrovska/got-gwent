@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>GOT Gwent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/got-gwent-game.css">
     <link rel="stylesheet" href="styles/got-gwent-css/card.css">
   </head>
@@ -9,13 +10,13 @@
     <div class="game-window">
       <div class="players-panel">
         <div class="opponent-profile">
-          <div class="profile-image-container">
+          <div class="profile-image-container js-opponent-progile-img">
             <img class="profile-image" src="images/profile-image-daenerys.jpg">
           </div>
           <div class="player-info">
             <div>
               <p class="player-name">Opponent</p>
-              <p class="card-decks-type">House Targaryen</p>
+              <p class="card-decks-type js-opponent-card-decks-type"></p>
             </div>
             <div class="player-stats">
               <span class="remaining-cards">
@@ -135,7 +136,7 @@
           <div class="opponent-cards">
             <div class="used-cards"></div>
             <div class="card-decks">
-              <img class="opponent-crest" src="images/targaryen-crest.jfif">
+              <img class="opponent-crest" id="js-opponent-crest" src="">
               <p class="number-of-cards">12</p>
             </div>
           </div>

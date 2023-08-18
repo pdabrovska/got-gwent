@@ -1,16 +1,26 @@
-/*html, body{
+html, body{
   min-height: 100%;
 }
 
 html{
   position: relative;
-}*/
+}
 
 body{
+  content: "";
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   padding: 0;
   margin: 0;
   font-family: Arial;
   background-image: url("../images/backgrounds/background-image.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.87;
 }
 
 /*html::before{
