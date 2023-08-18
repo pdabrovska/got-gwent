@@ -180,7 +180,7 @@ function displayCardsMenu(fraction){
 
   document.querySelectorAll('.js-card-in-deck').forEach((card) =>{
     card.addEventListener('dblclick', () =>{
-      let cardId =card.dataset.cardId;
+      const cardId =card.dataset.cardId;
       removeCard(fraction, cardId);
       displayCardsInDeck();
       displayCardsMenu(fraction);
@@ -447,21 +447,21 @@ function updateCardCount(){
     cardsInDeckNumber++;
   });
 
-  if(cardsInDeckNumber >= 5){
+  if(cardsInDeckNumber >= 8){
     document.querySelector('.js-cards-count').classList.add('cards-count-is-enough');
     document.getElementById("cards-count-img").src="images/icons/cards.png";
 
     document.querySelector('.js-play-button').addEventListener('click', () =>{
       playGame();
     });
-  } else if(cardsInDeckNumber <5){
+  } else if(cardsInDeckNumber <8){
     document.querySelector('.js-cards-count').classList.remove('cards-count-is-enough');
     document.querySelector('.js-play-button').addEventListener('click', () =>{
-      alert('The cards in deck number has to be equal or greater than 5.');
+      alert('The cards in deck number has to be equal or greater than 8.');
     });
   }
 
-  document.querySelector('.js-cards-count').innerHTML = `${cardsInDeckNumber}/5`;
+  document.querySelector('.js-cards-count').innerHTML = `${cardsInDeckNumber}/8`;
   return cardsInDeckNumber;
 };
 

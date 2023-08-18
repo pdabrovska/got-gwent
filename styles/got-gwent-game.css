@@ -14,7 +14,7 @@ body{
 
 html::before{
   content: "";
-  background-image: url("../images/backgrounds/background-image.jpg");
+  background-image: url("../images/backgrounds/background-image2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -37,11 +37,17 @@ html::before{
 .display-cards-container{
   z-index: 100;
   position: absolute;
-  background-color: rgba(78, 100, 107, 0.7);
+  background-color: rgba(108, 88, 66, 0.7);
   padding: 8px;
   top: 25%;
   right: 0;
   left: 0;
+}
+
+.display-cards-container p{
+  text-align: center;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 .display-cards{
@@ -70,10 +76,11 @@ html::before{
 
 .opponent-profile, .player-profile{
   width: 220px;
-  background-color: rgb(192, 191, 191);
+  background-color: rgba(152, 109, 64, 0.8);
   display: grid;
   grid-template-columns: 95px 1fr;
   position: relative;
+  border: 3px outset rgba(175, 106, 32, 0.8);
 }
 
 .player-info{
@@ -259,4 +266,8 @@ html::before{
   color: white;
   padding: 2px 6px;
   opacity: 0.9;
+}
+
+.card-wheel:hover{
+  outline: 4px inset  rgb(185, 136, 63);
 }

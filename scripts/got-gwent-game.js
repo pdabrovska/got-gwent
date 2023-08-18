@@ -11,8 +11,10 @@ window.addEventListener('beforeunload', function (event) {
 displayPlayerLeader();
 displayOpponentLeader();
 let playersCardsToPlay = chooseCards(4, cardsInDeck);
+let playerLeftCardsInDeck = leftCardsInDeck(cardsInDeck, playersCardsToPlay);
 let opponentCardsInDeck = chooseCards(8, houseLannisterCards);
 let opponentCardsToPlay = chooseCards(4, opponentCardsInDeck);
+let opponentLeftCardsToPlay = leftCardsInDeck(opponentCardsInDeck, opponentCardsToPlay);
 displayCards(playersCardsToPlay);
 //
 
@@ -112,6 +114,21 @@ function chooseCards(numberOfCardsToChoose, cardsName){
   return chosenCards.slice(0, numberOfCardsToChoose);
 };
 
+function leftCardsInDeck(cardsInDeck, cardsToPlay){
+  let leftCards = [];
+
+  cardsInDeck.forEach((card) => {
+      if(card.id !== cardsToPlay[0].id &&
+        card.id !== cardsToPlay[1].id &&
+        card.id !== cardsToPlay[2].id &&
+        card.id !== cardsToPlay[3].id){
+        leftCards.push(card);
+      }
+  });
+
+  return leftCards;
+};
+
 function displayCards(cardsName){
   let displayCardsHTML = '';
 
@@ -121,7 +138,8 @@ function displayCards(cardsName){
 
     if(ability === ''){
       const html =  `
-      <div class="card card-wheel js-card">
+      <div class="card card-wheel js-card"
+      data-card-id=${id}>
           <img class="card-image card-wheel-img" src="images/cards-images/${img}">
           <span class="card-value-container">
             <p class="card-value">${value}</p>
@@ -141,7 +159,8 @@ function displayCards(cardsName){
       displayCardsHTML += html;
     }else {
       const html =  `
-      <div class="card card-wheel js-card">
+      <div class="card card-wheel js-card"
+      data-card-id=${id}>
         <img class="card-image card-wheel-img" src="images/cards-images/${img}">
         <span class="card-value-container">
           <p class="card-value">${value}</p>
@@ -166,9 +185,28 @@ function displayCards(cardsName){
   });
 
   document.querySelector('.js-display-cards').innerHTML = displayCardsHTML;
+  redrawCard();
 
   document.querySelector('.js-close-display-cards').addEventListener('click', () =>{
     document.querySelector('.js-display-cards').innerHTML = '';
     document.querySelector('.js-display-cards-container').classList.add('display-cards-non-visible');
   });
 };
+
+function redrawCard(){
+  document.querySelectorAll('.js-card').forEach((card) =>{
+    card.addEventListener('click', ()=>{
+      const cardId =card.dataset.cardId;
+      let newCards = [];
+
+      playersCardsToPlay.forEach((playerCard) =>{
+        if(cardId !== playerCard.id){
+          newCards.push(playerCard);
+        }
+      })
+
+      playersCardsToPlay = newCards;
+      displayCards(playersCardsToPlay);
+    });
+  });
+}
