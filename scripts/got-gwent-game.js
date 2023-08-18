@@ -1,5 +1,6 @@
 import { houseLannisterCards} from "../data/lannister-cards.js";
 import {houseTargaryenCards} from "../data/targaryen-cards.js";
+import {cardsInDeck} from "../data/cards-in-deck.js";
 
 window.addEventListener('beforeunload', function (event) {
   event.preventDefault();
@@ -79,4 +80,28 @@ function displayOpponentLeader(){
     sessionStorage.setItem('opponent-house', JSON.stringify(opponentHouse.innerHTML));
     sessionStorage.setItem('opponent-crest', JSON.stringify(opponentCrest.src));
   }
+};
+
+function chooseCards(numberOfCardsToChoose, cardsName){
+  if(numberOfCardsToChoose > cardsName.length){
+    throw new Error("Number of cards to choose cannot be greater than available cards.");
+  }
+
+  let newCardsCollection = [];
+
+  cardsName.forEach((card) =>{
+    const {type} =card;
+    if (type !== 'leader'){
+      newCardsCollection.push(card);
+    }
+  });
+
+  const chosenCards = newCardsCollection.slice();
+
+  for(let i = chosenCards.length -1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [chosenCards[i], chosenCards[j]] = [chosenCards[j], chosenCards[i]];
+  }
+
+  return chosenCards.slice(0, numberOfCardsToChoose);
 };
