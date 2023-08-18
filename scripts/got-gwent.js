@@ -12,6 +12,7 @@ const buttonElementDecks = document.querySelector('.js-button-decks');
 const divElement = document.querySelector('.action-screen');
 
 buttonElementStart.addEventListener('click', ()=>{
+  sessionStorage.removeItem('cards-in-deck');
   const menuHTML = `
   <div class="setup-menu">
     <form class="settings-form">
@@ -466,7 +467,7 @@ function updateCardCount(){
 };
 
 function playGame(){
-  removeOpponentInfoFromStorage();
+  removeOpponentInfoFromStorage()
   const houseId = document.querySelector('input[name="house"]:checked').value;
   const leaderId = document.querySelector('input[name="leader"]:checked').value;
   sessionStorage.setItem('house', JSON.stringify(houseId));
@@ -476,5 +477,8 @@ function playGame(){
 }
 
 function removeOpponentInfoFromStorage(){
-  sessionStorage.clear()
+  sessionStorage.removeItem('opponent-leader');
+  sessionStorage.removeItem('opponent-house');
+  sessionStorage.removeItem('opponent-crest');
+  sessionStorage.removeItem('opponent-cards');
 };

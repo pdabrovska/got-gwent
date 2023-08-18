@@ -3,6 +3,7 @@ import {houseTargaryenCards} from "../data/targaryen-cards.js";
 import {cardsInDeck} from "../data/cards-in-deck.js";
 
 window.addEventListener('beforeunload', function (event) {
+  sessionStorage.removeItem('cards-in-deck');
   event.preventDefault();
   event.returnValue = 'Are you sure you want to leave this page?';
 });
@@ -36,7 +37,7 @@ if(!opponentLeftCardsToPlay){
   sessionStorage.setItem('opponent-left-cards-to-play', JSON.stringify(opponentLeftCardsToPlay));
 }
 
-displayCards(playersCardsToPlay);
+displayCards(playersCardsToPlay, playerLeftCardsInDeck);
 //
 
 function displayPlayerLeader(){
@@ -141,7 +142,7 @@ function leftCardsInDeck(cardsInDeck, cardsToPlay){
   );
 };
 
-function displayCards(cardsName){
+function displayCards(cardsName, leftcardsName){
   let displayCardsHTML = '';
 
   cardsName.forEach((card) =>{
@@ -197,28 +198,36 @@ function displayCards(cardsName){
   });
 
   document.querySelector('.js-display-cards').innerHTML = displayCardsHTML;
-  redrawCard();
 
   document.querySelector('.js-close-display-cards').addEventListener('click', () =>{
     document.querySelector('.js-display-cards').innerHTML = '';
     document.querySelector('.js-display-cards-container').classList.add('display-cards-non-visible');
   });
-};
 
-function redrawCard(){
   document.querySelectorAll('.js-card').forEach((card) =>{
     card.addEventListener('click', ()=>{
       const cardId =card.dataset.cardId;
-      let newCards = [];
-
-      playersCardsToPlay.forEach((playerCard) =>{
-        if(cardId !== playerCard.id){
-          newCards.push(playerCard);
-        }
-      })
-
-      playersCardsToPlay = newCards;
-      displayCards(playersCardsToPlay);
+      redrawCard(playerLeftCardsInDeck, cardId);
+      
+      //document.querySelector('.js-redraw-cards-count').innerHTML = redrawCardsNumber;
     });
   });
-}
+};
+
+function redrawCard(leftcardsName, cardId){
+  let newCards = [];
+  const newCardArray = chooseCards(1, leftcardsName);
+  const newCard = newCardArray[0];
+  newCards.push(newCard);
+
+  playersCardsToPlay.forEach((playerCard) =>{
+    if(cardId !== playerCard.id){
+      newCards.push(playerCard);
+    }
+  })
+
+  playersCardsToPlay = newCards;
+  displayCards(playersCardsToPlay);
+
+  sessionStorage.setItem('players-cards-to-play', JSON.stringify(playersCardsToPlay));
+};
