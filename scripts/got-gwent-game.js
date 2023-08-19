@@ -36,6 +36,8 @@ if(!opponentLeftCardsToPlay){
   opponentLeftCardsToPlay = leftCardsInDeck(opponentCardsInDeck, opponentCardsToPlay);
   sessionStorage.setItem('opponent-left-cards-to-play', JSON.stringify(opponentLeftCardsToPlay));
 }
+document.querySelector('.js-player-left-cards').innerHTML = updateNumberOfCardsLeftInDeck(playerLeftCardsInDeck);
+document.querySelector('.js-opponent-left-cards').innerHTML = updateNumberOfCardsLeftInDeck(opponentLeftCardsToPlay);
 
 let redrawCardsNumber = 0;
 
@@ -146,6 +148,7 @@ function leftCardsInDeck(cardsInDeck, cardsToPlay){
 
 function displayCards(cardsName, leftcardsName){
   let displayCardsHTML = '';
+  let playCardHTML = '';
 
   cardsName.forEach((card) =>{
     const {} = card;
@@ -172,6 +175,22 @@ function displayCards(cardsName, leftcardsName){
       `;
 
       displayCardsHTML += html;
+
+      const jsCardHTML =  `
+      <div class="card js-card"
+      data-card-id=${id}>
+          <img class="card-image" src="images/cards-images/${img}">
+          <span class="card-value-container">
+            <p class="card-value">${value}</p>
+          </span>
+          <div class="card-attributes-container">
+            <span class="card-type">
+              <img class="card-attribute-img" src="images/icons/${typeImg}">
+            </span>
+          </div>
+        </div>
+      `;
+      playCardHTML += jsCardHTML;
     }else {
       const html =  `
       <div class="card card-wheel js-card"
@@ -196,6 +215,25 @@ function displayCards(cardsName, leftcardsName){
       `;
 
       displayCardsHTML += html;
+
+      const jsCardHTML =  `
+      <div class="card js-card"
+      data-card-id=${id}>
+        <img class="card-image" src="images/cards-images/${img}">
+        <span class="card-value-container">
+          <p class="card-value">${value}</p>
+        </span>
+        <div class="card-attributes-container">
+          <span class="card-ability">
+            <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
+          </span>
+          <span class="card-type">
+            <img class="card-attribute-img" src="images/icons/${typeImg}">
+          </span>
+        </div>
+      </div>
+      `;
+      playCardHTML += jsCardHTML;
     }
   });
 
@@ -204,6 +242,8 @@ function displayCards(cardsName, leftcardsName){
   document.querySelector('.js-close-display-cards').addEventListener('click', () =>{
     document.querySelector('.js-display-cards').innerHTML = '';
     document.querySelector('.js-display-cards-container').classList.add('display-cards-non-visible');
+
+    document.querySelector('.js-player-cards-to-use').innerHTML = playCardHTML;
   });
 
   
@@ -241,3 +281,12 @@ function redrawCard(leftcardsName, cardId){
   redrawCardsNumber++;
   document.querySelector('.js-redraw-cards-count').innerHTML = redrawCardsNumber;
 };
+
+function updateNumberOfCardsLeftInDeck(cardsName){
+  let cardsNumber = 0;
+  cardsName.forEach((card)=>{
+    cardsNumber++;
+  })
+
+  return cardsNumber;
+}

@@ -204,11 +204,15 @@ html::before{
 }
 
 .player-cards-to-use{
+  padding: 2px;
   min-width: 582px;
-  height: 80px;
+  min-height: 100px;
   background-color: rgba(79, 69, 69, 0.6);
   cursor: pointer;
-  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
 }
 
 /* right section */
@@ -256,16 +260,18 @@ html::before{
   height: 100px;
 }
 
-.number-of-cards{
-  margin: 0;
-  padding: 0;
+.card-decks div{
   position: absolute;
   bottom: 0;
-  right: 18px;
+  right: 32%;
   background-color: rgb(164, 159, 159);
-  color: white;
-  padding: 2px 6px;
   opacity: 0.9;
+  width: 25px;
+}
+.number-of-cards{
+  color: white;
+  text-align: center;
+  margin: 2px 0;
 }
 
 .card-wheel:hover{
