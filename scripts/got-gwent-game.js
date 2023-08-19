@@ -179,7 +179,7 @@ function displayCards(cardsName, forStart){
       displayCardsHTML += html;
 
       const jsCardHTML =  `
-      <div class="card js-card-to-play"
+      <div class="card js-card-to-play js-card-to-play-${id}"
       data-card-id=${id}>
           <img class="card-image" src="images/cards-images/${img}">
           <span class="card-value-container">
@@ -219,7 +219,7 @@ function displayCards(cardsName, forStart){
       displayCardsHTML += html;
 
       const jsCardHTML =  `
-      <div class="card js-card-to-play"
+      <div class="card js-card-to-play js-card-to-play-${id}"
       data-card-id=${id}>
         <img class="card-image" src="images/cards-images/${img}">
         <span class="card-value-container">
@@ -305,19 +305,18 @@ function playGame(){
   document.querySelectorAll('.js-card-to-play').forEach((card) =>{
     card.addEventListener('click', ()=>{
       const cardId = card.dataset.cardId;
-      playCard(cardId);
+      chooseCardToPlay(cardId);
     });
   });
 };
 
-function playCard(cardId){
-  let newCardsToPlay = [];
+function chooseCardToPlay(cardId){
+  let playerCardNumber = 2;
   let cardHTML = '';
 
   playersCardsToPlay.forEach((playerCard) =>{
-    if(cardId !== playerCard.id){
-      newCardsToPlay.push(playerCard);
-    } else if (cardId === playerCard.id){
+    if (cardId === playerCard.id){
+      document.querySelector(`.js-card-to-play-${cardId}`).classList.add('display-none');
       if(playerCard.ability === ''){
         cardHTML = `
         <div class="card active-card-to-play"
@@ -352,11 +351,19 @@ function playCard(cardId){
           </div>
       `;
       }
-      
     }
   })
 
-  playersCardsToPlay = newCardsToPlay;
-  displayCards(playersCardsToPlay, 'no');
   document.querySelector('.js-active-card-to-play').innerHTML = cardHTML;
+
+  document.body.addEventListener('keydown', (event) =>{
+      if(event.key === 'Escape'){
+        playerCardNumber++
+        if(playerCardNumber < 4){
+          console.log(2);
+          document.querySelector('.js-active-card-to-play').innerHTML = '';
+          document.querySelector(`.js-card-to-play-${cardId}`).classList.remove('display-none');
+        }
+      }
+    });
 }
