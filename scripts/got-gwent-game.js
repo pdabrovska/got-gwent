@@ -36,12 +36,14 @@ if(!opponentLeftCardsToPlay){
   opponentLeftCardsToPlay = leftCardsInDeck(opponentCardsInDeck, opponentCardsToPlay);
   sessionStorage.setItem('opponent-left-cards-to-play', JSON.stringify(opponentLeftCardsToPlay));
 }
-document.querySelector('.js-player-left-cards').innerHTML = updateNumberOfCardsLeftInDeck(playerLeftCardsInDeck);
-document.querySelector('.js-opponent-left-cards').innerHTML = updateNumberOfCardsLeftInDeck(opponentLeftCardsToPlay);
+document.querySelector('.js-player-left-cards').innerHTML = updateNumberOfCardsLeft(playerLeftCardsInDeck);
+document.querySelector('.js-opponent-left-cards').innerHTML = updateNumberOfCardsLeft(opponentLeftCardsToPlay);
+document.querySelector('.js-player-remaining-cards').innerHTML = updateNumberOfCardsLeft(playersCardsToPlay);
+document.querySelector('.js-opponent-remaining-cards').innerHTML = updateNumberOfCardsLeft(opponentCardsToPlay);
+
 
 let redrawCardsNumber = 0;
-
-displayCards(playersCardsToPlay, playerLeftCardsInDeck);
+displayCards(playersCardsToPlay, 'yes');
 //
 
 function displayPlayerLeader(){
@@ -146,7 +148,7 @@ function leftCardsInDeck(cardsInDeck, cardsToPlay){
   );
 };
 
-function displayCards(cardsName, leftcardsName){
+function displayCards(cardsName, forStart){
   let displayCardsHTML = '';
   let playCardHTML = '';
 
@@ -177,7 +179,7 @@ function displayCards(cardsName, leftcardsName){
       displayCardsHTML += html;
 
       const jsCardHTML =  `
-      <div class="card js-card"
+      <div class="card js-card-to-play"
       data-card-id=${id}>
           <img class="card-image" src="images/cards-images/${img}">
           <span class="card-value-container">
@@ -217,7 +219,7 @@ function displayCards(cardsName, leftcardsName){
       displayCardsHTML += html;
 
       const jsCardHTML =  `
-      <div class="card js-card"
+      <div class="card js-card-to-play"
       data-card-id=${id}>
         <img class="card-image" src="images/cards-images/${img}">
         <span class="card-value-container">
@@ -237,28 +239,36 @@ function displayCards(cardsName, leftcardsName){
     }
   });
 
-  document.querySelector('.js-display-cards').innerHTML = displayCardsHTML;
+  if(forStart === 'yes'){
+    document.querySelector('.js-display-cards').innerHTML = displayCardsHTML;
 
-  document.querySelector('.js-close-display-cards').addEventListener('click', () =>{
-    document.querySelector('.js-display-cards').innerHTML = '';
-    document.querySelector('.js-display-cards-container').classList.add('display-cards-non-visible');
+    document.querySelector('.js-close-display-cards').addEventListener('click', () =>{
+      document.querySelector('.js-display-cards').innerHTML = '';
+      document.querySelector('.js-display-cards-container').classList.add('display-cards-non-visible');
 
+      document.querySelector('.js-player-cards-to-use').innerHTML = playCardHTML;
+
+      playGame();
+    });
+
+    document.querySelectorAll('.js-card').forEach((card) =>{
+      card.addEventListener('click', ()=>{
+        if(redrawCardsNumber < 2){
+          const cardId =card.dataset.cardId;
+          redrawCard(playerLeftCardsInDeck, cardId);
+        } else {
+          alert('You can redraw only 2 cards');
+        }
+        
+      });
+    });
+  } else if (forStart === 'no'){
     document.querySelector('.js-player-cards-to-use').innerHTML = playCardHTML;
-  });
 
+    playGame();
+  }
   
 
-  document.querySelectorAll('.js-card').forEach((card) =>{
-    card.addEventListener('click', ()=>{
-      if(redrawCardsNumber < 2){
-        const cardId =card.dataset.cardId;
-        redrawCard(playerLeftCardsInDeck, cardId);
-      } else {
-        alert('You can redraw only 2 cards');
-      }
-      
-    });
-  });
 };
 
 
@@ -275,18 +285,31 @@ function redrawCard(leftcardsName, cardId){
   })
 
   playersCardsToPlay = newCards;
-  displayCards(playersCardsToPlay);
+  displayCards(playersCardsToPlay, 'yes');
 
   sessionStorage.setItem('players-cards-to-play', JSON.stringify(playersCardsToPlay));
   redrawCardsNumber++;
   document.querySelector('.js-redraw-cards-count').innerHTML = redrawCardsNumber;
 };
 
-function updateNumberOfCardsLeftInDeck(cardsName){
+function updateNumberOfCardsLeft(cardsName){
   let cardsNumber = 0;
   cardsName.forEach((card)=>{
     cardsNumber++;
   })
 
   return cardsNumber;
+};
+
+function playGame(){
+  document.querySelectorAll('.js-card-to-play').forEach((card) =>{
+    card.addEventListener('click', ()=>{
+      const cardId = card.dataset.cardId;
+      playCard(cardId);
+    });
+  });
+};
+
+function playCard(cardId){
+
 }

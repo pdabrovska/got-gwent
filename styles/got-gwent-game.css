@@ -192,6 +192,27 @@ html::before{
   padding: 2px 20px;
 }
 
+.sword-row{
+  background-image: url("../images/icons/sword-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8%;
+}
+
+.bow-row{
+  background-image: url("../images/icons/bow-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8%;
+}
+
+.catapult-row{
+  background-image: url("../images/icons/catapult-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8%;
+}
+
 .row-points-container{
   position: absolute;
   width: 34px;
@@ -264,7 +285,7 @@ html::before{
   position: absolute;
   bottom: 0;
   right: 32%;
-  background-color: rgb(164, 159, 159);
+  background-color: rgba(158, 109, 36, 0.8);
   opacity: 0.9;
   width: 25px;
 }
