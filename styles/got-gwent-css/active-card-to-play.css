@@ -1,0 +1,34 @@
+.active-card-to-play img{
+  width: 120px;
+  height: 170px;
+}
+
+.active-card-to-play{
+  width: 120px;
+  height: 170px;
+}
+
+.active-card-to-play .card-attribute-img, .active-card-to-play .card-ability-img{
+  width: 18px;
+  height: 18px;
+  padding: 2px 0px;
+}
+
+.active-card-to-play .card-type, .active-card-to-play .card-ability{
+  width: 23px;
+  height: 23px;
+}
+
+.active-card-to-play .card-value-container{
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+}
+
+.active-card-to-play .card-value{
+  margin: auto;
+}
+
+.active-card-to-play:hover{
+  outline: none;
+}

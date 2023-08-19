@@ -311,5 +311,52 @@ function playGame(){
 };
 
 function playCard(cardId){
+  let newCardsToPlay = [];
+  let cardHTML = '';
 
+  playersCardsToPlay.forEach((playerCard) =>{
+    if(cardId !== playerCard.id){
+      newCardsToPlay.push(playerCard);
+    } else if (cardId === playerCard.id){
+      if(playerCard.ability === ''){
+        cardHTML = `
+        <div class="card active-card-to-play"
+        data-card-id=${playerCard.id}>
+            <img class="card-image" src="images/cards-images/${playerCard.img}">
+            <span class="card-value-container">
+              <p class="card-value">${playerCard.value}</p>
+            </span>
+            <div class="card-attributes-container">
+              <span class="card-type">
+                <img class="card-attribute-img" src="images/icons/${playerCard.typeImg}">
+              </span>
+            </div>
+          </div>
+      `;
+      } else{
+        cardHTML = `
+        <div class="card active-card-to-play"
+        data-card-id=${playerCard.id}>
+            <img class="card-image" src="images/cards-images/${playerCard.img}">
+            <span class="card-value-container">
+              <p class="card-value">${playerCard.value}</p>
+            </span>
+            <div class="card-attributes-container">
+              <span class="card-ability">
+                <img class="card-attribute-img" src="images/icons/abilities-icons/${playerCard.abilityImg}">
+              </span>
+              <span class="card-type">
+                <img class="card-attribute-img" src="images/icons/${playerCard.typeImg}">
+              </span>
+            </div>
+          </div>
+      `;
+      }
+      
+    }
+  })
+
+  playersCardsToPlay = newCardsToPlay;
+  displayCards(playersCardsToPlay, 'no');
+  document.querySelector('.js-active-card-to-play').innerHTML = cardHTML;
 }

@@ -156,7 +156,7 @@ export let houseTargaryenCards =[
       typeImg: "sword.png"
     },
     {
-      id: 'T12s',
+      id: 'T13s',
       name: 'Viserys III Targaryen',
       description: 'Prince Daemon Targaryen',
       img: "targaryen/viserys-III-targaryen.jpg",
