@@ -188,7 +188,6 @@ html::before{
   border: 1px solid black;
   position: relative;
   z-index: 10;
-  cursor: pointer;
   padding: 2px 20px;
 }
 
@@ -230,7 +229,6 @@ html::before{
   min-width: 582px;
   min-height: 100px;
   background-color: rgba(79, 69, 69, 0.6);
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -308,4 +306,14 @@ html::before{
   left: 0;
   background-color: rgba(67, 50, 35, 0.5);
   z-index: 100;
+}
+
+.row-to-choose{
+  background-color: rgba(222, 183, 82, 0.4);
+  border: 3px outset rgb(185, 136, 63);
+  cursor: pointer;
+}
+
+.row-to-choose:hover{
+  border: 4px outset rgb(227, 166, 73);
 }

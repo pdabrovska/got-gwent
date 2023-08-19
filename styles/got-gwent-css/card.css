@@ -6,6 +6,7 @@
 
 .card:hover{
   outline: 3px inset  rgb(232, 173, 84);
+  cursor: pointer;
 }
 
 .card-image{

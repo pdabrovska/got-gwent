@@ -315,19 +315,20 @@ function chooseCardToPlay(cardId){
   let cardHTML = '';
 
   playersCardsToPlay.forEach((playerCard) =>{
+    const {id, type, img, value, typeImg, abilityImg} = playerCard;
     if (cardId === playerCard.id){
       document.querySelector(`.js-card-to-play-${cardId}`).classList.add('display-none');
       if(playerCard.ability === ''){
         cardHTML = `
         <div class="card active-card-to-play"
-        data-card-id=${playerCard.id}>
-            <img class="card-image" src="images/cards-images/${playerCard.img}">
+        data-card-id=${id}>
+            <img class="card-image" src="images/cards-images/${img}">
             <span class="card-value-container">
-              <p class="card-value">${playerCard.value}</p>
+              <p class="card-value">${value}</p>
             </span>
             <div class="card-attributes-container">
               <span class="card-type">
-                <img class="card-attribute-img" src="images/icons/${playerCard.typeImg}">
+                <img class="card-attribute-img" src="images/icons/${typeImg}">
               </span>
             </div>
           </div>
@@ -335,21 +336,29 @@ function chooseCardToPlay(cardId){
       } else{
         cardHTML = `
         <div class="card active-card-to-play"
-        data-card-id=${playerCard.id}>
-            <img class="card-image" src="images/cards-images/${playerCard.img}">
+        data-card-id=${id}>
+            <img class="card-image" src="images/cards-images/${img}">
             <span class="card-value-container">
-              <p class="card-value">${playerCard.value}</p>
+              <p class="card-value">${value}</p>
             </span>
             <div class="card-attributes-container">
               <span class="card-ability">
-                <img class="card-attribute-img" src="images/icons/abilities-icons/${playerCard.abilityImg}">
+                <img class="card-attribute-img" src="images/icons/abilities-icons/${abilityImg}">
               </span>
               <span class="card-type">
-                <img class="card-attribute-img" src="images/icons/${playerCard.typeImg}">
+                <img class="card-attribute-img" src="images/icons/${typeImg}">
               </span>
             </div>
           </div>
       `;
+      }
+
+      if(type === 'sword'){
+        document.querySelector('.js-sword-row-player').classList.add('row-to-choose');
+      } else if(type === 'bow'){
+        document.querySelector('.js-bow-row-player').classList.add('row-to-choose');
+      } else if(type === 'catapult'){
+        document.querySelector('.js-catapult-row-player').classList.add('row-to-choose');
       }
     }
   })
@@ -361,11 +370,15 @@ function chooseCardToPlay(cardId){
       if(event.key === 'Escape'){
         playerCardNumber++
         if(playerCardNumber < 4){
-          console.log(2);
           document.querySelector('.js-active-card-to-play').innerHTML = '';
           document.querySelector(`.js-card-to-play-${cardId}`).classList.remove('display-none');
+
+          document.querySelector('.js-sword-row-player').classList.remove('row-to-choose');
+          document.querySelector('.js-bow-row-player').classList.remove('row-to-choose');
+          document.querySelector('.js-catapult-row-player').classList.remove('row-to-choose');
           document.querySelector('.js-active-use').classList.remove('non-active-use');
         }
       }
     });
-}
+
+};
