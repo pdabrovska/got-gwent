@@ -225,6 +225,7 @@ html::before{
 }
 
 .player-cards-to-use{
+  position: relative;
   padding: 2px;
   min-width: 582px;
   min-height: 100px;
@@ -297,4 +298,14 @@ html::before{
 
 .card-wheel:hover{
   outline: 4px inset  rgb(185, 136, 63);
+}
+
+.non-active-use{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(67, 50, 35, 0.5);
+  z-index: 100;
 }

@@ -246,7 +246,7 @@ function displayCards(cardsName, forStart){
       document.querySelector('.js-display-cards').innerHTML = '';
       document.querySelector('.js-display-cards-container').classList.add('display-cards-non-visible');
 
-      document.querySelector('.js-player-cards-to-use').innerHTML = playCardHTML;
+      document.querySelector('.js-player-cards-to-use').innerHTML += playCardHTML;
 
       playGame();
     });
@@ -263,7 +263,7 @@ function displayCards(cardsName, forStart){
       });
     });
   } else if (forStart === 'no'){
-    document.querySelector('.js-player-cards-to-use').innerHTML = playCardHTML;
+    document.querySelector('.js-player-cards-to-use').innerHTML += playCardHTML;
 
     playGame();
   }
@@ -355,6 +355,7 @@ function chooseCardToPlay(cardId){
   })
 
   document.querySelector('.js-active-card-to-play').innerHTML = cardHTML;
+  document.querySelector('.js-active-use').classList.add('non-active-use');
 
   document.body.addEventListener('keydown', (event) =>{
       if(event.key === 'Escape'){
@@ -363,6 +364,7 @@ function chooseCardToPlay(cardId){
           console.log(2);
           document.querySelector('.js-active-card-to-play').innerHTML = '';
           document.querySelector(`.js-card-to-play-${cardId}`).classList.remove('display-none');
+          document.querySelector('.js-active-use').classList.remove('non-active-use');
         }
       }
     });
