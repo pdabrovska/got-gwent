@@ -37,6 +37,8 @@ if(!opponentLeftCardsToPlay){
   sessionStorage.setItem('opponent-left-cards-to-play', JSON.stringify(opponentLeftCardsToPlay));
 }
 
+let redrawCardsNumber = 0;
+
 displayCards(playersCardsToPlay, playerLeftCardsInDeck);
 //
 
@@ -204,15 +206,21 @@ function displayCards(cardsName, leftcardsName){
     document.querySelector('.js-display-cards-container').classList.add('display-cards-non-visible');
   });
 
+  
+
   document.querySelectorAll('.js-card').forEach((card) =>{
     card.addEventListener('click', ()=>{
-      const cardId =card.dataset.cardId;
-      redrawCard(playerLeftCardsInDeck, cardId);
+      if(redrawCardsNumber < 2){
+        const cardId =card.dataset.cardId;
+        redrawCard(playerLeftCardsInDeck, cardId);
+      } else {
+        alert('You can redraw only 2 cards');
+      }
       
-      //document.querySelector('.js-redraw-cards-count').innerHTML = redrawCardsNumber;
     });
   });
 };
+
 
 function redrawCard(leftcardsName, cardId){
   let newCards = [];
@@ -230,4 +238,6 @@ function redrawCard(leftcardsName, cardId){
   displayCards(playersCardsToPlay);
 
   sessionStorage.setItem('players-cards-to-play', JSON.stringify(playersCardsToPlay));
+  redrawCardsNumber++;
+  document.querySelector('.js-redraw-cards-count').innerHTML = redrawCardsNumber;
 };
