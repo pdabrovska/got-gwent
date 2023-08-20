@@ -1,7 +1,7 @@
 .card{
   position: relative;
   border-radius: 5px;
-  height: 100px;
+  height: 93px;
 }
 
 .card:hover{
@@ -11,20 +11,20 @@
 
 .card-image{
   border-radius: 5px;
-  width: 70px;
-  height: 100px;
+  width: 63px;
+  height: 93px;
 }
 
 .card-value-container{
   display: flex;
   justify-content: center;
-  font-size: 14px;
+  font-size: 12px;
   position: absolute;
   top: 2px;
   left: 2px;
   background-color: white;
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
   border-radius: 30px;
   border: 1px solid black;
 }
@@ -35,8 +35,8 @@
 }
 
 .card-attribute-img, .card-ability-img{
-  width: 12px;
-  height: 13px;
+  width: 10px;
+  height: 11px;
   padding: 0px 2px;
 }
 
@@ -50,8 +50,8 @@
 .card-type, .card-ability{
   padding: 2px;
   background-color: rgb(203, 149, 50);
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 44px;
   border: 1px solid black;
   display: flex;

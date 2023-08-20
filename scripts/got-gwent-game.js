@@ -41,7 +41,9 @@ document.querySelector('.js-opponent-left-cards').innerHTML = updateNumberOfCard
 document.querySelector('.js-player-remaining-cards').innerHTML = updateNumberOfCardsLeft(playersCardsToPlay);
 document.querySelector('.js-opponent-remaining-cards').innerHTML = updateNumberOfCardsLeft(opponentCardsToPlay);
 
-
+let playerSwordRow = [];
+let playerBowRow = [];
+let playerCatapultRow = [];
 let redrawCardsNumber = 0;
 displayCards(playersCardsToPlay, 'yes');
 //
@@ -246,7 +248,9 @@ function displayCards(cardsName, forStart){
       document.querySelector('.js-display-cards').innerHTML = '';
       document.querySelector('.js-display-cards-container').classList.add('display-cards-non-visible');
 
-      document.querySelector('.js-player-cards-to-use').innerHTML += playCardHTML;
+      document.querySelector('.js-player-cards-to-use').innerHTML = 
+    `<div class="js-active-use"></div>
+    ${playCardHTML}`;
 
       playGame();
     });
@@ -263,8 +267,19 @@ function displayCards(cardsName, forStart){
       });
     });
   } else if (forStart === 'no'){
-    document.querySelector('.js-player-cards-to-use').innerHTML += playCardHTML;
+    document.querySelector('.js-player-cards-to-use').innerHTML = 
+    `<div class="js-active-use"></div>
+    ${playCardHTML}`;
 
+    playGame();
+  } else if (forStart === 'sword-row-player'){
+    document.querySelector('.js-sword-row-player').innerHTML = playCardHTML;
+    playGame();
+  } else if (forStart === 'bow-row-player'){
+    document.querySelector('.js-bow-row-player').innerHTML = playCardHTML;
+    playGame();
+  } else if (forStart === 'catapult-row-player'){
+    document.querySelector('.js-catapult-row-player').innerHTML = playCardHTML;
     playGame();
   }
   
@@ -311,8 +326,9 @@ function playGame(){
 };
 
 function chooseCardToPlay(cardId){
-  let playerCardNumber = 2;
   let cardHTML = '';
+  let rowToChoose;
+  let rowName;
 
   playersCardsToPlay.forEach((playerCard) =>{
     const {id, type, img, value, typeImg, abilityImg} = playerCard;
@@ -355,10 +371,16 @@ function chooseCardToPlay(cardId){
 
       if(type === 'sword'){
         document.querySelector('.js-sword-row-player').classList.add('row-to-choose');
+        rowToChoose = playerSwordRow;
+        rowName = 'sword-row-player'
       } else if(type === 'bow'){
         document.querySelector('.js-bow-row-player').classList.add('row-to-choose');
+        rowToChoose = playerBowRow;
+        rowName = 'bow-row-player';
       } else if(type === 'catapult'){
         document.querySelector('.js-catapult-row-player').classList.add('row-to-choose');
+        rowToChoose = playerCatapultRow;
+        rowName = 'catapult-row-player';
       }
     }
   })
@@ -366,19 +388,41 @@ function chooseCardToPlay(cardId){
   document.querySelector('.js-active-card-to-play').innerHTML = cardHTML;
   document.querySelector('.js-active-use').classList.add('non-active-use');
 
+  document.querySelector('.row-to-choose').addEventListener('click', () =>{
+    document.querySelector('.js-active-card-to-play').innerHTML = '';
+    addCardToRow(cardId, rowToChoose, rowName);
+    removeClasses();
+  });
+
   document.body.addEventListener('keydown', (event) =>{
       if(event.key === 'Escape'){
-        playerCardNumber++
-        if(playerCardNumber < 4){
           document.querySelector('.js-active-card-to-play').innerHTML = '';
+          removeClasses();
           document.querySelector(`.js-card-to-play-${cardId}`).classList.remove('display-none');
-
-          document.querySelector('.js-sword-row-player').classList.remove('row-to-choose');
-          document.querySelector('.js-bow-row-player').classList.remove('row-to-choose');
-          document.querySelector('.js-catapult-row-player').classList.remove('row-to-choose');
-          document.querySelector('.js-active-use').classList.remove('non-active-use');
-        }
       }
     });
 
+  function removeClasses(){
+    document.querySelector('.js-sword-row-player').classList.remove('row-to-choose');
+    document.querySelector('.js-bow-row-player').classList.remove('row-to-choose');
+    document.querySelector('.js-catapult-row-player').classList.remove('row-to-choose');
+    document.querySelector('.js-active-use').classList.remove('non-active-use');
+  }
+};
+
+function addCardToRow(cardId, typeRowCard, row){
+  let newCardsToPlay = [];
+
+  playersCardsToPlay.forEach((playerCard) => {
+    const {id, type, img, abilityImg, typeImg} = playerCard;
+    if(id !== cardId){
+      newCardsToPlay.push(playerCard);
+    } else if(id === cardId){
+      typeRowCard.push(playerCard);
+    }
+  });
+  playersCardsToPlay = newCardsToPlay;
+  document.querySelector('.js-player-cards-to-use').innerHTML = '';
+  displayCards(playersCardsToPlay, 'no');
+  displayCards(typeRowCard, row);
 };

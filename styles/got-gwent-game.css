@@ -169,15 +169,14 @@ html::before{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 20px;
+  row-gap: 14px;
 }
 
 .opponent-board, .player-board{
   background-color: rgba(100, 92, 106, 0.274);
   min-width: 582px;
-  height: 270px;
   display: grid;
-  grid-template-rows: 90px 90px 90px;
+  grid-template-rows: 95px 95px 95px;
   z-index: 10;
 }
 
@@ -188,7 +187,7 @@ html::before{
   border: 1px solid black;
   position: relative;
   z-index: 10;
-  padding: 2px 20px;
+  padding: 1px 20px;
 }
 
 .sword-row{
@@ -227,7 +226,7 @@ html::before{
   position: relative;
   padding: 2px;
   min-width: 582px;
-  min-height: 100px;
+  min-height: 95px;
   background-color: rgba(79, 69, 69, 0.6);
   display: flex;
   align-items: center;
