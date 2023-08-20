@@ -47,8 +47,32 @@ let playerSwordRow = [];
 let playerBowRow = [];
 let playerCatapultRow = [];
 let redrawCardsNumber = 0;
-displayCards(playersCardsToPlay, 'yes');
+whoStartsGame();
+hideMessageWindow();
+setTimeout(()=>{
+  document.querySelector('.js-display-cards-container').classList.remove('display-none')
+  displayCards(playersCardsToPlay, 'yes')
+}, 4000);
 //
+
+function whoStartsGame(){
+  const randomNumber = Math.random();
+  let message = '';
+  if(randomNumber >= 0 && randomNumber < 1/2){
+    message = '<p>You will go first</p>';
+  } else if(randomNumber >= 1/2 && randomNumber <= 1){
+    message = '<p>Opponent will go first</p>';
+  }
+
+  document.querySelector('.js-message-window').innerHTML = message;
+};
+
+function hideMessageWindow(){
+  setTimeout(()=>{
+    document.querySelector('.js-message-window').innerHTML = '';
+    document.querySelector('.js-message-window').classList.add('display-none')
+  }, 4000)
+}
 
 function displayPlayerLeader(){
   const house = JSON.parse(sessionStorage.getItem('house'));

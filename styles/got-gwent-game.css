@@ -26,6 +26,21 @@ html::before{
   opacity: 0.9;
 }
 
+.message-window{
+  background-color: rgb(9, 8, 8);
+  font-size: 24px;
+  color: rgb(163, 150, 65);
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 35%;
+  height: 120px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .game-window{
   position: relative;
   margin-top: 18px;
@@ -305,6 +320,10 @@ html::before{
   left: 0;
   background-color: rgba(67, 50, 35, 0.5);
   z-index: 100;
+}
+
+.display-none{
+  display: none;
 }
 
 .row-to-choose{
