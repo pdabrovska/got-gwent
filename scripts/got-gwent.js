@@ -467,7 +467,7 @@ function updateCardCount(){
 };
 
 function playGame(){
-  removeOpponentInfoFromStorage()
+  removeInfoFromStorage()
   const houseId = document.querySelector('input[name="house"]:checked').value;
   const leaderId = document.querySelector('input[name="leader"]:checked').value;
   sessionStorage.setItem('house', JSON.stringify(houseId));
@@ -476,9 +476,16 @@ function playGame(){
   window.location.replace( "./got-gwent-game.html");
 }
 
-function removeOpponentInfoFromStorage(){
+function removeInfoFromStorage(){
   sessionStorage.removeItem('opponent-leader');
   sessionStorage.removeItem('opponent-house');
   sessionStorage.removeItem('opponent-crest');
   sessionStorage.removeItem('opponent-cards');
+
+  sessionStorage.removeItem('players-cards-to-play');
+  sessionStorage.removeItem('players-left-cards');
+  sessionStorage.removeItem('opponent-cards-in-deck');
+  sessionStorage.removeItem('opponent-cards-to-play');
+  sessionStorage.removeItem('opponent-left-cards-to-play');
+  
 };

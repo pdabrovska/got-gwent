@@ -36,8 +36,10 @@ if(!opponentLeftCardsToPlay){
   opponentLeftCardsToPlay = leftCardsInDeck(opponentCardsInDeck, opponentCardsToPlay);
   sessionStorage.setItem('opponent-left-cards-to-play', JSON.stringify(opponentLeftCardsToPlay));
 }
+
 document.querySelector('.js-player-left-cards').innerHTML = updateNumberOfCardsLeft(playerLeftCardsInDeck);
 document.querySelector('.js-opponent-left-cards').innerHTML = updateNumberOfCardsLeft(opponentLeftCardsToPlay);
+
 document.querySelector('.js-player-remaining-cards').innerHTML = updateNumberOfCardsLeft(playersCardsToPlay);
 document.querySelector('.js-opponent-remaining-cards').innerHTML = updateNumberOfCardsLeft(opponentCardsToPlay);
 
