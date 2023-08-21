@@ -47,12 +47,13 @@ let playerSwordRow = [];
 let playerBowRow = [];
 let playerCatapultRow = [];
 let redrawCardsNumber = 0;
+let whoStarts;
 whoStartsGame();
-hideMessageWindow();
+hideMessageWindow(2000);
 setTimeout(()=>{
   document.querySelector('.js-display-cards-container').classList.remove('display-none')
   displayCards(playersCardsToPlay, 'yes')
-}, 4000);
+}, 2200);
 //
 
 function whoStartsGame(){
@@ -60,18 +61,25 @@ function whoStartsGame(){
   let message = '';
   if(randomNumber >= 0 && randomNumber < 1/2){
     message = '<p>You will go first</p>';
+    whoStarts = 'Player';
   } else if(randomNumber >= 1/2 && randomNumber <= 1){
     message = '<p>Opponent will go first</p>';
+    whoStarts = 'Opponent';
   }
 
   document.querySelector('.js-message-window').innerHTML = message;
 };
 
-function hideMessageWindow(){
+function displayMessageWindow(message){
+  document.querySelector('.js-message-window').classList.remove('display-none');
+  document.querySelector('.js-message-window').innerHTML = `<p>${message}</p>`;
+};
+
+function hideMessageWindow(time){
   setTimeout(()=>{
     document.querySelector('.js-message-window').innerHTML = '';
     document.querySelector('.js-message-window').classList.add('display-none')
-  }, 4000)
+  }, time)
 }
 
 function displayPlayerLeader(){
@@ -275,10 +283,18 @@ function displayCards(cardsName, forStart){
       document.querySelector('.js-display-cards-container').classList.add('display-cards-non-visible');
 
       document.querySelector('.js-player-cards-to-use').innerHTML = 
-    `<div class="js-active-use"></div>
-    ${playCardHTML}`;
+      `<div class="js-active-use"></div>
+      ${playCardHTML}`;
 
-      playGame();
+      displayMessageWindow('Round Start');
+      hideMessageWindow(1800);
+      setTimeout(()=>{
+        displayMessageWindow(`${whoStarts} move`);
+        hideMessageWindow(1800);
+      }, 1800);
+      setTimeout(()=>{
+        playGame();
+      }, 3600);
     });
 
     document.querySelectorAll('.js-card').forEach((card) =>{
