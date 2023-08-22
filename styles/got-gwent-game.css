@@ -195,12 +195,18 @@ html::before{
   z-index: 10;
 }
 
+.board-row-container{
+  position: relative;
+  
+}
+
 .board-row{
+  border: 1px solid black;
+  height: 93px;
   justify-content: center;
+  align-items: center;
   column-gap: 3px;
   display: flex;
-  border: 1px solid black;
-  position: relative;
   z-index: 10;
   padding: 1px 20px;
 }
@@ -330,10 +336,12 @@ html::before{
 
 .row-to-choose{
   background-color: rgba(222, 183, 82, 0.4);
-  border: 3px outset rgb(185, 136, 63);
+  border: 1px outset rgb(185, 136, 63);
   cursor: pointer;
 }
 
 .row-to-choose:hover{
-  border: 4px outset rgb(227, 166, 73);
+  height: 89px;
+  z-index: 100000000000;
+  border: 3px outset rgb(227, 166, 73);
 }
