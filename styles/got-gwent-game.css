@@ -241,6 +241,8 @@ html::before{
   border: 1px solid black;
   left: -17px;
   top: 25px;
+  display: flex;
+  justify-content: center;
 }
 
 .player-cards-to-use-container{
