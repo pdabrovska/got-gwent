@@ -237,8 +237,10 @@ html::before{
   top: 25px;
 }
 
-.player-cards-to-use{
+.player-cards-to-use-container{
   position: relative;
+}
+.player-cards-to-use{
   padding: 2px;
   min-width: 582px;
   min-height: 95px;

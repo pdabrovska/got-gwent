@@ -154,7 +154,7 @@ export let houseLannisterCards = [
       typeImg: "bow.png"
     },
     {
-      id: 'L06b',
+      id: 'L05b',
       name: 'Lannister crossbowman',
       description: 'handspear',
       img: "lannister/handspear.jpg",
@@ -164,7 +164,7 @@ export let houseLannisterCards = [
       typeImg: "bow.png"
     },
     {
-      id: 'L07b',
+      id: 'L06b',
       name: 'Joffrey Baratheon',
       description: 'Joffrey Baratheon',
       img: "lannister/joffrey-baratheon.jpg",
