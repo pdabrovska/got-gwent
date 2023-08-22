@@ -397,19 +397,25 @@ function updateNumberOfCardsLeft(cardsName){
 
 function playGame(){
   if (whoStarts === 'Player'){
+    
     console.log('player move');
-    playerMove();
+    displayMessageWindow(`${whoStarts} turn`);
+    hideMessageWindow(1800);
+    setTimeout(()=>{
+      playerMove();
+    }, 1800);
   }
   if (whoStarts === 'Opponent'){
     console.log('opponent move');
-    opponentMove();
-    
-    document.querySelector('.js-active-use').classList.add('non-active-use')
+    displayMessageWindow(`${whoStarts} turn`);
+    hideMessageWindow(1800);
+    setTimeout(()=>{
+      opponentMove();
+    }, 1800);
+    document.querySelector('.js-active-use').classList.add('non-active-use');
     setTimeout(()=>{
       document.querySelector('.js-active-use').classList.remove('non-active-use');
-    }, 1500);
-    displayMessageWindow(`${whoStarts} turn`);
-    hideMessageWindow(1500);
+    }, 1900);
   }
   
 };
