@@ -165,11 +165,9 @@ html::before{
   border: 1px solid black;
   right: -17px;
   top: 27px;
-}
-
-.opponent-points, .player-points, .row-points{
-  margin: 0;
-  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .weather-cards-container{
@@ -243,6 +241,7 @@ html::before{
   top: 25px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .player-cards-to-use-container{
