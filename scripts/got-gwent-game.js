@@ -7,6 +7,8 @@ window.addEventListener('beforeunload', function (event) {
   event.preventDefault();
   event.returnValue = 'Are you sure you want to leave this page?';
 });
+document.querySelector('.js-add-to-row').style.display = "none";
+document.querySelector('.js-escape').style.display = "none";
 
 //playing game
 displayPlayerLeader();
@@ -437,6 +439,9 @@ function chooseCardToPlay(cardId){
   playersCardsToPlay.forEach((playerCard) =>{
     const {id, type, img, value, typeImg, abilityImg} = playerCard;
     if (cardId === playerCard.id){
+      document.querySelector('.js-add-to-row').style.display = "";
+      document.querySelector('.js-escape').style.display = "";
+      document.querySelector('.js-choose-card').style.display = "none";
       document.querySelector(`.js-card-to-play-${cardId}`).classList.add('display-none');
       if(playerCard.ability === ''){
         cardHTML = `
@@ -502,19 +507,30 @@ function chooseCardToPlay(cardId){
     });
  
   document.body.addEventListener('keydown', (event) =>{
-      if(event.key === 'Escape'){
-          document.querySelector('.js-active-card-to-play').innerHTML = '';
-          removeClasses();
-          document.querySelector(`.js-card-to-play-${cardId}`).classList.remove('display-none');
-          rowToChoose = '';
-      }
-    });
+    if(event.key === 'Escape'){
+        document.querySelector('.js-active-card-to-play').innerHTML = '';
+        removeClasses();
+        document.querySelector(`.js-card-to-play-${cardId}`).classList.remove('display-none');
+        rowToChoose = '';
+    }
+  });
+
+  document.querySelector('.js-escape').addEventListener('click', ()=>{
+    document.querySelector('.js-active-card-to-play').innerHTML = '';
+    removeClasses();
+    document.querySelector(`.js-card-to-play-${cardId}`).classList.remove('display-none');
+    rowToChoose = '';
+  });
 
   function removeClasses(){
     document.querySelector('.js-sword-row-player').classList.remove('row-to-choose');
     document.querySelector('.js-bow-row-player').classList.remove('row-to-choose');
     document.querySelector('.js-catapult-row-player').classList.remove('row-to-choose');
     document.querySelector('.js-active-use').classList.remove('non-active-use');
+
+    document.querySelector('.js-add-to-row').style.display = "none";
+    document.querySelector('.js-escape').style.display = "none";
+    document.querySelector('.js-choose-card').style.display = "";
   }
 };
 

@@ -26,6 +26,11 @@ html::before{
   opacity: 0.9;
 }
 
+.window{
+  display: grid;
+  grid-template-rows: 1fr 30px;
+}
+
 .message-window{
   background-color: rgba(9, 8, 8, 0.8);
   font-size: 24px;
@@ -345,4 +350,38 @@ html::before{
   height: 89px;
   z-index: 100000000000;
   border: 3px outset rgb(227, 166, 73);
+}
+
+/*Instructions*/
+.instructions{
+  display: flex;
+  justify-content: right;
+  column-gap: 10px;
+  z-index: 1;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.escape-button, .add-to-row, .choose-card{
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.left-click-mouse{
+  width: 18px;
+  height: 18px;
+}
+
+.instructions button{
+  cursor: pointer;
+  background-color: rgb(68, 47, 31);
+  color: rgb(249, 233, 192);
+  border: 1px inset rgb(139, 76, 29);
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.instructions button:hover{
+  background-color: rgb(57, 38, 23);
 }

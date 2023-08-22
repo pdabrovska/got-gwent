@@ -10,137 +10,150 @@
   </head>
   <body>
     <div class="js-message-window message-window"></div>
-    <div class="game-window">
-      <div class="display-cards-container js-display-cards-container display-none">
-        <p>Choose a card to redraw. <span class="js-redraw-cards-count">0</span>/2</p>
-        <button type="button" class="js-close-display-cards close-display-cards">X</button>
-        <div class="js-display-cards display-cards"></div>
-      </div>
-      <div class="players-panel">
-        <div class="opponent-profile">
-          <div class="profile-image-container js-opponent-progile-img">
-          </div>
-          <div class="player-info">
-            <div>
-              <p class="player-name">Opponent</p>
-              <p class="card-decks-type js-opponent-card-decks-type"></p>
-            </div>
-            <div class="player-stats">
-              <span class="remaining-cards">
-                <img class="remaining-cards-img" src="images/icons/cards.png">
-                <p class="js-opponent-remaining-cards"></p>
-              </span>
-              <div class="remaining-lifes">
-                <img class="remaining-life-img" src="images/icons/black-crown.png">
-                <img class="remaining-life-img" src="images/icons/black-crown.png">
-              </div>
-            </div>
-          </div>
-          <div class="opponent-points-container">
-            <p class="opponent-points js-opponent-points">0</p>
-          </div>
+    <div class="window">
+      <div class="game-window">
+        <div class="display-cards-container js-display-cards-container display-none">
+          <p>Choose a card to redraw. <span class="js-redraw-cards-count">0</span>/2</p>
+          <button type="button" class="js-close-display-cards close-display-cards">X</button>
+          <div class="js-display-cards display-cards"></div>
         </div>
-        <div class="weather-cards-container">
-        </div>
-        <div class="player-profile">
-          <div class="profile-image-container js-profile-img">
-          </div>
-          <div class="player-info">
-            <div>
-              <p class="player-name">Player</p>
-              <p class="js-player-card-decks-type card-decks-type"></p>
+        <div class="players-panel">
+          <div class="opponent-profile">
+            <div class="profile-image-container js-opponent-progile-img">
             </div>
-            <div class="player-stats">
-              <span class="remaining-cards">
-                <img class="remaining-cards-img" src="images/icons/cards.png">
-                <p class="js-player-remaining-cards"></p>
-              </span>
-              <div class="remaining-lifes">
-                <img class="remaining-life-img" src="images/icons/gold-crown.png">
-                <img class="remaining-life-img" src="images/icons/gold-crown.png">
-              </div>
-            </div>
-          </div>
-          <div class="player-points-container">
-            <p class="player-points js-player-points">0</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="boards">
-        <div class="opponent-board">
-          <div class="board-row-container">
-            <div class="board-row catapult-row js-catapult-row-opponent"></div>
-            <div class="row-points-container">
-              <p class="row-points js-catapult-points-opponent">0</p>
-            </div>
-          </div>
-          <div class="board-row-container">
-            <div class="board-row bow-row js-bow-row-opponent"></div>
-            <div class="row-points-container">
-              <p class="row-points js-bow-points-opponent">0</p>
-            </div>
-          </div>
-          <div class="board-row-container">
-            <div class="board-row sword-row js-sword-row-opponent"></div>
-            <div class="row-points-container">
-              <p class="row-points js-sword-points-opponent">0</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="player-board">
-          <div class="board-row-container">
-            <div class="board-row sword-row js-sword-row-player"></div>
-            <div class="row-points-container">
-              <p class="row-points js-sword-points">0</p>
-            </div>
-          </div>
-          <div class="board-row-container">
-            <div class="board-row bow-row js-bow-row-player"></div>
-            <div class="row-points-container">
-              <p class="row-points js-bow-points">0</p>
-            </div>
-          </div>
-          <div class="board-row-container">
-            <div class="board-row catapult-row js-catapult-row-player"></div>
-            <div class="row-points-container">
-              <p class="row-points js-catapult-points">0</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="player-cards-to-use-container js-player-cards-to-use-container">
-          <div class="js-active-use"></div>
-          <div class="player-cards-to-use js-player-cards-to-use"></div>
-        </div>
-      </div>
-
-      <div class="right-section">
-        <span>
-          <button class="x">X</button>
-        </span>
-        <div class="cards">
-          <div class="opponent-cards">
-            <div class="used-cards"></div>
-            <div class="card-decks">
-              <img class="opponent-crest" id="js-opponent-crest" src="">
+            <div class="player-info">
               <div>
-                <p class="number-of-cards js-opponent-left-cards"></p>
+                <p class="player-name">Opponent</p>
+                <p class="card-decks-type js-opponent-card-decks-type"></p>
+              </div>
+              <div class="player-stats">
+                <span class="remaining-cards">
+                  <img class="remaining-cards-img" src="images/icons/cards.png">
+                  <p class="js-opponent-remaining-cards"></p>
+                </span>
+                <div class="remaining-lifes">
+                  <img class="remaining-life-img" src="images/icons/black-crown.png">
+                  <img class="remaining-life-img" src="images/icons/black-crown.png">
+                </div>
+              </div>
+            </div>
+            <div class="opponent-points-container">
+              <p class="opponent-points js-opponent-points">0</p>
+            </div>
+          </div>
+          <div class="weather-cards-container">
+          </div>
+          <div class="player-profile">
+            <div class="profile-image-container js-profile-img">
+            </div>
+            <div class="player-info">
+              <div>
+                <p class="player-name">Player</p>
+                <p class="js-player-card-decks-type card-decks-type"></p>
+              </div>
+              <div class="player-stats">
+                <span class="remaining-cards">
+                  <img class="remaining-cards-img" src="images/icons/cards.png">
+                  <p class="js-player-remaining-cards"></p>
+                </span>
+                <div class="remaining-lifes">
+                  <img class="remaining-life-img" src="images/icons/gold-crown.png">
+                  <img class="remaining-life-img" src="images/icons/gold-crown.png">
+                </div>
+              </div>
+            </div>
+            <div class="player-points-container">
+              <p class="player-points js-player-points">0</p>
+            </div>
+          </div>
+        </div>
+  
+        <div class="boards">
+          <div class="opponent-board">
+            <div class="board-row-container">
+              <div class="board-row catapult-row js-catapult-row-opponent"></div>
+              <div class="row-points-container">
+                <p class="row-points js-catapult-points-opponent">0</p>
+              </div>
+            </div>
+            <div class="board-row-container">
+              <div class="board-row bow-row js-bow-row-opponent"></div>
+              <div class="row-points-container">
+                <p class="row-points js-bow-points-opponent">0</p>
+              </div>
+            </div>
+            <div class="board-row-container">
+              <div class="board-row sword-row js-sword-row-opponent"></div>
+              <div class="row-points-container">
+                <p class="row-points js-sword-points-opponent">0</p>
               </div>
             </div>
           </div>
-          <div class="js-active-card-to-play"></div>
-          <div class="player-cards">
-            <div class="used-cards"></div>
-            <div class="card-decks">
-              <img class="player-crest" id="js-player-crest" src="">
-              <div>
-                <p class="number-of-cards js-player-left-cards">12</p>
+  
+          <div class="player-board">
+            <div class="board-row-container">
+              <div class="board-row sword-row js-sword-row-player"></div>
+              <div class="row-points-container">
+                <p class="row-points js-sword-points">0</p>
+              </div>
+            </div>
+            <div class="board-row-container">
+              <div class="board-row bow-row js-bow-row-player"></div>
+              <div class="row-points-container">
+                <p class="row-points js-bow-points">0</p>
+              </div>
+            </div>
+            <div class="board-row-container">
+              <div class="board-row catapult-row js-catapult-row-player"></div>
+              <div class="row-points-container">
+                <p class="row-points js-catapult-points">0</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="player-cards-to-use-container js-player-cards-to-use-container">
+            <div class="js-active-use"></div>
+            <div class="player-cards-to-use js-player-cards-to-use"></div>
+          </div>
+        </div>
+  
+        <div class="right-section">
+          <span>
+            <button class="x">X</button>
+          </span>
+          <div class="cards">
+            <div class="opponent-cards">
+              <div class="used-cards"></div>
+              <div class="card-decks">
+                <img class="opponent-crest" id="js-opponent-crest" src="">
+                <div>
+                  <p class="number-of-cards js-opponent-left-cards"></p>
+                </div>
+              </div>
+            </div>
+            <div class="js-active-card-to-play"></div>
+            <div class="player-cards">
+              <div class="used-cards"></div>
+              <div class="card-decks">
+                <img class="player-crest" id="js-player-crest" src="">
+                <div>
+                  <p class="number-of-cards js-player-left-cards">12</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="instructions">
+        <div class="js-choose-card choose-card">
+          <img class="left-click-mouse" src="images/icons/left-click.png">
+          Choose card
+        </div>
+        <div class="js-add-to-row add-to-row">
+          <img class="left-click-mouse" src="images/icons/left-click.png">
+          Add to row
+        </div>
+        <div class="js-escape escape-button"><button>Escape</button> Cancel</div>
       </div>
     </div>
     <script type="module" src="scripts/got-gwent-game.js"></script>
