@@ -401,30 +401,45 @@ function playGame(){
   if (whoStarts === 'Player'){
     document.querySelector('.opponent-profile').classList.remove('active-player');
     document.querySelector('.player-profile').classList.add('active-player');
-    document.querySelector('.js-pass-option').style.display = '';
+    document.querySelector('.js-pass-player').style.display = '';
     console.log('player move');
     displayMessageWindow(`${whoStarts} turn`);
     hideMessageWindow(1800);
     setTimeout(()=>{
+      playerPass();
       playerMove();
     }, 1800);
   }
   if (whoStarts === 'Opponent'){
     document.querySelector('.opponent-profile').classList.add('active-player');
     document.querySelector('.player-profile').classList.remove('active-player');
-    document.querySelector('.js-pass-option').style.display = 'none';
+    document.querySelector('.js-pass-player').style.display = 'none';
     console.log('opponent move');
     displayMessageWindow(`${whoStarts} turn`);
     hideMessageWindow(1800);
     setTimeout(()=>{
       opponentMove();
+      whoStarts = 'Player';
+      playGame();
     }, 1800);
     document.querySelector('.js-active-use').classList.add('non-active-use');
     setTimeout(()=>{
       document.querySelector('.js-active-use').classList.remove('non-active-use');
     }, 1900);
   }
-  
+  if(whoStarts === 'Player-pass'){
+    console.log('player-pass');
+    document.querySelector('.opponent-profile').classList.add('active-player');
+    document.querySelector('.player-profile').classList.remove('active-player');
+    displayMessageWindow(`${whoStarts} turn`);
+    hideMessageWindow(1800);
+    setTimeout(()=>{
+      opponentMove();
+      whoStarts = 'Player-pass';
+      playGame();
+    }, 1800);
+    document.querySelector('.js-active-use').classList.add('non-active-use');
+  }
 };
 
 function playerMove(){
@@ -593,8 +608,8 @@ function opponentMove(){
 
   addedPoints(whoStarts);
   updateRemainingCards(opponentCardsToPlay);
-  whoStarts = 'Player';
-    playGame();
+  //whoStarts = 'Player';
+  //playGame();
 };
 
 function countPoints(typeRowCard){
@@ -651,13 +666,12 @@ function updateRemainingCards(cards){
 };
 
 function playerPass(){
-  const passButton = document.querySelector('.js-pass-option');
+  const passButton = document.querySelector('.js-pass-player');
 
   let mouseTimer;
   function mouseDown(){
     mouseUp();
-    mouseTimer = window.setTimeout(execMouseDown, 5000);
-    //passButton.style.backgroundColor = 'rgba(38, 18, 3, 0.7)';
+    mouseTimer = window.setTimeout(execMouseDown, 2000);
     passButton.classList.add('pass-option-active');
   }
 
@@ -668,10 +682,11 @@ function playerPass(){
 
   function execMouseDown() { 
     passButton.style.display = "none";
+    document.querySelector('.js-player-pass-message').style.display = "flex";
+    whoStarts = 'Player-pass';
+    playGame();
   }
 
   passButton.addEventListener('mousedown', mouseDown);
   document.body.addEventListener("mouseup", mouseUp);
 };
-
-playerPass();

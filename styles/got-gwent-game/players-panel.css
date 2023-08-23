@@ -132,3 +132,13 @@
   color: white;
   margin-right: 6px;
 }
+
+.pass-message{
+  display: none;
+  position: absolute;
+  top: 2px;
+  right: -17px;
+  font-weight: 700;
+  color: rgb(244, 225, 215);
+  text-shadow: 1px solid black ;
+}

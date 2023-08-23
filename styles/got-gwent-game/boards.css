@@ -31,21 +31,21 @@
 }
 
 .sword-row{
-  background-image: url("../images/icons/sword-background.png");
+  background-image: url("../../images/icons/sword-background.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 8%;
 }
 
 .bow-row{
-  background-image: url("../images/icons/bow-background.png");
+  background-image: url("../../images/icons/bow-background.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 8%;
 }
 
 .catapult-row{
-  background-image: url("../images/icons/catapult-background.png");
+  background-image: url("../../images/icons/catapult-background.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 8%;
