@@ -1,0 +1,57 @@
+.cards{
+  height: 100%;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+}
+
+.right-section{
+  position: relative;
+}
+
+.x{
+  position: absolute;
+  top: -10px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.player-cards, .opponent-cards{
+  display: flex;
+  column-gap: 30px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.used-cards{
+  width: 60px;
+  height: 90px;
+  background-color: rgb(200, 200, 200);
+}
+
+.card-decks{
+  width: 65px;
+  height: 100px;
+  position: relative;
+}
+.opponent-crest, .player-crest{
+  width: 65px;
+  height: 100px;
+}
+
+.card-decks div{
+  position: absolute;
+  bottom: 0;
+  right: 32%;
+  background-color: rgba(158, 109, 36, 0.8);
+  opacity: 0.9;
+  width: 25px;
+}
+.number-of-cards{
+  color: white;
+  text-align: center;
+  margin: 2px 0;
+}

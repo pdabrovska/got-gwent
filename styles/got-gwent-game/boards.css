@@ -1,0 +1,80 @@
+.boards{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 14px;
+}
+
+.opponent-board, .player-board{
+  background-color: rgba(100, 92, 106, 0.274);
+  min-width: 582px;
+  display: grid;
+  grid-template-rows: 95px 95px 95px;
+  z-index: 10;
+}
+
+.board-row-container{
+  position: relative;
+  
+}
+
+.board-row{
+  border: 1px solid black;
+  height: 93px;
+  justify-content: center;
+  align-items: center;
+  column-gap: 3px;
+  display: flex;
+  z-index: 10;
+  padding: 1px 20px;
+}
+
+.sword-row{
+  background-image: url("../images/icons/sword-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8%;
+}
+
+.bow-row{
+  background-image: url("../images/icons/bow-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8%;
+}
+
+.catapult-row{
+  background-image: url("../images/icons/catapult-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8%;
+}
+
+.row-points-container{
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  background-color: white;
+  border-radius: 30px;
+  border: 1px solid black;
+  left: -17px;
+  top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-cards-to-use-container{
+  position: relative;
+}
+.player-cards-to-use{
+  padding: 2px;
+  min-width: 582px;
+  min-height: 95px;
+  background-color: rgba(79, 69, 69, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+}

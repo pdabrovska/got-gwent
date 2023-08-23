@@ -399,6 +399,8 @@ function updateNumberOfCardsLeft(cardsName){
 
 function playGame(){
   if (whoStarts === 'Player'){
+    document.querySelector('.opponent-profile').classList.remove('active-player');
+    document.querySelector('.player-profile').classList.add('active-player');
     document.querySelector('.js-pass-option').style.display = '';
     console.log('player move');
     displayMessageWindow(`${whoStarts} turn`);
@@ -408,6 +410,8 @@ function playGame(){
     }, 1800);
   }
   if (whoStarts === 'Opponent'){
+    document.querySelector('.opponent-profile').classList.add('active-player');
+    document.querySelector('.player-profile').classList.remove('active-player');
     document.querySelector('.js-pass-option').style.display = 'none';
     console.log('opponent move');
     displayMessageWindow(`${whoStarts} turn`);
