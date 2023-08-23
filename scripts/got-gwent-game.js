@@ -399,7 +399,7 @@ function updateNumberOfCardsLeft(cardsName){
 
 function playGame(){
   if (whoStarts === 'Player'){
-    
+    document.querySelector('.js-pass-option').style.display = '';
     console.log('player move');
     displayMessageWindow(`${whoStarts} turn`);
     hideMessageWindow(1800);
@@ -408,6 +408,7 @@ function playGame(){
     }, 1800);
   }
   if (whoStarts === 'Opponent'){
+    document.querySelector('.js-pass-option').style.display = 'none';
     console.log('opponent move');
     displayMessageWindow(`${whoStarts} turn`);
     hideMessageWindow(1800);
@@ -643,4 +644,30 @@ function updateRemainingCards(cards){
   } else if(cards === opponentCardsToPlay){
     document.querySelector('.js-opponent-remaining-cards').innerHTML = remainingCards;
   }
-;}
+};
+
+function playerPass(){
+  const passButton = document.querySelector('.js-pass-option');
+
+  let mouseTimer;
+  function mouseDown(){
+    mouseUp();
+    mouseTimer = window.setTimeout(execMouseDown, 5000);
+    //passButton.style.backgroundColor = 'rgba(38, 18, 3, 0.7)';
+    passButton.classList.add('pass-option-active');
+  }
+
+  function mouseUp(){
+    if (mouseTimer) window.clearTimeout(mouseTimer);
+    passButton.classList.remove('pass-option-active');
+  }
+
+  function execMouseDown() { 
+    passButton.style.display = "none";
+  }
+
+  passButton.addEventListener('mousedown', mouseDown);
+  document.body.addEventListener("mouseup", mouseUp);
+};
+
+playerPass();
