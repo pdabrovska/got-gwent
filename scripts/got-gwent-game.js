@@ -431,14 +431,16 @@ function playGame(){
     console.log('player-pass');
     document.querySelector('.opponent-profile').classList.add('active-player');
     document.querySelector('.player-profile').classList.remove('active-player');
-    displayMessageWindow(`${whoStarts} turn`);
+    displayMessageWindow(`Opponent turn`);
     hideMessageWindow(1800);
     setTimeout(()=>{
       opponentMove();
-      whoStarts = 'Player-pass';
       playGame();
     }, 1800);
     document.querySelector('.js-active-use').classList.add('non-active-use');
+  }
+  if(whoStarts === 'Pass'){
+    console.log('round end');
   }
 };
 
@@ -579,35 +581,66 @@ function addCardToRow(cardId, typeRowCard, row){
 function opponentMove(){
   if(opponentCardsToPlay.length < 1){
     console.log('error');
-  }
-  let newOpponentCards = [];
-  const chosenCardArray = chooseCards(1, opponentCardsToPlay);
-  let chosenCard = chosenCardArray[0];
+    document.querySelector('.opponent-profile').classList.add('pass');
+    document.querySelector('.js-opponent-pass-message').style.display = "flex";
 
-  opponentCardsToPlay.forEach((card)=>{
-    if(chosenCard.id !== card.id){
-      newOpponentCards.push(card);
+    whoStarts = 'Pass';
+  }
+  
+  if(whoStarts === 'Player-pass'){
+    console.log(20)
+    if(document.querySelector('.js-opponent-points').innerHTML >
+    document.querySelector('.js-player-points').innerHTML){
+      console.log('op wins')/
+      document.querySelector('.opponent-profile').classList.add('pass');
+      document.querySelector('.js-opponent-pass-message').style.display = "flex";
+
+      whoStarts = 'Pass';
+    } 
+    if(document.querySelector('.js-opponent-points').innerHTML <=
+    document.querySelector('.js-player-points').innerHTML){
+      console.log('take more cards')
+      
+      opponentNextCard();
+      whoStarts = 'Player-pass';
+      playGame();
     }
-  });
-  opponentCardsToPlay = newOpponentCards;
-
-  if(chosenCard.type === 'sword'){
-    opponentSwordRow.push(chosenCard);
-    displayCards(opponentSwordRow, 'sword-row-opponent');
-    countPoints(opponentSwordRow);
-    
-  } else if(chosenCard.type === 'bow'){
-    opponentBowRow.push(chosenCard);
-    displayCards(opponentBowRow, 'bow-row-opponent');
-    countPoints(opponentBowRow);
-  } else if(chosenCard.type === 'catapult'){
-    opponentCatapultRow.push(chosenCard);
-    displayCards(opponentCatapultRow, 'catapult-row-opponent');
-    countPoints(opponentCatapultRow);
+  } 
+  
+  if(whoStarts === 'Opponent'){
+    opponentNextCard();
   }
 
-  addedPoints(whoStarts);
-  updateRemainingCards(opponentCardsToPlay);
+  function opponentNextCard(){
+    let newOpponentCards = [];
+    const chosenCardArray = chooseCards(1, opponentCardsToPlay);
+    let chosenCard = chosenCardArray[0];
+
+    opponentCardsToPlay.forEach((card)=>{
+      if(chosenCard.id !== card.id){
+        newOpponentCards.push(card);
+      }
+    });
+    opponentCardsToPlay = newOpponentCards;
+
+    if(chosenCard.type === 'sword'){
+      opponentSwordRow.push(chosenCard);
+      displayCards(opponentSwordRow, 'sword-row-opponent');
+      countPoints(opponentSwordRow);
+      
+    } else if(chosenCard.type === 'bow'){
+      opponentBowRow.push(chosenCard);
+      displayCards(opponentBowRow, 'bow-row-opponent');
+      countPoints(opponentBowRow);
+    } else if(chosenCard.type === 'catapult'){
+      opponentCatapultRow.push(chosenCard);
+      displayCards(opponentCatapultRow, 'catapult-row-opponent');
+      countPoints(opponentCatapultRow);
+    }
+
+    addedPoints('Opponent');
+    updateRemainingCards(opponentCardsToPlay);
+  };
   //whoStarts = 'Player';
   //playGame();
 };
