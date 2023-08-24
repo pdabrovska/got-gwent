@@ -402,7 +402,6 @@ function playGame(){
     document.querySelector('.opponent-profile').classList.remove('active-player');
     document.querySelector('.player-profile').classList.add('active-player');
     document.querySelector('.js-pass-player').style.display = '';
-    console.log('player move');
     displayMessageWindow(`${whoStarts} turn`);
     hideMessageWindow(1800);
     setTimeout(()=>{
@@ -414,12 +413,10 @@ function playGame(){
     document.querySelector('.opponent-profile').classList.add('active-player');
     document.querySelector('.player-profile').classList.remove('active-player');
     document.querySelector('.js-pass-player').style.display = 'none';
-    console.log('opponent move');
     displayMessageWindow(`${whoStarts} turn`);
     hideMessageWindow(1800);
     setTimeout(()=>{
       opponentMove();
-      whoStarts = 'Player';
       playGame();
     }, 1800);
     document.querySelector('.js-active-use').classList.add('non-active-use');
@@ -428,7 +425,6 @@ function playGame(){
     }, 1900);
   }
   if(whoStarts === 'Player-pass'){
-    console.log('player-pass');
     document.querySelector('.opponent-profile').classList.add('active-player');
     document.querySelector('.player-profile').classList.remove('active-player');
     displayMessageWindow(`Opponent turn`);
@@ -441,6 +437,15 @@ function playGame(){
   }
   if(whoStarts === 'Pass'){
     console.log('round end');
+  }
+  if(whoStarts === 'Opponent-pass'){
+    document.querySelector('.opponent-profile').classList.remove('active-player');
+    document.querySelector('.player-profile').classList.add('active-player');
+    displayMessageWindow(`Player turn`);
+    hideMessageWindow(1800);
+    setTimeout(()=>{
+      playerMove();
+    }, 1800);
   }
 };
 
@@ -566,7 +571,16 @@ function addCardToRow(cardId, typeRowCard, row){
       newCardsToPlay.push(playerCard);
     } else if(id === cardId){
       typeRowCard.push(playerCard);
-      whoStarts = 'Opponent';
+      if(whoStarts === 'Opponent-pass'){
+        if(newCardsToPlay.length < 1){
+          whoStarts = 'Pass';
+        } else {
+          whoStarts = 'Opponent-pass';
+          playGame();
+        }
+      }else{
+        whoStarts = 'Opponent';
+      }
     }
   });
   playersCardsToPlay = newCardsToPlay;
@@ -579,16 +593,13 @@ function addCardToRow(cardId, typeRowCard, row){
 };
 
 function opponentMove(){
-  if(opponentCardsToPlay.length < 1){
-    console.log('error');
-    document.querySelector('.opponent-profile').classList.add('pass');
-    document.querySelector('.js-opponent-pass-message').style.display = "flex";
-
-    whoStarts = 'Pass';
-  }
-  
   if(whoStarts === 'Player-pass'){
     console.log(20)
+    if(opponentCardsToPlay.length < 1){
+      document.querySelector('.js-opponent-pass-message').style.display = "flex";
+  
+      whoStarts = 'Pass';
+    }
     if(document.querySelector('.js-opponent-points').innerHTML >
     document.querySelector('.js-player-points').innerHTML){
       console.log('op wins')/
@@ -640,6 +651,13 @@ function opponentMove(){
 
     addedPoints('Opponent');
     updateRemainingCards(opponentCardsToPlay);
+
+    if(opponentCardsToPlay.length < 1){
+      document.querySelector('.js-opponent-pass-message').style.display = "flex";
+      return whoStarts = 'Opponent-pass';
+    } else{
+      return whoStarts = 'Player';
+    }
   };
   //whoStarts = 'Player';
   //playGame();
