@@ -397,6 +397,10 @@ function updateNumberOfCardsLeft(cardsName){
   return cardsNumber;
 };
 
+let whichRound = 0;
+let playerLosses = 0;
+let opponentLosses = 0;
+
 function playGame(){
   if (whoStarts === 'Player'){
     document.querySelector('.opponent-profile').classList.remove('active-player');
@@ -404,7 +408,7 @@ function playGame(){
     document.querySelector('.js-pass-player').style.display = '';
     displayMessageWindow(`${whoStarts} turn`);
     hideMessageWindow(1800);
-    setTimeout(()=>{
+    return setTimeout(()=>{
       playerPass();
       playerMove();
     }, 1800);
@@ -435,17 +439,19 @@ function playGame(){
     }, 1800);
     document.querySelector('.js-active-use').classList.add('non-active-use');
   }
-  if(whoStarts === 'Pass'){
-    console.log('round end');
-  }
   if(whoStarts === 'Opponent-pass'){
     document.querySelector('.opponent-profile').classList.remove('active-player');
     document.querySelector('.player-profile').classList.add('active-player');
     displayMessageWindow(`Player turn`);
     hideMessageWindow(1800);
     setTimeout(()=>{
+      playerPass();
       playerMove();
     }, 1800);
+  }
+  if(whoStarts === 'Pass'){
+    whoWinsRound(whichRound);
+    return console.log('round end');
   }
 };
 
@@ -576,7 +582,6 @@ function addCardToRow(cardId, typeRowCard, row){
           whoStarts = 'Pass';
         } else {
           whoStarts = 'Opponent-pass';
-          playGame();
         }
       }else{
         whoStarts = 'Opponent';
@@ -593,28 +598,32 @@ function addCardToRow(cardId, typeRowCard, row){
 };
 
 function opponentMove(){
+  addedPoints('Player');
+  addedPoints('Opponent');
+  const opponentPoints =document.querySelector('.js-opponent-points').innerHTML;
+  const playerPoints = document.querySelector('.js-player-points').innerHTML;
+  console.log(whoStarts);
+
   if(whoStarts === 'Player-pass'){
     console.log(20)
     if(opponentCardsToPlay.length < 1){
       document.querySelector('.js-opponent-pass-message').style.display = "flex";
   
-      whoStarts = 'Pass';
-    }
-    if(document.querySelector('.js-opponent-points').innerHTML >
-    document.querySelector('.js-player-points').innerHTML){
-      console.log('op wins')/
-      document.querySelector('.opponent-profile').classList.add('pass');
+      return whoStarts = 'Pass';
+    } else if(Number(opponentPoints) > Number(playerPoints)){
       document.querySelector('.js-opponent-pass-message').style.display = "flex";
 
-      whoStarts = 'Pass';
-    } 
-    if(document.querySelector('.js-opponent-points').innerHTML <=
-    document.querySelector('.js-player-points').innerHTML){
+      return whoStarts = 'Pass';
+    } else if(Number(opponentPoints) <= Number(playerPoints)){
       console.log('take more cards')
       
       opponentNextCard();
-      whoStarts = 'Player-pass';
-      playGame();
+      addedPoints('Opponent');
+      if(Number(opponentPoints) > Number(playerPoints)){
+        return whoStarts = 'Pass';
+      } else{
+        return whoStarts = 'Player-pass';
+      }
     }
   } 
   
@@ -659,8 +668,6 @@ function opponentMove(){
       return whoStarts = 'Player';
     }
   };
-  //whoStarts = 'Player';
-  //playGame();
 };
 
 function countPoints(typeRowCard){
@@ -740,4 +747,79 @@ function playerPass(){
 
   passButton.addEventListener('mousedown', mouseDown);
   document.body.addEventListener("mouseup", mouseUp);
+};
+
+function whoWinsRound(whichRound){
+  addedPoints('Player');
+  addedPoints('Opponent'); 
+  const opponentPoints = Number(document.querySelector('.js-opponent-points').innerHTML);
+  const playerPoints = Number(document.querySelector('.js-player-points').innerHTML);
+  console.log(opponentPoints);
+  console.log(playerPoints);
+
+  if(opponentPoints > playerPoints){
+    console.log('Opp wins');
+    playerLosses++;
+    document.querySelector(`.js-remaining-life-player-img-${playerLosses}`).src = 'images/icons/black-crown.png';
+    
+    /*
+    restartBoard();
+    whichRound++;
+    whoStarts = 'Opponent';
+    */
+  }
+  if(opponentPoints < playerPoints){
+    console.log('Player wins');
+    opponentLosses++;
+    document.querySelector(`.js-remaining-life-opponent-img-${opponentLosses}`).src = 'images/icons/black-crown.png';
+
+    /*
+    restartBoard();
+    whichRound++;
+    whoStarts = 'Player';
+    */
+  }
+  if(opponentPoints === playerPoints){
+    console.log('Tie');
+    playerLosses++;
+    opponentLosses++;
+    document.querySelector(`.js-remaining-life-opponent-img-${playerLosses}`).src = 'images/icons/black-crown.png';
+    document.querySelector(`.js-remaining-life-player-img-${opponentLosses}`).src = 'images/icons/black-crown.png';
+    /*
+    restartBoard();
+    whichRound++;
+    whoStarts = 'Player';
+    */
+  }
+
+  function restartBoard(){
+    document.querySelector('.js-player-pass-message').style.display = "none";
+    document.querySelector('.js-opponent-pass-message').style.display = "none";
+    playerSwordRow = [];
+    playerBowRow = [];
+    playerCatapultRow = [];
+
+    opponentSwordRow = [];
+    opponentBowRow = [];
+    opponentCatapultRow = [];
+
+    countPoints(playerSwordRow);
+    countPoints(playerBowRow);
+    countPoints(playerCatapultRow);
+
+    countPoints(opponentSwordRow);
+    countPoints(opponentBowRow);
+    countPoints(opponentCatapultRow);
+
+    displayCards(playerSwordRow, 'sword-row-player');
+    displayCards(playerBowRow, 'bow-row-player');
+    displayCards(playerCatapultRow, 'catapult-row-player');
+
+    displayCards(opponentSwordRow, 'sword-row-opponent');
+    displayCards(opponentBowRow, 'bow-row-opponent');
+    displayCards(opponentCatapultRow, 'catapult-row-opponent');
+
+    addedPoints('Player');
+    addedPoints('Opponent');
+  }
 };
