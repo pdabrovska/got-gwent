@@ -403,6 +403,7 @@ let opponentLosses = 0;
 
 function playGame(){
   if (whoStarts === 'Player'){
+    document.querySelector('.js-active-use').classList.remove('non-active-use');
     document.querySelector('.opponent-profile').classList.remove('active-player');
     document.querySelector('.player-profile').classList.add('active-player');
     document.querySelector('.js-pass-player').style.display = '';
@@ -435,7 +436,7 @@ function playGame(){
     hideMessageWindow(1800);
     setTimeout(()=>{
       opponentMove();
-      playGame();
+      //playGame();
     }, 1800);
     document.querySelector('.js-active-use').classList.add('non-active-use');
   }
@@ -445,14 +446,35 @@ function playGame(){
     displayMessageWindow(`Player turn`);
     hideMessageWindow(1800);
     setTimeout(()=>{
-      playerPass();
       playerMove();
+      document.querySelector('.js-pass-player').style.display = '';
+      playerPass();
     }, 1800);
   }
   if(whoStarts === 'Pass'){
-    whoWinsRound(whichRound);
-    return console.log('round end');
-  }
+    whoWinsRound();
+    if(opponentLosses === 2){
+      document.querySelector('.opponent-profile').classList.remove('active-player');
+      document.querySelector('.player-profile').classList.remove('active-player');
+
+      return console.log('End Player wins');
+    }else if(playerLosses  === 2){
+      document.querySelector('.opponent-profile').classList.remove('active-player');
+      document.querySelector('.player-profile').classList.remove('active-player');
+
+      return console.log('End Opponent wins');
+    }else if(playerLosses === 2 && opponentLosses === 2){
+      document.querySelector('.opponent-profile').classList.remove('active-player');
+      document.querySelector('.player-profile').classList.remove('active-player');
+
+      console.log('End Tie')
+    } else {
+      setTimeout(()=>{
+        playGame();
+      },1850);
+      return console.log('round end');
+    }
+    }
 };
 
 function playerMove(){
@@ -613,16 +635,19 @@ function opponentMove(){
     } else if(Number(opponentPoints) > Number(playerPoints)){
       document.querySelector('.js-opponent-pass-message').style.display = "flex";
 
-      return whoStarts = 'Pass';
+      whoStarts = 'Pass';
+      playGame();
     } else if(Number(opponentPoints) <= Number(playerPoints)){
       console.log('take more cards')
       
       opponentNextCard();
       addedPoints('Opponent');
       if(Number(opponentPoints) > Number(playerPoints)){
-        return whoStarts = 'Pass';
+        whoStarts = 'Pass';
+        playGame();
       } else{
-        return whoStarts = 'Player-pass';
+        whoStarts = 'Player-pass';
+        playGame();
       }
     }
   } 
@@ -632,6 +657,11 @@ function opponentMove(){
   }
 
   function opponentNextCard(){
+    if(opponentCardsToPlay.length < 1){
+      document.querySelector('.js-opponent-pass-message').style.display = "flex";
+      return whoStarts = 'Opponent-pass';
+    }
+
     let newOpponentCards = [];
     const chosenCardArray = chooseCards(1, opponentCardsToPlay);
     let chosenCard = chosenCardArray[0];
@@ -741,7 +771,11 @@ function playerPass(){
   function execMouseDown() { 
     passButton.style.display = "none";
     document.querySelector('.js-player-pass-message').style.display = "flex";
-    whoStarts = 'Player-pass';
+    if (whoStarts === 'Opponent-pass'){
+      whoStarts = 'Pass';
+    }else{
+      whoStarts = 'Player-pass';
+    }
     playGame();
   }
 
@@ -749,7 +783,7 @@ function playerPass(){
   document.body.addEventListener("mouseup", mouseUp);
 };
 
-function whoWinsRound(whichRound){
+function whoWinsRound(){
   addedPoints('Player');
   addedPoints('Opponent'); 
   const opponentPoints = Number(document.querySelector('.js-opponent-points').innerHTML);
@@ -760,36 +794,54 @@ function whoWinsRound(whichRound){
   if(opponentPoints > playerPoints){
     console.log('Opp wins');
     playerLosses++;
+
+    console.log(playerLosses);
+    console.log(opponentLosses);
     document.querySelector(`.js-remaining-life-player-img-${playerLosses}`).src = 'images/icons/black-crown.png';
-    
-    /*
-    restartBoard();
-    whichRound++;
-    whoStarts = 'Opponent';
-    */
+
+    displayMessageWindow('Opponent won this round');
+    hideMessageWindow(1800);
+    setTimeout(()=>{
+      restartBoard();
+      //whichRound++;
+      whoStarts = 'Opponent';
+    }, 1800);
   }
   if(opponentPoints < playerPoints){
     console.log('Player wins');
     opponentLosses++;
+
+    console.log(playerLosses);
+    console.log(opponentLosses);
     document.querySelector(`.js-remaining-life-opponent-img-${opponentLosses}`).src = 'images/icons/black-crown.png';
 
-    /*
-    restartBoard();
-    whichRound++;
-    whoStarts = 'Player';
-    */
+    displayMessageWindow('You won this round');
+    hideMessageWindow(1800);
+    setTimeout(()=>{
+      restartBoard();
+      //whichRound++;
+      whoStarts = 'Player';
+    }, 1800);
+    
   }
   if(opponentPoints === playerPoints){
     console.log('Tie');
     playerLosses++;
     opponentLosses++;
+
+    console.log(playerLosses);
+    console.log(opponentLosses);
     document.querySelector(`.js-remaining-life-opponent-img-${playerLosses}`).src = 'images/icons/black-crown.png';
     document.querySelector(`.js-remaining-life-player-img-${opponentLosses}`).src = 'images/icons/black-crown.png';
-    /*
-    restartBoard();
-    whichRound++;
-    whoStarts = 'Player';
-    */
+
+    displayMessageWindow('Tie');
+    hideMessageWindow(1800);
+    setTimeout(()=>{
+      restartBoard();
+      //whichRound++;
+      whoStarts = 'Player';
+    }, 1800);
+    
   }
 
   function restartBoard(){
