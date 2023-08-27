@@ -77,14 +77,14 @@ function whoStartsGame(){
 };
 
 function displayMessageWindow(message){
-  document.querySelector('.js-message-window').classList.remove('display-none');
+  document.querySelector('.js-message-window').style.display = ''
   document.querySelector('.js-message-window').innerHTML = `<p>${message}</p>`;
 };
 
 function hideMessageWindow(time){
   setTimeout(()=>{
     document.querySelector('.js-message-window').innerHTML = '';
-    document.querySelector('.js-message-window').classList.add('display-none')
+    document.querySelector('.js-message-window').style.display = 'none'
   }, time)
 }
 
@@ -453,20 +453,12 @@ function playGame(){
   }
   if(whoStarts === 'Pass'){
     whoWinsRound();
+    
     if(opponentLosses === 2){
-      document.querySelector('.opponent-profile').classList.remove('active-player');
-      document.querySelector('.player-profile').classList.remove('active-player');
-
       return console.log('End Player wins');
     }else if(playerLosses  === 2){
-      document.querySelector('.opponent-profile').classList.remove('active-player');
-      document.querySelector('.player-profile').classList.remove('active-player');
-
       return console.log('End Opponent wins');
     }else if(playerLosses === 2 && opponentLosses === 2){
-      document.querySelector('.opponent-profile').classList.remove('active-player');
-      document.querySelector('.player-profile').classList.remove('active-player');
-
       console.log('End Tie')
     } else {
       setTimeout(()=>{
@@ -773,10 +765,11 @@ function playerPass(){
     document.querySelector('.js-player-pass-message').style.display = "flex";
     if (whoStarts === 'Opponent-pass'){
       whoStarts = 'Pass';
+      playGame();
     }else{
       whoStarts = 'Player-pass';
+      playGame();
     }
-    playGame();
   }
 
   passButton.addEventListener('mousedown', mouseDown);
@@ -799,13 +792,22 @@ function whoWinsRound(){
     console.log(opponentLosses);
     document.querySelector(`.js-remaining-life-player-img-${playerLosses}`).src = 'images/icons/black-crown.png';
 
-    displayMessageWindow('Opponent won this round');
-    hideMessageWindow(1800);
-    setTimeout(()=>{
-      restartBoard();
-      //whichRound++;
-      whoStarts = 'Opponent';
-    }, 1800);
+    if(playerLosses === 2){
+      console.log('player losses = 2')
+      winnerMessage('Opponent');
+      /*
+      document.querySelector('.js-winner-message-window').innerHTML = `<p>Opponent</p>`;
+      document.querySelector('.js-winner-message-window').classList.remove('display-none');
+      */
+    } else{
+      displayMessageWindow('Opponent won this round');
+      hideMessageWindow(1800);
+      setTimeout(()=>{
+        restartBoard();
+        //whichRound++;
+        whoStarts = 'Opponent';
+      }, 1800);
+    }
   }
   if(opponentPoints < playerPoints){
     console.log('Player wins');
@@ -815,6 +817,18 @@ function whoWinsRound(){
     console.log(opponentLosses);
     document.querySelector(`.js-remaining-life-opponent-img-${opponentLosses}`).src = 'images/icons/black-crown.png';
 
+    if(opponentLosses === 2){
+      winnerMessage('Player');
+    } else{
+      displayMessageWindow('Player won this round');
+      hideMessageWindow(1800);
+      setTimeout(()=>{
+        restartBoard();
+        //whichRound++;
+        whoStarts = 'Player';
+      }, 1800);
+    }
+/*
     displayMessageWindow('You won this round');
     hideMessageWindow(1800);
     setTimeout(()=>{
@@ -822,7 +836,7 @@ function whoWinsRound(){
       //whichRound++;
       whoStarts = 'Player';
     }, 1800);
-    
+    */
   }
   if(opponentPoints === playerPoints){
     console.log('Tie');
@@ -834,6 +848,18 @@ function whoWinsRound(){
     document.querySelector(`.js-remaining-life-opponent-img-${playerLosses}`).src = 'images/icons/black-crown.png';
     document.querySelector(`.js-remaining-life-player-img-${opponentLosses}`).src = 'images/icons/black-crown.png';
 
+    if(playerLosses === 2 && opponentLosses === 2){
+      winnerMessage('Tie');
+    } else{
+      displayMessageWindow('Tie');
+      hideMessageWindow(1800);
+      setTimeout(()=>{
+        restartBoard();
+        //whichRound++;
+        whoStarts = 'Player';
+      }, 1800);
+    }
+    /*
     displayMessageWindow('Tie');
     hideMessageWindow(1800);
     setTimeout(()=>{
@@ -841,37 +867,68 @@ function whoWinsRound(){
       //whichRound++;
       whoStarts = 'Player';
     }, 1800);
-    
+    */
+  }
+};
+
+function restartBoard(){
+  document.querySelector('.js-player-pass-message').style.display = "none";
+  document.querySelector('.js-opponent-pass-message').style.display = "none";
+  playerSwordRow = [];
+  playerBowRow = [];
+  playerCatapultRow = [];
+
+  opponentSwordRow = [];
+  opponentBowRow = [];
+  opponentCatapultRow = [];
+
+  countPoints(playerSwordRow);
+  countPoints(playerBowRow);
+  countPoints(playerCatapultRow);
+
+  countPoints(opponentSwordRow);
+  countPoints(opponentBowRow);
+  countPoints(opponentCatapultRow);
+
+  displayCards(playerSwordRow, 'sword-row-player');
+  displayCards(playerBowRow, 'bow-row-player');
+  displayCards(playerCatapultRow, 'catapult-row-player');
+
+  displayCards(opponentSwordRow, 'sword-row-opponent');
+  displayCards(opponentBowRow, 'bow-row-opponent');
+  displayCards(opponentCatapultRow, 'catapult-row-opponent');
+
+  addedPoints('Player');
+  addedPoints('Opponent');
+}
+
+function winnerMessage(who){
+  if(who === 'Tie'){
+    document.querySelector('.js-winner-message-window').innerHTML = `<p>Tie</p>
+    <div>
+      <button>Go to menu</button>
+      <button>Restart</button>
+    </div>
+  `;
+  }
+  if(who === 'Opponent' || who === 'Player'){
+    console.log(10)
+    document.querySelector('.js-winner-message-window').innerHTML = `<p>Opponent won</p>
+    <div>
+      <button class="js-go-to-menu">Go to menu</button>
+      <button class="js-restart">Restart</button>
+    </div>
+  `;
   }
 
-  function restartBoard(){
-    document.querySelector('.js-player-pass-message').style.display = "none";
-    document.querySelector('.js-opponent-pass-message').style.display = "none";
-    playerSwordRow = [];
-    playerBowRow = [];
-    playerCatapultRow = [];
+  document.querySelector('.js-winner-message-window').classList.remove('display-none');
 
-    opponentSwordRow = [];
-    opponentBowRow = [];
-    opponentCatapultRow = [];
+  document.querySelector('.js-go-to-menu').addEventListener('click', () =>{
+    window.location.replace( "./got-gwent.html");
+  });
 
-    countPoints(playerSwordRow);
-    countPoints(playerBowRow);
-    countPoints(playerCatapultRow);
-
-    countPoints(opponentSwordRow);
-    countPoints(opponentBowRow);
-    countPoints(opponentCatapultRow);
-
-    displayCards(playerSwordRow, 'sword-row-player');
-    displayCards(playerBowRow, 'bow-row-player');
-    displayCards(playerCatapultRow, 'catapult-row-player');
-
-    displayCards(opponentSwordRow, 'sword-row-opponent');
-    displayCards(opponentBowRow, 'bow-row-opponent');
-    displayCards(opponentCatapultRow, 'catapult-row-opponent');
-
-    addedPoints('Player');
-    addedPoints('Opponent');
-  }
+  document.querySelector('.js-restart').addEventListener('click', () =>{
+    restartBoard();
+    //restart game to work
+  });
 };
