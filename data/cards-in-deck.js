@@ -1,4 +1,4 @@
-export let cardsInDeck = JSON.parse(sessionStorage.getItem('cards-in-deck')) || [];
+export let cardsInDeck = JSON.parse(localStorage.getItem('cards-in-deck')) || [];
 
 export function removeCard(fraction, cardId){
   let newCardsInDeck =[];

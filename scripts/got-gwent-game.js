@@ -3,18 +3,18 @@ import {houseTargaryenCards} from "../data/targaryen-cards.js";
 import {cardsInDeck} from "../data/cards-in-deck.js";
 
 window.addEventListener('beforeunload', function (event) {
-  sessionStorage.removeItem('cards-in-deck');
   event.preventDefault();
   event.returnValue = 'Are you sure you want to leave this page?';
 });
 document.querySelector('.js-add-to-row').style.display = "none";
 document.querySelector('.js-escape').style.display = "none";
 
-//const defaultCardsInDeckPlayer = sessionStorage.getItem('cards-in-deck', JSON.stringify(cardsInDeck));
+console.log(cardsInDeck);
 
 //playing game
 displayPlayerLeader();
 displayOpponentLeader();
+
 let playersCardsToPlay = JSON.parse(sessionStorage.getItem('players-cards-to-play'));
 if(!playersCardsToPlay){
   playersCardsToPlay = chooseCards(4, cardsInDeck);
@@ -63,6 +63,12 @@ setTimeout(()=>{
   displayCards(playersCardsToPlay, 'yes')
 }, 2200);
 //
+
+console.log(playersCardsToPlay);
+console.log(playerLeftCardsInDeck);
+console.log(opponentCardsInDeck);
+console.log(opponentCardsToPlay);
+console.log(opponentLeftCardsToPlay);
 
 function whoStartsGame(){
   const randomNumber = Math.random();
@@ -914,7 +920,7 @@ function winnerMessage(who){
   `;
   }
   if(who === 'Opponent' || who === 'Player'){
-    document.querySelector('.js-winner-message-window').innerHTML = `<p>Opponent won</p>
+    document.querySelector('.js-winner-message-window').innerHTML = `<p>${who} won</p>
     <div>
       <button class="js-go-to-menu">Go to menu</button>
       <button class="js-restart">Restart</button>
@@ -930,7 +936,8 @@ function winnerMessage(who){
 
   document.querySelector('.js-restart').addEventListener('click', () =>{
     restartBoard();
-
+    restart();
+    /*
     sessionStorage.removeItem('opponent-leader');
     sessionStorage.removeItem('opponent-house');
     sessionStorage.removeItem('opponent-crest');
@@ -941,7 +948,18 @@ function winnerMessage(who){
     sessionStorage.removeItem('opponent-cards-in-deck');
     sessionStorage.removeItem('opponent-cards-to-play');
     sessionStorage.removeItem('opponent-left-cards-to-play');
-
+    
+    playersCardsToPlay = chooseCards(4, cardsInDeck);
+    sessionStorage.setItem('players-cards-to-play', JSON.stringify(playersCardsToPlay));
+    playerLeftCardsInDeck = leftCardsInDeck(cardsInDeck, playersCardsToPlay);
+  sessionStorage.setItem('players-left-cards', JSON.stringify(playerLeftCardsInDeck));
+  opponentCardsInDeck = chooseCards(8, JSON.parse(sessionStorage.getItem('opponent-cards')));
+  sessionStorage.setItem('opponent-cards-in-deck', JSON.stringify(opponentCardsInDeck));
+  opponentCardsToPlay = chooseCards(4, opponentCardsInDeck);
+  sessionStorage.setItem('opponent-cards-to-play', JSON.stringify(opponentCardsToPlay));
+  opponentLeftCardsToPlay = leftCardsInDeck(opponentCardsInDeck, opponentCardsToPlay);
+  sessionStorage.setItem('opponent-left-cards-to-play', JSON.stringify(opponentLeftCardsToPlay));
+*/
     window.location.reload()
   });
 };
@@ -965,17 +983,7 @@ document.querySelector('.js-exit-button').addEventListener('click', () =>{
 
   document.querySelector('.js-restart').addEventListener('click', () =>{
     restartBoard();
-
-    sessionStorage.removeItem('opponent-leader');
-    sessionStorage.removeItem('opponent-house');
-    sessionStorage.removeItem('opponent-crest');
-    sessionStorage.removeItem('opponent-cards');
-
-    sessionStorage.removeItem('players-cards-to-play');
-    sessionStorage.removeItem('players-left-cards');
-    sessionStorage.removeItem('opponent-cards-in-deck');
-    sessionStorage.removeItem('opponent-cards-to-play');
-    sessionStorage.removeItem('opponent-left-cards-to-play');
+    restart();
 
     window.location.reload()
   });
@@ -986,3 +994,16 @@ document.querySelector('.js-exit-button').addEventListener('click', () =>{
     document.querySelector('.js-winner-message-window').classList.add('display-none');
   });
 });
+
+function restart(){
+    sessionStorage.removeItem('opponent-leader');
+    sessionStorage.removeItem('opponent-house');
+    sessionStorage.removeItem('opponent-crest');
+    sessionStorage.removeItem('opponent-cards');
+
+    sessionStorage.removeItem('players-cards-to-play');
+    sessionStorage.removeItem('players-left-cards');
+    sessionStorage.removeItem('opponent-cards-in-deck');
+    sessionStorage.removeItem('opponent-cards-to-play');
+    sessionStorage.removeItem('opponent-left-cards-to-play');
+};

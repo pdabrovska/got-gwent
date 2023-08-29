@@ -12,7 +12,7 @@ const buttonElementDecks = document.querySelector('.js-button-decks');
 const divElement = document.querySelector('.action-screen');
 
 buttonElementStart.addEventListener('click', ()=>{
-  sessionStorage.removeItem('cards-in-deck');
+  localStorage.removeItem('cards-in-deck');
   const menuHTML = `
   <div class="setup-menu">
     <form class="settings-form">
@@ -70,6 +70,7 @@ function addSetting(){
 };
 
 function chooseLeader(fraction){
+
   let leadersHTML = '';
   let cardsName;
   if(fraction === 'house-lannister'){
@@ -114,7 +115,7 @@ function chooseLeader(fraction){
 
 function displayCardsMenu(fraction){
       document.querySelector('.js-choose-team').innerHTML =`
-      <p class="question">Choose your army (double click to add or remove card):</p>
+      <p class="question">Choose your army (click to add or remove card):</p>
       <div class="cards-selection">
         <div class="cards-in-collection">
           <p class="info">Cards collection</p>
@@ -173,14 +174,14 @@ function displayCardsMenu(fraction){
   updateCardCount();
 
   document.querySelectorAll('.js-card').forEach((card) =>{
-    card.addEventListener('dblclick', () =>{
+    card.addEventListener('click', () =>{
       const cardId =card.dataset.cardId;
       addCard(fraction, cardId);
     });
   });
 
   document.querySelectorAll('.js-card-in-deck').forEach((card) =>{
-    card.addEventListener('dblclick', () =>{
+    card.addEventListener('click', () =>{
       const cardId =card.dataset.cardId;
       removeCard(fraction, cardId);
       displayCardsInDeck();
@@ -472,7 +473,7 @@ function playGame(){
   const leaderId = document.querySelector('input[name="leader"]:checked').value;
   sessionStorage.setItem('house', JSON.stringify(houseId));
   sessionStorage.setItem('leader', JSON.stringify(leaderId));
-  sessionStorage.setItem('cards-in-deck', JSON.stringify(cardsInDeck));
+  localStorage.setItem('cards-in-deck', JSON.stringify(cardsInDeck));
   window.location.replace( "./got-gwent-game.html");
 }
 

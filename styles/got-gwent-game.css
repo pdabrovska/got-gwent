@@ -115,6 +115,16 @@ html::before{
   top: 5px;
   right: 5px;
   cursor: pointer;
+  background-color: rgb(66, 38, 15);
+  color: rgb(241, 226, 218);
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  border: none;
+}
+
+.close-display-cards:hover{
+  background-color: rgb(84, 51, 24);
 }
 
 .card-wheel:hover{
