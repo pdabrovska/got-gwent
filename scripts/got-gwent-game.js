@@ -10,6 +10,8 @@ window.addEventListener('beforeunload', function (event) {
 document.querySelector('.js-add-to-row').style.display = "none";
 document.querySelector('.js-escape').style.display = "none";
 
+//const defaultCardsInDeckPlayer = sessionStorage.getItem('cards-in-deck', JSON.stringify(cardsInDeck));
+
 //playing game
 displayPlayerLeader();
 displayOpponentLeader();
@@ -912,7 +914,6 @@ function winnerMessage(who){
   `;
   }
   if(who === 'Opponent' || who === 'Player'){
-    console.log(10)
     document.querySelector('.js-winner-message-window').innerHTML = `<p>Opponent won</p>
     <div>
       <button class="js-go-to-menu">Go to menu</button>
@@ -929,6 +930,59 @@ function winnerMessage(who){
 
   document.querySelector('.js-restart').addEventListener('click', () =>{
     restartBoard();
-    //restart game to work
+
+    sessionStorage.removeItem('opponent-leader');
+    sessionStorage.removeItem('opponent-house');
+    sessionStorage.removeItem('opponent-crest');
+    sessionStorage.removeItem('opponent-cards');
+
+    sessionStorage.removeItem('players-cards-to-play');
+    sessionStorage.removeItem('players-left-cards');
+    sessionStorage.removeItem('opponent-cards-in-deck');
+    sessionStorage.removeItem('opponent-cards-to-play');
+    sessionStorage.removeItem('opponent-left-cards-to-play');
+
+    window.location.reload()
   });
 };
+
+document.querySelector('.js-exit-button').addEventListener('click', () =>{
+  document.querySelector('.js-exit-button').classList.add('display-none');
+  document.querySelector('.js-winner-message-window').classList.remove('display-none');
+  document.querySelector('.js-winner-message-window').innerHTML = 
+  `<div class="close-exit-container">
+    <button class="js-close-exit close-exit-button">X</button>
+    </div>
+    <div>
+      <button class="js-go-to-menu">Go to menu</button>
+      <button class="js-restart">Restart</button>
+    </div>
+  `;
+
+  document.querySelector('.js-go-to-menu').addEventListener('click', () =>{
+    window.location.replace( "./got-gwent.html");
+  });
+
+  document.querySelector('.js-restart').addEventListener('click', () =>{
+    restartBoard();
+
+    sessionStorage.removeItem('opponent-leader');
+    sessionStorage.removeItem('opponent-house');
+    sessionStorage.removeItem('opponent-crest');
+    sessionStorage.removeItem('opponent-cards');
+
+    sessionStorage.removeItem('players-cards-to-play');
+    sessionStorage.removeItem('players-left-cards');
+    sessionStorage.removeItem('opponent-cards-in-deck');
+    sessionStorage.removeItem('opponent-cards-to-play');
+    sessionStorage.removeItem('opponent-left-cards-to-play');
+
+    window.location.reload()
+  });
+
+  document.querySelector('.js-close-exit').addEventListener('click', () =>{
+    document.querySelector('.js-winner-message-window').innerHTML = '';
+    document.querySelector('.js-exit-button').classList.remove('display-none');
+    document.querySelector('.js-winner-message-window').classList.add('display-none');
+  });
+});
