@@ -726,7 +726,17 @@ function opponentMove(){
     opponentCardsToPlay = newOpponentCards;
 
     if(chosenCard.type === 'sword'){
-      opponentSwordRow.push(chosenCard);
+      if(chosenCard.ability === 'spy'){
+        playerSwordRow.push(chosenCard);
+        spyAbility('opponent', opponentLeftCardsToPlay, opponentCardsToPlay, chosenCard.id);
+
+        opponentCardsToPlay = spyAbility('opponent', opponentLeftCardsToPlay, opponentCardsToPlay, chosenCard.id);
+        displayCards(playerSwordRow, 'sword-row-player');
+        countPoints(playerSwordRow);
+        addedPoints('Player');
+      } else {
+        opponentSwordRow.push(chosenCard);
+      }
       if(chosenCard.ability === 'bond'){
         bondAbility(opponentSwordRow);
       }
@@ -748,7 +758,18 @@ function opponentMove(){
       countPoints(opponentSwordRow);
       
     } else if(chosenCard.type === 'bow'){
-      opponentBowRow.push(chosenCard);
+      if(chosenCard.ability === 'spy'){
+        playerBowRow.push(chosenCard);
+        spyAbility('opponent', opponentLeftCardsToPlay, opponentCardsToPlay, chosenCard.id);
+
+        opponentCardsToPlay = spyAbility('opponent', opponentLeftCardsToPlay, opponentCardsToPlay, chosenCard.id);
+        displayCards(playerBowRow, 'sword-bow-player');
+        countPoints(playerBowRow);
+        addedPoints('Player');
+      } else {
+        opponentBowRow.push(chosenCard);
+      }
+
       if(chosenCard.ability === 'bond'){
         bondAbility(opponentBowRow);
       }
@@ -769,7 +790,18 @@ function opponentMove(){
       displayCards(opponentBowRow, 'bow-row-opponent');
       countPoints(opponentBowRow);
     } else if(chosenCard.type === 'catapult'){
-      opponentCatapultRow.push(chosenCard);
+      if(chosenCard.ability === 'spy'){
+        playerCatapultRow.push(chosenCard);
+        spyAbility('opponent', opponentLeftCardsToPlay, opponentCardsToPlay, chosenCard.id);
+
+        opponentCardsToPlay = spyAbility('opponent', opponentLeftCardsToPlay, opponentCardsToPlay, chosenCard.id);
+        displayCards(playerCatapultRow, 'sword-bow-player');
+        countPoints(playerCatapultRow);
+        addedPoints('Player');
+      } else {
+        opponentCatapultRow.push(chosenCard);
+      }
+
       if(chosenCard.ability === 'bond'){
         bondAbility(opponentCatapultRow);
       }
