@@ -239,7 +239,7 @@ function displayCards(cardsName, forStart){
       playCardHTML += jsCardHTML;
 
       const opCardHTML =  `
-      <div class="card js-card">
+      <div class="card js-card-${id}">
           <img class="card-image" src="images/cards-images/${img}">
           <span class="card-value-container">
             <p class="card-value">${value}</p>
@@ -297,7 +297,7 @@ function displayCards(cardsName, forStart){
       playCardHTML += jsCardHTML;
 
       const opCardHTML =  `
-      <div class="card js-card">
+      <div class="card js-card-${id}">
           <img class="card-image" src="images/cards-images/${img}">
           <span class="card-value-container">
             <p class="card-value">${value}</p>
@@ -398,7 +398,6 @@ function updateNumberOfCardsLeft(cardsName){
   return cardsNumber;
 };
 
-let whichRound = 0;
 let playerLosses = 0;
 let opponentLosses = 0;
 
@@ -684,15 +683,24 @@ function opponentMove(){
 
     if(chosenCard.type === 'sword'){
       opponentSwordRow.push(chosenCard);
+      if(chosenCard.ability === 'bond'){
+        bondAbility(opponentSwordRow);
+      }
       displayCards(opponentSwordRow, 'sword-row-opponent');
       countPoints(opponentSwordRow);
       
     } else if(chosenCard.type === 'bow'){
       opponentBowRow.push(chosenCard);
+      if(chosenCard.ability === 'bond'){
+        bondAbility(opponentBowRow);
+      }
       displayCards(opponentBowRow, 'bow-row-opponent');
       countPoints(opponentBowRow);
     } else if(chosenCard.type === 'catapult'){
       opponentCatapultRow.push(chosenCard);
+      if(chosenCard.ability === 'bond'){
+        bondAbility(opponentCatapultRow);
+      }
       displayCards(opponentCatapultRow, 'catapult-row-opponent');
       countPoints(opponentCatapultRow);
     }
