@@ -34,7 +34,7 @@ export let houseLannisterCards = [
       name: 'Jaime Lannister',
       description: 'ser Jaime',
       img: "lannister/jaime-lannister.jpg",
-      value: 10,
+      value: 8,
       ability: 'spy',
       abilityImg: "spy.png",
       type: "sword",

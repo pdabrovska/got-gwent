@@ -498,7 +498,7 @@ function chooseCardToPlay(cardId){
   let rowName;
 
   playersCardsToPlay.forEach((playerCard) =>{
-    const {id, type, img, value, typeImg, abilityImg} = playerCard;
+    const {id, type, img, value, typeImg, abilityImg, ability} = playerCard;
     if (cardId === playerCard.id){
       document.querySelector('.js-add-to-row').style.display = "";
       document.querySelector('.js-escape').style.display = "";
@@ -540,17 +540,34 @@ function chooseCardToPlay(cardId){
       }
 
       if(type === 'sword'){
-        document.querySelector('.js-sword-row-player').classList.add('row-to-choose');
-        rowToChoose = playerSwordRow;
-        rowName = 'sword-row-player';
+        if(ability === 'spy'){
+          document.querySelector('.js-sword-row-opponent').classList.add('row-to-choose');
+          rowToChoose = opponentSwordRow;
+          rowName = 'sword-row-opponent';
+        } else{
+          document.querySelector('.js-sword-row-player').classList.add('row-to-choose');
+          rowToChoose = playerSwordRow;
+          rowName = 'sword-row-player';
+        }
+
       } else if(type === 'bow'){
-        document.querySelector('.js-bow-row-player').classList.add('row-to-choose');
-        rowToChoose = playerBowRow;
-        rowName = 'bow-row-player';
+        if(ability === 'spy'){
+          document.querySelector('.js-bow-row-opponent').classList.add('row-to-choose');
+        } else{
+          document.querySelector('.js-bow-row-player').classList.add('row-to-choose');
+          rowToChoose = playerBowRow;
+          rowName = 'bow-row-player';
+        }
+
       } else if(type === 'catapult'){
-        document.querySelector('.js-catapult-row-player').classList.add('row-to-choose');
-        rowToChoose = playerCatapultRow;
-        rowName = 'catapult-row-player';
+        if(ability === 'spy'){
+          document.querySelector('.js-catapult-row-opponent').classList.add('row-to-choose');
+        } else{
+          document.querySelector('.js-catapult-row-player').classList.add('row-to-choose');
+          rowToChoose = playerCatapultRow;
+          rowName = 'catapult-row-player';
+        }
+
       }
     }
   })
@@ -584,6 +601,10 @@ function chooseCardToPlay(cardId){
   });
 
   function removeClasses(){
+    document.querySelector('.js-sword-row-opponent').classList.remove('row-to-choose');
+    document.querySelector('.js-bow-row-opponent').classList.remove('row-to-choose');
+    document.querySelector('.js-catapult-row-opponent').classList.remove('row-to-choose');
+
     document.querySelector('.js-sword-row-player').classList.remove('row-to-choose');
     document.querySelector('.js-bow-row-player').classList.remove('row-to-choose');
     document.querySelector('.js-catapult-row-player').classList.remove('row-to-choose');
@@ -610,6 +631,11 @@ function addCardToRow(cardId, typeRowCard, row){
       if(playerCard.ability === 'bond'){
         bondAbility(typeRowCard);
       }
+
+      if(playerCard.ability === 'spy'){
+        spyAbility('player', playerLeftCardsInDeck, playersCardsToPlay, cardId);
+      }
+
       if(playerCard.ability === 'group'){
         const {group} = playerCard
         groupAbility('player', playersCardsToPlay, playerLeftCardsInDeck, group, typeRowCard);
@@ -628,6 +654,9 @@ function addCardToRow(cardId, typeRowCard, row){
       }
     }
   });
+  if(typeRowCard === opponentSwordRow || typeRowCard === opponentBowRow || typeRowCard === opponentCatapultRow ){
+    newCardsToPlay = spyAbility('player', playerLeftCardsInDeck, playersCardsToPlay, cardId);
+  }
   if(newCardsToPlayAfterGroup.length !== 0){
     newCardsToPlay = newCardsToPlayAfterGroup;
   }
@@ -1112,4 +1141,32 @@ function groupAbility(who, cardsToPlay, cardsLeft, cardGroup, typeRowCard){
   cardsLeft = newCardsLeft;
   console.log(cardsLeft);
   document.querySelector(`.js-${who}-left-cards`).innerHTML = updateNumberOfCardsLeft(cardsLeft);
+};
+
+function spyAbility(who, leftCards, playCards, cardId){
+  let newCardsPlay = [];
+  let newCardsLeft = [];
+  const newCards = chooseCards(2, leftCards);
+  const newCard1 = newCards[0];
+  const newCard2 = newCards[1];
+
+  leftCards.forEach((card) =>{
+    if(card.id !== newCard1.id && card.id !== newCard2.id){
+      newCardsLeft.push(card);
+    }
+  })
+
+  playCards.forEach((card)=>{
+    if(cardId !== card.id){
+      newCardsPlay.push(card);
+    }
+  })
+
+  leftCards = newCardsLeft;
+  playCards = newCardsPlay;
+  playCards.push(newCard1);
+  playCards.push(newCard2);
+
+  document.querySelector(`.js-${who}-left-cards`).innerHTML = updateNumberOfCardsLeft(leftCards);
+  return playCards;
 };
