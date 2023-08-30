@@ -12,7 +12,7 @@ const buttonElementDecks = document.querySelector('.js-button-decks');
 const divElement = document.querySelector('.action-screen');
 
 buttonElementStart.addEventListener('click', ()=>{
-  localStorage.removeItem('cards-in-deck');
+  //sessionStorage.removeItem('cards-in-deck');
   const menuHTML = `
   <div class="setup-menu">
     <form class="settings-form">
@@ -44,6 +44,7 @@ buttonElementDecks.addEventListener('click', ()=>{
 
 function addSetting(){
   document.querySelector('#house-lannister').addEventListener('click', () =>{
+    sessionStorage.removeItem('cards-in-deck');
     const inputValue = document.querySelector('#house-lannister').value;
     const divElement = document.querySelector('.js-choose-leader');
     if(divElement.innerHTML === ''){
@@ -56,6 +57,7 @@ function addSetting(){
     }
   });
   document.querySelector('#house-targaryen').addEventListener('click', () =>{
+    sessionStorage.removeItem('cards-in-deck');
     const inputValue = document.querySelector('#house-targaryen').value;
     const divElement = document.querySelector('.js-choose-leader');
     if(divElement.innerHTML === ''){
@@ -473,7 +475,7 @@ function playGame(){
   const leaderId = document.querySelector('input[name="leader"]:checked').value;
   sessionStorage.setItem('house', JSON.stringify(houseId));
   sessionStorage.setItem('leader', JSON.stringify(leaderId));
-  localStorage.setItem('cards-in-deck', JSON.stringify(cardsInDeck));
+  sessionStorage.setItem('cards-in-deck', JSON.stringify(cardsInDeck));
   window.location.replace( "./got-gwent-game.html");
 }
 

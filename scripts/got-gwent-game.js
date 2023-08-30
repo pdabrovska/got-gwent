@@ -9,8 +9,6 @@ window.addEventListener('beforeunload', function (event) {
 document.querySelector('.js-add-to-row').style.display = "none";
 document.querySelector('.js-escape').style.display = "none";
 
-console.log(cardsInDeck);
-
 //playing game
 displayPlayerLeader();
 displayOpponentLeader();
@@ -56,6 +54,7 @@ let opponentBowRow = [];
 let opponentCatapultRow = [];
 let redrawCardsNumber = 0;
 let whoStarts;
+let passCount = 0;
 whoStartsGame();
 hideMessageWindow(2000);
 setTimeout(()=>{
@@ -63,12 +62,6 @@ setTimeout(()=>{
   displayCards(playersCardsToPlay, 'yes')
 }, 2200);
 //
-
-console.log(playersCardsToPlay);
-console.log(playerLeftCardsInDeck);
-console.log(opponentCardsInDeck);
-console.log(opponentCardsToPlay);
-console.log(opponentLeftCardsToPlay);
 
 function whoStartsGame(){
   const randomNumber = Math.random();
@@ -410,6 +403,7 @@ let playerLosses = 0;
 let opponentLosses = 0;
 
 function playGame(){
+  console.log(whoStarts);
   if (whoStarts === 'Player'){
     document.querySelector('.js-active-use').classList.remove('non-active-use');
     document.querySelector('.opponent-profile').classList.remove('active-player');
@@ -440,6 +434,7 @@ function playGame(){
   if(whoStarts === 'Player-pass'){
     document.querySelector('.opponent-profile').classList.add('active-player');
     document.querySelector('.player-profile').classList.remove('active-player');
+    console.log(50)
     displayMessageWindow(`Opponent turn`);
     hideMessageWindow(1800);
     setTimeout(()=>{
@@ -454,14 +449,13 @@ function playGame(){
     displayMessageWindow(`Player turn`);
     hideMessageWindow(1800);
     setTimeout(()=>{
+      playerPass();
       playerMove();
       document.querySelector('.js-pass-player').style.display = '';
-      playerPass();
     }, 1800);
   }
   if(whoStarts === 'Pass'){
     whoWinsRound();
-    
     if(opponentLosses === 2){
       return console.log('End Player wins');
     }else if(playerLosses  === 2){
@@ -471,19 +465,32 @@ function playGame(){
     } else {
       setTimeout(()=>{
         playGame();
-      },1850);
-      return console.log('round end');
+        passCount = 0;
+      }, 2000);
+      console.log('round end');
     }
     }
 };
 
 function playerMove(){
-  document.querySelectorAll('.js-card-to-play').forEach((card) =>{
-    card.addEventListener('click', ()=>{
-      const cardId = card.dataset.cardId;
-      chooseCardToPlay(cardId);
-    })
-  });
+  if(playersCardsToPlay.length === 0){
+    if(whoStarts === 'Opponent-pass'){
+      document.querySelector('.js-player-pass-message').style.display = "flex";
+      whoStarts = 'Pass';
+      playGame();
+    } else{
+      document.querySelector('.js-player-pass-message').style.display = "flex";
+      whoStarts = 'Player-pass';
+      playGame()
+    }
+  } else {
+    document.querySelectorAll('.js-card-to-play').forEach((card) =>{
+      card.addEventListener('click', ()=>{
+        const cardId = card.dataset.cardId;
+        chooseCardToPlay(cardId);
+      })
+    });
+  }
 };
 
 function chooseCardToPlay(cardId){
@@ -600,11 +607,7 @@ function addCardToRow(cardId, typeRowCard, row){
     } else if(id === cardId){
       typeRowCard.push(playerCard);
       if(whoStarts === 'Opponent-pass'){
-        if(newCardsToPlay.length < 1){
-          whoStarts = 'Pass';
-        } else {
-          whoStarts = 'Opponent-pass';
-        }
+        whoStarts = 'Opponent-pass';
       }else{
         whoStarts = 'Opponent';
       }
@@ -624,7 +627,7 @@ function opponentMove(){
   addedPoints('Opponent');
   const opponentPoints =document.querySelector('.js-opponent-points').innerHTML;
   const playerPoints = document.querySelector('.js-player-points').innerHTML;
-  console.log(whoStarts);
+  //console.log(whoStarts);
 
   if(whoStarts === 'Player-pass'){
     console.log(20)
@@ -768,15 +771,19 @@ function playerPass(){
     passButton.classList.remove('pass-option-active');
   }
 
-  function execMouseDown() { 
-    passButton.style.display = "none";
-    document.querySelector('.js-player-pass-message').style.display = "flex";
-    if (whoStarts === 'Opponent-pass'){
-      whoStarts = 'Pass';
-      playGame();
-    }else{
-      whoStarts = 'Player-pass';
-      playGame();
+  function execMouseDown() {
+    passCount++;
+    if(passCount <2){
+      console.log(40)
+      passButton.style.display = "none";
+      document.querySelector('.js-player-pass-message').style.display = "flex";
+      if (whoStarts === 'Opponent-pass'){
+        whoStarts = 'Pass';
+        playGame();
+      }else{
+        whoStarts = 'Player-pass';
+        playGame();
+      }
     }
   }
 
@@ -853,8 +860,8 @@ function whoWinsRound(){
 
     console.log(playerLosses);
     console.log(opponentLosses);
-    document.querySelector(`.js-remaining-life-opponent-img-${playerLosses}`).src = 'images/icons/black-crown.png';
-    document.querySelector(`.js-remaining-life-player-img-${opponentLosses}`).src = 'images/icons/black-crown.png';
+    document.querySelector(`.js-remaining-life-opponent-img-${opponentLosses}`).src = 'images/icons/black-crown.png';
+    document.querySelector(`.js-remaining-life-player-img-${playerLosses}`).src = 'images/icons/black-crown.png';
 
     if(playerLosses === 2 && opponentLosses === 2){
       winnerMessage('Tie');
@@ -929,37 +936,17 @@ function winnerMessage(who){
   }
 
   document.querySelector('.js-winner-message-window').classList.remove('display-none');
+  document.querySelector('.js-exit-button').classList.add('display-none');
 
   document.querySelector('.js-go-to-menu').addEventListener('click', () =>{
+    sessionStorage.removeItem('cards-in-deck');
     window.location.replace( "./got-gwent.html");
   });
 
   document.querySelector('.js-restart').addEventListener('click', () =>{
+    document.querySelector('.js-exit-button').classList.remove('display-none');
     restartBoard();
     restart();
-    /*
-    sessionStorage.removeItem('opponent-leader');
-    sessionStorage.removeItem('opponent-house');
-    sessionStorage.removeItem('opponent-crest');
-    sessionStorage.removeItem('opponent-cards');
-
-    sessionStorage.removeItem('players-cards-to-play');
-    sessionStorage.removeItem('players-left-cards');
-    sessionStorage.removeItem('opponent-cards-in-deck');
-    sessionStorage.removeItem('opponent-cards-to-play');
-    sessionStorage.removeItem('opponent-left-cards-to-play');
-    
-    playersCardsToPlay = chooseCards(4, cardsInDeck);
-    sessionStorage.setItem('players-cards-to-play', JSON.stringify(playersCardsToPlay));
-    playerLeftCardsInDeck = leftCardsInDeck(cardsInDeck, playersCardsToPlay);
-  sessionStorage.setItem('players-left-cards', JSON.stringify(playerLeftCardsInDeck));
-  opponentCardsInDeck = chooseCards(8, JSON.parse(sessionStorage.getItem('opponent-cards')));
-  sessionStorage.setItem('opponent-cards-in-deck', JSON.stringify(opponentCardsInDeck));
-  opponentCardsToPlay = chooseCards(4, opponentCardsInDeck);
-  sessionStorage.setItem('opponent-cards-to-play', JSON.stringify(opponentCardsToPlay));
-  opponentLeftCardsToPlay = leftCardsInDeck(opponentCardsInDeck, opponentCardsToPlay);
-  sessionStorage.setItem('opponent-left-cards-to-play', JSON.stringify(opponentLeftCardsToPlay));
-*/
     window.location.reload()
   });
 };
@@ -978,6 +965,7 @@ document.querySelector('.js-exit-button').addEventListener('click', () =>{
   `;
 
   document.querySelector('.js-go-to-menu').addEventListener('click', () =>{
+    sessionStorage.removeItem('cards-in-deck');
     window.location.replace( "./got-gwent.html");
   });
 
