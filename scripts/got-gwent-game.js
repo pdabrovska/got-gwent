@@ -464,8 +464,8 @@ function playGame(){
       console.log('End Tie')
     } else {
       setTimeout(()=>{
-        playGame();
         passCount = 0;
+        playGame();
       }, 2000);
       console.log('round end');
     }
@@ -634,7 +634,8 @@ function opponentMove(){
     if(opponentCardsToPlay.length < 1){
       document.querySelector('.js-opponent-pass-message').style.display = "flex";
   
-      return whoStarts = 'Pass';
+      whoStarts = 'Pass';
+      playGame();
     } else if(Number(opponentPoints) > Number(playerPoints)){
       document.querySelector('.js-opponent-pass-message').style.display = "flex";
 
@@ -921,8 +922,8 @@ function winnerMessage(who){
   if(who === 'Tie'){
     document.querySelector('.js-winner-message-window').innerHTML = `<p>Tie</p>
     <div>
-      <button>Go to menu</button>
-      <button>Restart</button>
+    <button class="js-go-to-menu">Go to menu</button>
+    <button class="js-restart">Restart</button>
     </div>
   `;
   }
@@ -995,3 +996,4 @@ function restart(){
     sessionStorage.removeItem('opponent-cards-to-play');
     sessionStorage.removeItem('opponent-left-cards-to-play');
 };
+
