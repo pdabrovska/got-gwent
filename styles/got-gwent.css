@@ -86,3 +86,7 @@ body{
 .action-screen{
   z-index: 100;
 }
+
+.cards-selection .cards-menu{
+  display: flex;
+}

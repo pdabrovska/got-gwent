@@ -3,7 +3,7 @@ import {houseTargaryenCards, houseTargaryenInfo } from "../data/targaryen-cards.
 import {generateCardsCollectionMenu,generateCardsCollection} from "./utils/cards-collection.js";
 import {cardsInDeck, removeCard, resetCardsInDeck} from "../data/cards-in-deck.js";
 
-const cardsCollection = [houseStarkInfo,houseLannisterInfo, houseTargaryenInfo];
+const cardsCollection = [houseLannisterInfo, houseTargaryenInfo];
 
 const buttonElementStart = document.querySelector('.js-button-start');
 
@@ -122,10 +122,10 @@ function displayCardsMenu(fraction){
         <div class="cards-in-collection">
           <p class="info">Cards collection</p>
           <div class="cards-menu">
-            <div class="filters-container">
-              <div type="button" class="filter-button js-filter-all">
+            <!--div class="filters-container">
+              <button type="button" class="filter-button js-filter-all">
                 <img class="filter-img" src="images/icons/cards.png">
-              </div>
+              </button>
               <button type="button" class="filter-button js-filter-sword">
                 <img class="filter-img"  src="images/icons/sword.png">
               </button>
@@ -135,14 +135,14 @@ function displayCardsMenu(fraction){
               <button type="button" class="filter-button js-filter-catapult">
                 <img class="filter-img" src="images/icons/catapult.png">
               </button>
-            </div>
+            </div-->
           <div class="cards"></div>
         </div>
       </div>
       <div class="cards-to-use">
       <p class="info">Cards in the deck</p>
         <div class="cards-menu">
-          <div class="filters-container">
+          <!--div class="filters-container">
             <div type="button" class="filter-button js-filter-all-cd">
               <img class="filter-img" src="images/icons/cards.png">
             </div>
@@ -155,7 +155,7 @@ function displayCardsMenu(fraction){
             <button type="button" class="filter-button js-filter-catapult-cd">
               <img class="filter-img" src="images/icons/catapult.png">
             </button>
-          </div>
+          </div-->
           <div class="cards-in-deck-container js-cards-in-deck-container"></div>
         </div>
       </div>
