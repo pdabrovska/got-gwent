@@ -597,6 +597,7 @@ function chooseCardToPlay(cardId){
 
 function addCardToRow(cardId, typeRowCard, row){
   let newCardsToPlay = [];
+  let newCardsToPlayAfterGroup = [];
   console.log(cardId)
 
   playersCardsToPlay.forEach((playerCard) => {
@@ -609,6 +610,16 @@ function addCardToRow(cardId, typeRowCard, row){
       if(playerCard.ability === 'bond'){
         bondAbility(typeRowCard);
       }
+      if(playerCard.ability === 'group'){
+        const {group} = playerCard
+        groupAbility('player', playersCardsToPlay, playerLeftCardsInDeck, group, typeRowCard);
+
+        playersCardsToPlay.forEach((card) =>{
+          if(group !== card.group){
+            newCardsToPlayAfterGroup.push(card);
+          }
+        });
+      }
 
       if(whoStarts === 'Opponent-pass'){
         whoStarts = 'Opponent-pass';
@@ -617,6 +628,9 @@ function addCardToRow(cardId, typeRowCard, row){
       }
     }
   });
+  if(newCardsToPlayAfterGroup.length !== 0){
+    newCardsToPlay = newCardsToPlayAfterGroup;
+  }
   playersCardsToPlay = newCardsToPlay;
   document.querySelector('.js-player-cards-to-use').innerHTML = '';
   displayCards(playersCardsToPlay, 'no');
@@ -1025,4 +1039,34 @@ function bondAbility(typeRowCard){
       card['value'] = value * bondCardsNumber;
     }
   });
+};
+
+function groupAbility(who, cardsToPlay, cardsLeft, cardGroup, typeRowCard){
+  let number = 0;
+  let newCardsToPlay = [];
+  let newCardsLeft = [];
+  
+  cardsToPlay.forEach((card) =>{
+    if(card.group === cardGroup){
+      number++;
+      if(number > 1){
+        typeRowCard.push(card);
+      }
+    } else if(card.group !== cardGroup){
+      newCardsToPlay.push(card);
+    }
+  });
+
+  cardsLeft.forEach((card) =>{
+    if(card.group === cardGroup){
+      typeRowCard.push(card);
+    } else if(card.group !== cardGroup){
+      newCardsLeft.push(card);
+    }
+  });
+
+  cardsToPlay = newCardsToPlay;
+  cardsLeft = newCardsLeft;
+  console.log(cardsLeft);
+  document.querySelector(`.js-${who}-left-cards`).innerHTML = updateNumberOfCardsLeft(cardsLeft);
 };

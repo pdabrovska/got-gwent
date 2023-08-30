@@ -6,6 +6,7 @@ export let houseTargaryenCards =[
       img: "targaryen/daenerys-targaryen.jpg",
       value: 0,
       ability: "",
+      group: 0,
       type: "leader",
       typeImg: ""
     },
@@ -16,6 +17,7 @@ export let houseTargaryenCards =[
       img: "targaryen/rheanyra-targaryen.jfif",
       value: 0,
       ability: "",
+      group: 0,
       type: "leader",
       typeImg: ""
     },
@@ -26,6 +28,7 @@ export let houseTargaryenCards =[
       img: "targaryen/aegon-the-conqueror.jpg",
       value: 0,
       ability: "",
+      group: 0,
       type: "leader",
       typeImg: ""
     },
@@ -36,6 +39,7 @@ export let houseTargaryenCards =[
       img: "targaryen/daemon-targaryen.jpg",
       value: 9,
       ability: "",
+      group: 0,
       type: "sword",
       typeImg: "sword.png"
     },
@@ -46,6 +50,7 @@ export let houseTargaryenCards =[
       img: "targaryen/drogo.jpg",
       value: 6,
       ability: "",
+      group: 0,
       type: "sword",
       typeImg: "sword.png"
     },
@@ -57,6 +62,7 @@ export let houseTargaryenCards =[
       value: 3,
       ability: "bond",
       abilityImg: 'bond.png',
+      group: 0,
       type: "sword",
       typeImg: "sword.png"
     },
@@ -68,6 +74,7 @@ export let houseTargaryenCards =[
       value: 3,
       ability: "bond",
       abilityImg: 'bond.png',
+      group: 0,
       type: "sword",
       typeImg: "sword.png"
     },
@@ -79,6 +86,7 @@ export let houseTargaryenCards =[
       value: 3,
       ability: "bond",
       abilityImg: 'bond.png',
+      group: 0,
       type: "sword",
       typeImg: "sword.png"
     },
@@ -89,6 +97,7 @@ export let houseTargaryenCards =[
       img: "targaryen/john-snow.jpg",
       value: 8,
       ability: "",
+      group: 0,
       type: "sword",
       typeImg: "sword.png"
     },
@@ -99,6 +108,7 @@ export let houseTargaryenCards =[
       img: "targaryen/targaryen-soldier.jpg",
       value: 5,
       ability: "",
+      group: 0,
       type: "sword",
       typeImg: "sword.png"
     },
@@ -109,6 +119,7 @@ export let houseTargaryenCards =[
       img: "targaryen/targaryen-soldier.jpg",
       value: 5,
       ability: "",
+      group: 0,
       type: "sword",
       typeImg: "sword.png"
     },
@@ -119,6 +130,7 @@ export let houseTargaryenCards =[
       img: "targaryen/unsullied.jpg",
       value: 5,
       ability: 'group',
+      group: 1,
       abilityImg: "group.png",
       type: "sword",
       typeImg: "sword.png"
@@ -130,6 +142,7 @@ export let houseTargaryenCards =[
       img: "targaryen/unsullied.jpg",
       value: 5,
       ability: 'group',
+      group: 1,
       abilityImg: "group.png",
       type: "sword",
       typeImg: "sword.png"
@@ -141,6 +154,7 @@ export let houseTargaryenCards =[
       img: "targaryen/unsullied.jpg",
       value: 5,
       ability: 'group',
+      group: 1,
       abilityImg: "group.png",
       type: "sword",
       typeImg: "sword.png"
@@ -152,6 +166,7 @@ export let houseTargaryenCards =[
       img: "targaryen/rhaegar-targaryen.jpg",
       value: 10,
       ability: "hero",
+      group: 0,
       type: "sword",
       typeImg: "sword.png"
     },
@@ -163,6 +178,7 @@ export let houseTargaryenCards =[
       value: 2,
       ability: 'spy',
       abilityImg: "spy.png",
+      group: 0,
       type: "sword",
       typeImg: "sword.png"
     },
@@ -174,6 +190,7 @@ export let houseTargaryenCards =[
       value: 4,
       ability: "bond",
       abilityImg: 'bond.png',
+      group: 0,
       type: "bow",
       typeImg: "bow.png"
     },
@@ -185,6 +202,7 @@ export let houseTargaryenCards =[
       value: 4,
       ability: "bond",
       abilityImg: 'bond.png',
+      group: 0,
       type: "bow",
       typeImg: "bow.png"
     },
@@ -196,6 +214,7 @@ export let houseTargaryenCards =[
       value: 4,
       ability: "bond",
       abilityImg: 'bond.png',
+      group: 0,
       type: "bow",
       typeImg: "bow.png"
     },
@@ -206,6 +225,7 @@ export let houseTargaryenCards =[
       img: "targaryen/targaryen-archer.jpg",
       value: 2,
       ability: "",
+      group: 0,
       type: "bow",
       typeImg: "bow.png"
     },
@@ -216,6 +236,7 @@ export let houseTargaryenCards =[
       img: "targaryen/targaryen-archer.jpg",
       value: 2,
       ability: "",
+      group: 0,
       type: "bow",
       typeImg: "bow.png"
     },
@@ -227,6 +248,7 @@ export let houseTargaryenCards =[
       value: 4,
       ability: 'support',
       abilityImg: "support.png",
+      group: 0,
       type: "catapult",
       typeImg: "catapult.png"
     },
@@ -237,6 +259,7 @@ export let houseTargaryenCards =[
       img: "targaryen/catapult-weapon.jpg",
       value: 4,
       ability: "",
+      group: 0,
       type: "catapult",
       typeImg: "catapult.png"
     },
@@ -247,6 +270,7 @@ export let houseTargaryenCards =[
       img: "targaryen/catapult-weapon.jpg",
       value: 4,
       ability: "",
+      group: 0,
       type: "catapult",
       typeImg: "catapult.png"
     },
