@@ -15,7 +15,7 @@ displayOpponentLeader();
 
 let playersCardsToPlay = JSON.parse(sessionStorage.getItem('players-cards-to-play'));
 if(!playersCardsToPlay){
-  playersCardsToPlay = chooseCards(4, cardsInDeck);
+  playersCardsToPlay = chooseCards(5, cardsInDeck);
   sessionStorage.setItem('players-cards-to-play', JSON.stringify(playersCardsToPlay));
 }
 let playerLeftCardsInDeck = JSON.parse(sessionStorage.getItem('players-left-cards'));
@@ -25,12 +25,12 @@ if(!playerLeftCardsInDeck){
 }
 let opponentCardsInDeck = JSON.parse(sessionStorage.getItem('opponent-cards-in-deck'));
 if(!opponentCardsInDeck){
-  opponentCardsInDeck = chooseCards(8, JSON.parse(sessionStorage.getItem('opponent-cards')));
+  opponentCardsInDeck = chooseCards(11, JSON.parse(sessionStorage.getItem('opponent-cards')));
   sessionStorage.setItem('opponent-cards-in-deck', JSON.stringify(opponentCardsInDeck));
 }
 let opponentCardsToPlay = JSON.parse(sessionStorage.getItem('opponent-cards-to-play'));
 if(!opponentCardsToPlay){
-  opponentCardsToPlay = chooseCards(4, opponentCardsInDeck);
+  opponentCardsToPlay = chooseCards(5, opponentCardsInDeck);
   sessionStorage.setItem('opponent-cards-to-play', JSON.stringify(opponentCardsToPlay));
 }
 let opponentLeftCardsToPlay = JSON.parse(sessionStorage.getItem('opponent-left-cards-to-play'));

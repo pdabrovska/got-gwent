@@ -2,7 +2,7 @@ export let houseTargaryenCards =[
     {
       id: 'T01l',
       name: 'Daenerys Targaryen',
-      description: 'Mother of Dragons',
+      description: '"Fire cannot kill a dragon."',
       img: "targaryen/daenerys-targaryen.jpg",
       value: 0,
       ability: "",
@@ -13,7 +13,7 @@ export let houseTargaryenCards =[
     {
       id: 'T02l',
       name: 'Rheanyra Targaryen',
-      description: 'Mother of Dragons',
+      description: '“When I\'m queen, I will create a new order.”',
       img: "targaryen/rheanyra-targaryen.jfif",
       value: 0,
       ability: "",
@@ -24,7 +24,7 @@ export let houseTargaryenCards =[
     {
       id: 'T03l',
       name: 'Aegon the Conqueror',
-      description: 'Mother of Dragons',
+      description: '"A king should never sit easy"',
       img: "targaryen/aegon-the-conqueror.jpg",
       value: 0,
       ability: "",
@@ -35,7 +35,7 @@ export let houseTargaryenCards =[
     {
       id: 'T01s',
       name: 'Daemon Targaryen',
-      description: 'Prince Daemon Targaryen',
+      description: '',
       img: "targaryen/daemon-targaryen.jpg",
       value: 9,
       ability: "",
@@ -46,7 +46,7 @@ export let houseTargaryenCards =[
     {
       id: 'T02s',
       name: 'Drogo',
-      description: 'Prince Daemon Targaryen',
+      description: '',
       img: "targaryen/drogo.jpg",
       value: 6,
       ability: "",
@@ -57,7 +57,7 @@ export let houseTargaryenCards =[
     {
       id: 'T03s',
       name: 'Dothraki warrior',
-      description: 'Prince Daemon Targaryen',
+      description: 'Place next to a card with the same name to double the strength of both',
       img: "targaryen/dothraki-warrior.jpg",
       value: 3,
       ability: "bond",
@@ -69,7 +69,7 @@ export let houseTargaryenCards =[
     {
       id: 'T04s',
       name: 'Dothraki warrior',
-      description: 'Prince Daemon Targaryen',
+      description: 'Place next to a card with the same name to double the strength of both',
       img: "targaryen/dothraki-warrior.jpg",
       value: 3,
       ability: "bond",
@@ -81,7 +81,7 @@ export let houseTargaryenCards =[
     {
       id: 'T05s',
       name: 'Dothraki warrior',
-      description: 'Prince Daemon Targaryen',
+      description: 'Place next to a card with the same name to double the strength of both',
       img: "targaryen/dothraki-warrior.jpg",
       value: 3,
       ability: "bond",
@@ -93,7 +93,7 @@ export let houseTargaryenCards =[
     {
       id: 'T06s',
       name: 'John Snow',
-      description: 'Prince Daemon Targaryen',
+      description: '',
       img: "targaryen/john-snow.jpg",
       value: 8,
       ability: "",
@@ -104,7 +104,7 @@ export let houseTargaryenCards =[
     {
       id: 'T07s',
       name: 'Targaryen Soldier',
-      description: 'Prince Daemon Targaryen',
+      description: '',
       img: "targaryen/targaryen-soldier.jpg",
       value: 5,
       ability: "",
@@ -115,7 +115,7 @@ export let houseTargaryenCards =[
     {
       id: 'T08s',
       name: 'Targaryen Soldier',
-      description: 'Prince Daemon Targaryen',
+      description: '',
       img: "targaryen/targaryen-soldier.jpg",
       value: 5,
       ability: "",
@@ -138,7 +138,7 @@ export let houseTargaryenCards =[
     {
       id: 'T10s',
       name: 'The Unsullied Soldier',
-      description: 'Prince Daemon Targaryen',
+      description: 'Go through your deck, find any cards with the same name and play them immediately',
       img: "targaryen/unsullied.jpg",
       value: 5,
       ability: 'group',
@@ -150,7 +150,7 @@ export let houseTargaryenCards =[
     {
       id: 'T11s',
       name: 'The Unsullied Soldier',
-      description: 'Prince Daemon Targaryen',
+      description: 'Go through your deck, find any cards with the same name and play them immediately',
       img: "targaryen/unsullied.jpg",
       value: 5,
       ability: 'group',
@@ -162,10 +162,10 @@ export let houseTargaryenCards =[
     {
       id: 'T12s',
       name: 'Rhaegar Targaryen',
-      description: 'Prince Daemon Targaryen',
+      description: '',
       img: "targaryen/rhaegar-targaryen.jpg",
       value: 10,
-      ability: "hero",
+      ability: "",
       group: 0,
       type: "sword",
       typeImg: "sword.png"
@@ -173,7 +173,7 @@ export let houseTargaryenCards =[
     {
       id: 'T13s',
       name: 'Viserys III Targaryen',
-      description: 'Prince Daemon Targaryen',
+      description: "Place on your opponent's battlefied(counts towards your opponent's total) and draw 2 cards from your deck",
       img: "targaryen/viserys-III-targaryen.jpg",
       value: 2,
       ability: 'spy',
@@ -185,7 +185,7 @@ export let houseTargaryenCards =[
     {
       id: 'T01b',
       name: 'Drogon',
-      description: 'Mother of Dragons',
+      description: 'Place next to a card with the same name to double the strength of both',
       img: "targaryen/drogon.jpg",
       value: 4,
       ability: "bond",
@@ -197,7 +197,7 @@ export let houseTargaryenCards =[
     {
       id: 'T02b',
       name: 'Viserion',
-      description: 'Mother of Dragons',
+      description: 'Place next to a card with the same name to double the strength of both',
       img: "targaryen/viserion.jpg",
       value: 4,
       ability: "bond",
@@ -209,7 +209,7 @@ export let houseTargaryenCards =[
     {
       id: 'T03b',
       name: 'Rhaegal',
-      description: 'Mother of Dragons',
+      description: 'Place next to a card with the same name to double the strength of both',
       img: "targaryen/rhaegal.jpg",
       value: 4,
       ability: "bond",
@@ -221,7 +221,7 @@ export let houseTargaryenCards =[
     {
       id: 'T04b',
       name: 'Targeryan archer',
-      description: 'Mother of Dragons',
+      description: '',
       img: "targaryen/targaryen-archer.jpg",
       value: 2,
       ability: "",
@@ -232,7 +232,7 @@ export let houseTargaryenCards =[
     {
       id: 'T05b',
       name: 'Targeryan archer',
-      description: 'Mother of Dragons',
+      description: '',
       img: "targaryen/targaryen-archer.jpg",
       value: 2,
       ability: "",
@@ -243,10 +243,10 @@ export let houseTargaryenCards =[
     {
       id: 'T01c',
       name: 'Viserys Targaryen',
-      description: 'Queen Rhaenyra Targaryen is the daughter',
+      description: '',
       img: "targaryen/viserys-targaryen.jpg",
       value: 4,
-      ability: 'support',
+      ability: '',
       abilityImg: "support.png",
       group: 0,
       type: "catapult",
@@ -255,7 +255,7 @@ export let houseTargaryenCards =[
     {
       id: 'T02c',
       name: 'Catapult',
-      description: 'Queen Rhaenyra Targaryen is the daughter',
+      description: '',
       img: "targaryen/catapult-weapon.jpg",
       value: 4,
       ability: "",
@@ -266,7 +266,7 @@ export let houseTargaryenCards =[
     {
       id: 'T03c',
       name: 'Catapult',
-      description: 'Queen Rhaenyra Targaryen is the daughter',
+      description: '',
       img: "targaryen/catapult-weapon.jpg",
       value: 4,
       ability: "",

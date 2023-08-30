@@ -131,6 +131,15 @@ html::before{
   outline: 4px inset  rgb(185, 136, 63);
 }
 
+.card-wheel .card-name{
+  font-size: 14px;
+}
+
+.card-wheel .card-description{
+  margin-top: 4px;
+  font-size: 12px;
+}
+
 .non-active-use{
   position: absolute;
   top: 0;

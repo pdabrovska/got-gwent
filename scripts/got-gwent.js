@@ -451,21 +451,21 @@ function updateCardCount(){
     cardsInDeckNumber++;
   });
 
-  if(cardsInDeckNumber >= 8){
+  if(cardsInDeckNumber >= 10){
     document.querySelector('.js-cards-count').classList.add('cards-count-is-enough');
     document.getElementById("cards-count-img").src="images/icons/cards.png";
 
     document.querySelector('.js-play-button').addEventListener('click', () =>{
       playGame();
     });
-  } else if(cardsInDeckNumber <8){
+  } else if(cardsInDeckNumber <10){
     document.querySelector('.js-cards-count').classList.remove('cards-count-is-enough');
     document.querySelector('.js-play-button').addEventListener('click', () =>{
-      alert('The cards in deck number has to be equal or greater than 8.');
+      alert('The cards in deck number has to be equal or greater than 10.');
     });
   }
 
-  document.querySelector('.js-cards-count').innerHTML = `${cardsInDeckNumber}/8`;
+  document.querySelector('.js-cards-count').innerHTML = `${cardsInDeckNumber}/10`;
   return cardsInDeckNumber;
 };
 
