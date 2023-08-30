@@ -606,6 +606,11 @@ function addCardToRow(cardId, typeRowCard, row){
       newCardsToPlay.push(playerCard);
     } else if(id === cardId){
       typeRowCard.push(playerCard);
+      
+      if(playerCard.ability === 'bond'){
+        bondAbility(typeRowCard);
+      }
+
       if(whoStarts === 'Opponent-pass'){
         whoStarts = 'Opponent-pass';
       }else{
@@ -997,3 +1002,19 @@ function restart(){
     sessionStorage.removeItem('opponent-left-cards-to-play');
 };
 
+function bondAbility(typeRowCard){
+  let bondCardsNumber = 0;
+  typeRowCard.forEach((card)=>{
+    let {ability} = card;
+    if(ability === 'bond'){
+      bondCardsNumber++
+    }
+  });
+
+  typeRowCard.forEach((card)=>{
+    let {ability, value} = card;
+    if(ability === 'bond'){
+      card['value'] = value * bondCardsNumber;
+    }
+  });
+};
