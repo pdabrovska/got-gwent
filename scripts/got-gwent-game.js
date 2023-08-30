@@ -685,6 +685,7 @@ function opponentMove(){
     }
 
     let newOpponentCards = [];
+    let newCardsToPlayAfterGroup = [];
     const chosenCardArray = chooseCards(1, opponentCardsToPlay);
     let chosenCard = chosenCardArray[0];
 
@@ -700,6 +701,20 @@ function opponentMove(){
       if(chosenCard.ability === 'bond'){
         bondAbility(opponentSwordRow);
       }
+
+      if(chosenCard.ability === 'group'){
+        const {group} = chosenCard
+        groupAbility('opponent', opponentCardsToPlay, opponentLeftCardsToPlay, group, opponentSwordRow);
+
+        opponentCardsToPlay.forEach((card) =>{
+          if(group !== card.group){
+            newCardsToPlayAfterGroup.push(card);
+          }
+        });
+
+        opponentCardsToPlay = newCardsToPlayAfterGroup;
+      }
+
       displayCards(opponentSwordRow, 'sword-row-opponent');
       countPoints(opponentSwordRow);
       
@@ -708,6 +723,20 @@ function opponentMove(){
       if(chosenCard.ability === 'bond'){
         bondAbility(opponentBowRow);
       }
+
+      if(chosenCard.ability === 'group'){
+        const {group} = chosenCard
+        groupAbility('opponent', opponentCardsToPlay, opponentLeftCardsToPlay, group, opponentBowRow);
+
+        opponentCardsToPlay.forEach((card) =>{
+          if(group !== card.group){
+            newCardsToPlayAfterGroup.push(card);
+          }
+        });
+
+        opponentCardsToPlay = newCardsToPlayAfterGroup;
+      }
+
       displayCards(opponentBowRow, 'bow-row-opponent');
       countPoints(opponentBowRow);
     } else if(chosenCard.type === 'catapult'){
@@ -715,6 +744,20 @@ function opponentMove(){
       if(chosenCard.ability === 'bond'){
         bondAbility(opponentCatapultRow);
       }
+
+      if(chosenCard.ability === 'group'){
+        const {group} = chosenCard
+        groupAbility('opponent', opponentCardsToPlay, opponentLeftCardsToPlay, group, opponentCatapultRow);
+
+        opponentCardsToPlay.forEach((card) =>{
+          if(group !== card.group){
+            newCardsToPlayAfterGroup.push(card);
+          }
+        });
+
+        opponentCardsToPlay = newCardsToPlayAfterGroup;
+      }
+
       displayCards(opponentCatapultRow, 'catapult-row-opponent');
       countPoints(opponentCatapultRow);
     }
