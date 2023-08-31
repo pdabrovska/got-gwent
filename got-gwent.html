@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/got-gwent.css">
     <link rel="stylesheet" href="styles/got-gwent-css/cards-collection.css">
     <link rel="stylesheet" href="styles/got-gwent-css/start-setup.css">
+    <link rel="stylesheet" href="styles/got-gwent-css/instructions.css">
     <link rel="stylesheet" href="styles/got-gwent-css/scrollbar.css">
     <link rel="stylesheet" href="styles/got-gwent-css/wheel-card.css">
   </head>
@@ -20,7 +21,12 @@
             Start
             </a>
           </button>
-          <button class="option-button">How to play</button>
+          <button class="option-button
+          js-button-instructions">
+            <a href="#action-screen">
+            How to play
+            </a>
+          </button>
           <button class="option-button js-button-decks">
             <a href="#action-screen">
             Decks of cards
@@ -28,7 +34,8 @@
           </button>
         </div>
       </div>
-      <div class="action-screen" id="action-screen"></div>
+      <div class="action-screen" id="action-screen">
+      </div>
     </div>
     <script type="module" src="scripts/got-gwent.js"></script>
   </body>

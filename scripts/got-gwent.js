@@ -2,10 +2,13 @@ import { houseLannisterCards, houseLannisterInfo, houseStarkInfo } from "../data
 import {houseTargaryenCards, houseTargaryenInfo } from "../data/targaryen-cards.js";
 import {generateCardsCollectionMenu,generateCardsCollection} from "./utils/cards-collection.js";
 import {cardsInDeck, removeCard, resetCardsInDeck} from "../data/cards-in-deck.js";
+import { instructions } from "./utils/instruction.js";
 
 const cardsCollection = [houseLannisterInfo, houseTargaryenInfo];
 
 const buttonElementStart = document.querySelector('.js-button-start');
+
+const buttonElementInstructions = document.querySelector('.js-button-instructions');
 
 const buttonElementDecks = document.querySelector('.js-button-decks');
 
@@ -36,6 +39,10 @@ buttonElementStart.addEventListener('click', ()=>{
   `
   divElement.innerHTML = menuHTML;
   addSetting();
+});
+
+buttonElementInstructions.addEventListener('click', () =>{
+  divElement.innerHTML = instructions();
 });
 
 buttonElementDecks.addEventListener('click', ()=>{

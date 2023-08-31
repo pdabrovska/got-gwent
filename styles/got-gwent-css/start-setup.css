@@ -2,6 +2,10 @@ html{
   scroll-behavior: smooth;
 }
 
+.setup-menu{
+  min-height: 700px;
+}
+
 .settings-form{
   display: flex;
   flex-direction: column;

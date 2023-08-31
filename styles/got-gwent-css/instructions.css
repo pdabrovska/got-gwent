@@ -1,0 +1,57 @@
+.instructions-container{
+  height: 92vh;
+  overflow-y: scroll;
+  font-size: 14px;
+  background-color: rgba(28, 23, 18, 0.919);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin: 15px 15px 15px 0px;
+}
+
+.opening{
+  color: wheat;
+  letter-spacing: 1px;
+}
+
+.images{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#player-instruction{
+  max-width: 325px;
+  height: auto;
+}
+
+#card-instruction{
+  max-width: 325px;
+  height: auto;
+}
+
+.ability{
+  display: flex;
+  align-items: center;
+}
+
+.ability-img{
+  margin-right: 10px;
+  background-color: rgb(249, 238, 231);
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spy{
+  width: 50px;
+}
+
+.ability-img img{
+  width: 30px;
+  height: 30px;
+}

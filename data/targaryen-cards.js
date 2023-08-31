@@ -126,7 +126,7 @@ export let houseTargaryenCards =[
     {
       id: 'T09s',
       name: 'The Unsullied Soldier',
-      description: 'Prince Daemon Targaryen',
+      description: 'Goes through your deck, finds any cards with the same name and plays them immediately',
       img: "targaryen/unsullied.jpg",
       value: 5,
       ability: 'group',
@@ -138,7 +138,7 @@ export let houseTargaryenCards =[
     {
       id: 'T10s',
       name: 'The Unsullied Soldier',
-      description: 'Go through your deck, find any cards with the same name and play them immediately',
+      description: 'Goes through your deck, finds any cards with the same name and plays them immediately',
       img: "targaryen/unsullied.jpg",
       value: 5,
       ability: 'group',
@@ -150,7 +150,7 @@ export let houseTargaryenCards =[
     {
       id: 'T11s',
       name: 'The Unsullied Soldier',
-      description: 'Go through your deck, find any cards with the same name and play them immediately',
+      description: 'Goes through your deck, finds any cards with the same name and plays them immediately',
       img: "targaryen/unsullied.jpg",
       value: 5,
       ability: 'group',
