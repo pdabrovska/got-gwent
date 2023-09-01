@@ -423,12 +423,14 @@ function playGame(){
     hideMessageWindow(1800);
     setTimeout(()=>{
       opponentMove();
+    }, 1500);
+    setTimeout(()=>{
       playGame();
-    }, 1800);
+    }, 3800);
     document.querySelector('.js-active-use').classList.add('non-active-use');
     setTimeout(()=>{
       document.querySelector('.js-active-use').classList.remove('non-active-use');
-    }, 1900);
+    }, 3800);
   }
   if(whoStarts === 'Player-pass'){
     document.querySelector('.opponent-profile').classList.add('active-player');
