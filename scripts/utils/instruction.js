@@ -4,6 +4,7 @@ export function instructions(){
           <div class="opening">
             <p>Introduction</p>
             <p>
+              The inspiration for this project were two great brands - 'The Witcher' and 'Game of Thrones'. Game of Thrones Gwent is not a commercial project.<br><br>
               Gwent is a game where two armies lock in mortal struggle on the field of battle. The goal is to win two battles against the opponent. Wins are tallied in crowns, shown to the left of each player's field strength. With each defeat opponent loses one crown (and so do you).
             </p>
             <p>Rules</p>

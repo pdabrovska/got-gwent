@@ -51,10 +51,11 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:center;
+  justify-content:space-between;
 }
 
 .menu-options{
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,4 +88,19 @@ body{
 
 .cards-selection .cards-menu{
   display: flex;
+}
+
+.copyright{
+  width: calc(100% - 10px);
+  display: flex;
+  align-items: center;
+}
+
+.copyright p{
+  margin: 0;
+}
+
+.copyright img{
+  width: 30px;
+  height: 30px;
 }
