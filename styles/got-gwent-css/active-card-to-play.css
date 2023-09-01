@@ -1,9 +1,4 @@
-.active-card-to-play img{
-  width: 120px;
-  height: 170px;
-}
-
-.active-card-to-play{
+.active-card-to-play img, .active-card-to-play{
   width: 120px;
   height: 170px;
 }
@@ -31,4 +26,52 @@
 
 .active-card-to-play:hover{
   outline: none;
+}
+
+@media only screen and (max-width: 1028px){
+  .active-card-to-play img, .active-card-to-play{
+    width: 70px;
+    height: 122px;
+  }
+
+  .active-card-to-play .card-attribute-img, .active-card-to-play .card-ability-img{
+    width: 14px;
+    height: 14px;
+    padding: 2px 0px;
+  }
+  
+  .active-card-to-play .card-type, .active-card-to-play .card-ability{
+    width: 18px;
+    height: 18px;
+  }
+  
+  .active-card-to-play .card-value-container{
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  .active-card-to-play img, .active-card-to-play{
+    width: 50px;
+    height: 78px;
+  }
+
+  .active-card-to-play .card-attribute-img, .active-card-to-play .card-ability-img{
+    width: 11px;
+    height: 11px;
+    padding: 2px 0px;
+  }
+  
+  .active-card-to-play .card-type, .active-card-to-play .card-ability{
+    width: 14px;
+    height: 14px;
+  }
+  
+  .active-card-to-play .card-value-container{
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+  }
 }

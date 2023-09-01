@@ -15,6 +15,10 @@
   border: 3px outset rgba(175, 106, 32, 0.8);
 }
 
+.opponent-profile{
+  margin-bottom: 140px;
+}
+
 .active-player{
   border: 4px outset rgba(248, 146, 37, 0.8);
   box-shadow: 3px 3px 10px 4px rgba(111, 72, 31, 0.8);

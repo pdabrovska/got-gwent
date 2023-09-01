@@ -67,3 +67,38 @@
 .bond-active .card-value{
   color: orange;
 }
+
+@media only screen and (max-width: 745px){
+  .card{
+    border-radius: 5px;
+    height: 67px;
+  }
+  
+  .card-image{
+    border-radius: 5px;
+    width: 45px;
+    height: 67px;
+  }
+
+  .card-value-container{
+    font-size: 11px;
+    width: 13px;
+    height: 13px;
+  }
+
+  .card-attribute-img, .card-ability-img{
+    width: 10px;
+    height: 10px;
+  }
+  
+  .card-attributes-container{
+    bottom: 2px;
+    right: 1px;
+  }
+  
+  .card-type, .card-ability{
+    width: 10px;
+    height: 10px;
+    margin-left: 1px;
+  }
+}

@@ -15,7 +15,7 @@ const buttonElementDecks = document.querySelector('.js-button-decks');
 const divElement = document.querySelector('.action-screen');
 
 buttonElementStart.addEventListener('click', ()=>{
-  //sessionStorage.removeItem('cards-in-deck');
+  resetCardsInDeck();
   const menuHTML = `
   <div class="setup-menu">
     <form class="settings-form">
@@ -79,7 +79,6 @@ function addSetting(){
 };
 
 function chooseLeader(fraction){
-
   let leadersHTML = '';
   let cardsName;
   if(fraction === 'house-lannister'){
@@ -116,7 +115,6 @@ function chooseLeader(fraction){
       onclickEvent++;
       if(onclickEvent <= 1){
         displayCardsMenu(cardsName);
-        //sessionStorage.setItem('leader', JSON.stringify());
       }
     });
   });

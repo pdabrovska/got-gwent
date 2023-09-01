@@ -1,0 +1,294 @@
+@media only screen and (max-width: 972px){
+  .window{
+  display: grid;
+  grid-template-rows: 1fr 30px;
+}
+  .game-window{
+  margin: 0;
+  display: grid;
+  grid-template-columns: 205px 6fr 1fr;
+  column-gap: 1px;
+  }
+
+  .players-panel{
+    margin-right: 25px;
+  }
+
+  .opponent-profile{
+    margin-bottom: 170px;
+  }
+
+  .opponent-profile, .player-profile{
+    height: 70px;
+    width: 170px;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+  }
+  .profile-image{
+    width: 55px;
+    height: 55px;
+    border-radius: 100px;
+  }
+
+  .player-info{
+    grid-template-rows: 20px 1fr;
+  }
+
+  .player-name{
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 2px;
+    margin-bottom: 0;
+  }
+
+  .card-decks-type{
+    font-size: 12px;
+    margin-top: 3px;
+  }
+  
+  .player-stats{
+    display: flex;
+    column-gap: 10px;
+  }
+
+  .remaining-cards-img{
+    width: 18px;
+    height: 18px;
+  }
+  
+  .remaining-life-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+  }
+
+  .opponent-points-container, .player-points-container{
+    font-size: 15px;
+    width: 30px;
+    height: 30px;
+    top: 20px;
+  }
+
+  .pass-option{
+    top: -32px;
+    left: 2px;
+    right: 2px;
+  }
+
+  .active-player{
+    border: 4px outset rgba(241, 177, 57, 0.874);
+  }
+
+  .opponent-board, .player-board{
+    min-width: 452px;
+  }
+
+  .boards{
+    margin-top: 10px;
+  }
+
+  .board-row{
+    column-gap: 3px;
+    padding: 1px 20px;
+  }
+
+  .player-cards-to-use{
+    min-width: 452px;
+  }
+
+  .right-section{
+    margin-top: 40px;
+  }
+
+  .cards{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .opponent-crest, .player-crest, .card-decks{
+    width: 55px;
+    height: 97px;
+  }
+
+  .player-cards, .opponent-cards{
+    display: flex;
+    column-gap: 30px;
+    align-items: start;
+    margin-bottom: 40px;
+  }
+
+  .card-decks{
+    margin: 0 4px;
+  }
+
+  .card-decks div{
+    bottom: 0;
+    right: 26%;
+  }
+
+  .exit-button{
+    position: absolute;
+    top: -35px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(95, 53, 16);
+    color: rgb(241, 226, 218);
+  }
+  
+}
+
+@media only screen and (max-width: 745px){
+  .window{
+  display: grid;
+  grid-template-rows: 1fr 30px;
+}
+  .game-window{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  }
+
+  .players-panel{
+    min-height: 105px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .opponent-profile{
+    margin-right: 18px;
+    margin-bottom: 0;
+  }
+
+  .opponent-profile, .player-profile{
+    height: 65px;
+    width: 170px;
+    grid-template-columns: 64px 1fr;
+  }
+  .profile-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+  }
+
+  .player-info{
+    display: grid;
+    grid-template-rows: 20px 1fr;
+    row-gap: 6px;
+  }
+
+  .player-name{
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 2px;
+    margin-bottom: 0;
+  }
+
+  .card-decks-type{
+    font-size: 12px;
+    margin-top: 3px;
+  }
+  
+  .player-stats{
+    display: flex;
+    column-gap: 10px;
+  }
+
+  .remaining-cards-img{
+    width: 18px;
+    height: 18px;
+  }
+  
+  .remaining-life-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+  }
+
+  .opponent-points-container, .player-points-container{
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    right: -17px;
+    top: 24px;
+  }
+
+  .pass-option{
+    top: 70px;
+    left: 2px;
+    right: 2px;
+  }
+
+  .active-player{
+    border: 3px outset rgba(241, 177, 57, 0.874);
+  }
+
+  .opponent-board, .player-board{
+    min-width: 452px;
+    grid-template-rows: 70px 70px 70px;
+  }
+
+  .board-row{
+    height: 68px;
+    column-gap: 3px;
+  }
+
+  .row-points-container{
+    width: 34px;
+    height: 34px;
+  }
+
+  .row-to-choose:hover{
+    height: 66px;
+  }
+
+  .player-cards-to-use{
+    min-width: 452px;
+    min-height: 68px;
+  }
+
+  .right-section{
+    margin: 0;
+  }
+
+  .cards{
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    margin: 5px 0;
+  }
+
+  .opponent-crest, .player-crest, .card-decks{
+    width: 45px;
+    height: 70px;
+  }
+
+  .player-cards, .opponent-cards{
+    display: flex;
+    column-gap: 30px;
+    align-items: start;
+    margin-bottom: 40px;
+  }
+
+  .card-decks{
+    margin: 0 4px;
+  }
+
+  .card-decks div{
+    bottom: 0;
+    right: 22%;
+  }
+
+  .exit-button{
+    position: absolute;
+    top: -620px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+  }
+}

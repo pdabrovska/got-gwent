@@ -81,7 +81,7 @@ html::before{
   position: relative;
   margin-top: 18px;
   display: grid;
-  grid-template-columns: 220px 1fr 220px;
+  grid-template-columns: 220px 6fr 1fr;
   column-gap: 40px;
 }
 
@@ -90,9 +90,14 @@ html::before{
   position: absolute;
   background-color: rgba(108, 88, 66, 0.7);
   padding: 8px;
-  top: 25%;
+  top: 20%;
   right: 0;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 110vw;
+  /*overflow: auto;*/
 }
 
 .display-cards-container p{
@@ -102,10 +107,16 @@ html::before{
 }
 
 .display-cards{
+  max-width: 1000px;
+  padding: 5px 0;
+  position: relative;
+  overflow-x: auto;
   display: flex;
   column-gap: 15px;
   justify-content: center;
+  overflow: auto;
 }
+
 .display-cards-non-visible{
   display: none;
 }
