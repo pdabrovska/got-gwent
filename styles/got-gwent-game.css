@@ -97,7 +97,6 @@ html::before{
   flex-direction: column;
   align-items: center;
   max-width: 110vw;
-  /*overflow: auto;*/
 }
 
 .display-cards-container p{
@@ -106,15 +105,17 @@ html::before{
   margin-top: 10px;
 }
 
+.inner{
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
 .display-cards{
-  max-width: 1000px;
   padding: 5px 0;
   position: relative;
-  overflow-x: auto;
   display: flex;
   column-gap: 15px;
-  justify-content: center;
-  overflow: auto;
+  justify-content:start
 }
 
 .display-cards-non-visible{

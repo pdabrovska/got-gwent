@@ -32,3 +32,16 @@
   background-color: rgba(99, 70, 39, 0.952);
   width: 15px;
 }
+
+.inner::-webkit-scrollbar{
+  background-color: rgba(108, 88, 66, 0.3);
+  margin-top: 3px;
+  height: 10px;
+}
+
+.inner::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color: rgba(59, 42, 25, 0.952);
+  margin-top: 3px;
+  height: 10px;
+}

@@ -3,6 +3,7 @@
   display: grid;
   grid-template-rows: 1fr 30px;
 }
+
   .game-window{
   margin: 0;
   display: grid;
@@ -141,6 +142,7 @@
   }
   
 }
+
 
 @media only screen and (max-width: 745px){
   .window{
