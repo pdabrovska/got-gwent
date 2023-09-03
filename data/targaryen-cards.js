@@ -14,7 +14,7 @@ export let houseTargaryenCards =[
       id: 'T02l',
       name: 'Rheanyra Targaryen',
       description: '“When I\'m queen, I will create a new order.”',
-      img: "targaryen/rheanyra-targaryen.jfif",
+      img: "targaryen/rheanyra-targaryen.jpg",
       value: 0,
       ability: "",
       group: 0,

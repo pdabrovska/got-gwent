@@ -29,6 +29,10 @@ body{
     padding: 0 10px;
     /*min-height: 700px;*/
   }
+
+  .background::before{
+    background-image: url("../images/backgrounds/background-image-mobile.jpg");
+  }
 }
 
 .background::before{

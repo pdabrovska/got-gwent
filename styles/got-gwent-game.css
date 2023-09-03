@@ -12,6 +12,8 @@ body{
   font-family: Arial;
 }
 
+
+
 html::before{
   content: "";
   background-image: url("../images/backgrounds/background-image2.jpg");
@@ -24,6 +26,12 @@ html::before{
   bottom: 0px;
   left: 0px;
   opacity: 0.9;
+}
+
+@media only screen and (max-width: 860px){
+  html::before{
+    background-image: url("../images/backgrounds/background-image2-mobile.jpg");
+  }
 }
 
 .window{

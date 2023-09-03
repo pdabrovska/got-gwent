@@ -1,5 +1,5 @@
 @media only screen and (max-width: 972px){
-  .window{
+.window{
   display: grid;
   grid-template-rows: 1fr 30px;
 }
