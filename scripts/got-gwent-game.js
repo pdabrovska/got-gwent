@@ -1073,7 +1073,7 @@ function winnerMessage(who){
 
   document.querySelector('.js-go-to-menu').addEventListener('click', () =>{
     sessionStorage.removeItem('cards-in-deck');
-    window.location.replace( "./got-gwent.html");
+    window.location.replace( "./index.html");
   });
 
   document.querySelector('.js-restart').addEventListener('click', () =>{
@@ -1111,7 +1111,7 @@ document.querySelector('.js-exit-button').addEventListener('click', () =>{
 
   document.querySelector('.js-go-to-menu').addEventListener('click', () =>{
     sessionStorage.removeItem('cards-in-deck');
-    window.location.replace( "./got-gwent.html");
+    window.location.replace( "./index.html");
   });
 
   document.querySelector('.js-restart').addEventListener('click', () =>{
