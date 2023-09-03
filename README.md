@@ -7,17 +7,37 @@ Gwent is a game where two armies lock in a mortal struggle on the field of battl
 ## Demo link:
 Access my site at https://pdabrovska.github.io/got-gwent/
 ## Table of Content:
-<a href="#about-the-app">About the App</a>
-<a href="#screenshots">Screenshots</a>
-<a href="#technologies">Technologies</a>
-<a href="#approach">Approach</a>
-<a href="#status">Status</a>
-<a href="#license">License</a>
+<ul>
+  <li>
+    <a href="#about-the-app">About the App</a>
+  </li>
+  <li>
+    <a href="#screenshots">Screenshots</a>
+  </li>
+  <li>
+    <a href="#technologies">Technologies</a>
+  </li>
+  <li>
+    <a href="#approach">Approach</a>
+  </li>
+  <li>
+    <a href="#status">Status</a>
+  </li>
+  <li>
+    <a href="#license">License</a>
+  </li>
+</ul>
+
 ## About The Project
 The main goal of this project was to build an app with vanilla JavaScript. It also shows a little bit about me, as I am a huge fan of 'The Witcher' and 'Game of Thrones'. Although there were some challenges, the overall process taught me a lot.
 ## Screenshots
 
+<img src="/images/Screenshots/screenshot(4).png" width="130" height="80">
+<img src="/images/Screenshots/screenshot(1).png" width="130" height="80">
+<img src="/images/Screenshots/screenshot(3).png" width="130" height="80">
+![Redraw cards screen](/images/Screenshots/screenshot(4).png)
 ![Redraw cards screen](/images/Screenshots/screenshot(1).png)
+![Redraw cards screen](/images/Screenshots/screenshot(3).png)
 
 ## Technologies
 I used: html, css, Javascript, Visual Studio Code, Figma.
