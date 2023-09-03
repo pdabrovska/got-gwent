@@ -944,16 +944,11 @@ function whoWinsRound(){
     if(playerLosses === 2){
       console.log('player losses = 2')
       winnerMessage('Opponent');
-      /*
-      document.querySelector('.js-winner-message-window').innerHTML = `<p>Opponent</p>`;
-      document.querySelector('.js-winner-message-window').classList.remove('display-none');
-      */
     } else{
       displayMessageWindow('Opponent won this round');
       hideMessageWindow(1800);
       setTimeout(()=>{
         restartBoard();
-        //whichRound++;
         whoStarts = 'Opponent';
       }, 1800);
     }
@@ -973,19 +968,9 @@ function whoWinsRound(){
       hideMessageWindow(1800);
       setTimeout(()=>{
         restartBoard();
-        //whichRound++;
         whoStarts = 'Player';
       }, 1800);
     }
-/*
-    displayMessageWindow('You won this round');
-    hideMessageWindow(1800);
-    setTimeout(()=>{
-      restartBoard();
-      //whichRound++;
-      whoStarts = 'Player';
-    }, 1800);
-    */
   }
   if(opponentPoints === playerPoints){
     console.log('Tie');
@@ -1004,19 +989,9 @@ function whoWinsRound(){
       hideMessageWindow(1800);
       setTimeout(()=>{
         restartBoard();
-        //whichRound++;
         whoStarts = 'Player';
       }, 1800);
     }
-    /*
-    displayMessageWindow('Tie');
-    hideMessageWindow(1800);
-    setTimeout(()=>{
-      restartBoard();
-      //whichRound++;
-      whoStarts = 'Player';
-    }, 1800);
-    */
   }
 };
 
@@ -1054,17 +1029,41 @@ function restartBoard(){
 function winnerMessage(who){
   if(who === 'Tie'){
     document.querySelector('.js-winner-message-window').innerHTML = `<p>Tie</p>
-    <div>
-    <button class="js-go-to-menu">Go to menu</button>
-    <button class="js-restart">Restart</button>
+    <div class="buttons">
+      <div class="go-to-menu-container">
+        <button class="js-go-to-menu">Go to menu</button>
+          <div class="tooltip-info">
+            <p>i</p>
+            <div class="tooltip">All the settings will be delated.</div>
+          </div>
+      </div>
+      <div class="restart-container">
+        <button class="js-restart">Restart</button>
+        <div class="tooltip-info">
+            <p>i</p>
+            <div class="tooltip">New cards to play will be generated for you and opponent will change too.</div>
+          </div>
+      </div>
     </div>
   `;
   }
   if(who === 'Opponent' || who === 'Player'){
     document.querySelector('.js-winner-message-window').innerHTML = `<p>${who} won</p>
-    <div>
-      <button class="js-go-to-menu">Go to menu</button>
-      <button class="js-restart">Restart</button>
+    <div class="buttons">
+      <div class="go-to-menu-container">
+        <button class="js-go-to-menu">Go to menu</button>
+          <div class="tooltip-info">
+            <p>i</p>
+            <div class="tooltip">All the settings will be delated.</div>
+          </div>
+      </div>
+      <div class="restart-container">
+        <button class="js-restart">Restart</button>
+        <div class="tooltip-info">
+            <p>i</p>
+            <div class="tooltip">New cards to play will be generated for you and opponent will change too.</div>
+          </div>
+      </div>
     </div>
   `;
   }
@@ -1092,9 +1091,21 @@ document.querySelector('.js-exit-button').addEventListener('click', () =>{
   `<div class="close-exit-container">
     <button class="js-close-exit close-exit-button">X</button>
     </div>
-    <div>
-      <button class="js-go-to-menu">Go to menu</button>
-      <button class="js-restart">Restart</button>
+    <div class="buttons">
+      <div class="go-to-menu-container">
+        <button class="js-go-to-menu">Go to menu</button>
+          <div class="tooltip-info">
+            <p>i</p>
+            <div class="tooltip">All the settings will be delated.</div>
+          </div>
+      </div>
+      <div class="restart-container">
+        <button class="js-restart">Restart</button>
+        <div class="tooltip-info">
+            <p>i</p>
+            <div class="tooltip">New cards to play will be generated for you and opponent will change too.</div>
+          </div>
+      </div>
     </div>
   `;
 
