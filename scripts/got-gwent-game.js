@@ -908,7 +908,6 @@ function playerPass(){
   function execMouseDown() {
     passCount++;
     if(passCount <2){
-      console.log(40)
       passButton.style.display = "none";
       document.querySelector('.js-player-pass-message').style.display = "flex";
       if (whoStarts === 'Opponent-pass'){
@@ -923,6 +922,8 @@ function playerPass(){
 
   passButton.addEventListener('mousedown', mouseDown);
   document.body.addEventListener("mouseup", mouseUp);
+  passButton.addEventListener('touchstart', mouseDown);
+  document.body.addEventListener("touchend", mouseUp);
 };
 
 function whoWinsRound(){

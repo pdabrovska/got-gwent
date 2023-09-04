@@ -294,3 +294,15 @@
     height: 30px;
   }
 }
+
+@media only screen and (max-width: 495px){
+   .opponent-board, .player-board{
+    min-width: 320px;
+    grid-template-rows: 70px 70px 70px;
+  }
+
+  .player-cards-to-use{
+    min-width: 320px;
+    min-height: 69px;
+  }
+}
