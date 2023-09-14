@@ -1,6 +1,6 @@
 # Game of Thrones Gwent
 
-The inspiration for this project were two great brands - 'The Witcher' and 'Game of Thrones'. Game of Thrones Gwent is not a commercial project.
+The inspiration for this project were two brands - 'The Witcher' and 'Game of Thrones'. Game of Thrones Gwent is not a commercial project.
 
 Gwent is a game where two armies lock in a mortal struggle on the field of battle over a crown of seven kingdoms.
 
