@@ -29,7 +29,7 @@ Access my site at https://pdabrovska.github.io/got-gwent/
 </ul>
 
 ## About The Project
-The main goal of this project was to build an app with vanilla JavaScript. It also shows a little bit about me, as I am a huge fan of 'The Witcher' and 'Game of Thrones'. Although there were some challenges, the overall process taught me a lot.
+The main goal of this project was to build an app with vanilla JavaScript. Although there were some challenges, the overall process taught me a lot.
 ## Screenshots
 
 <img src="/images/Screenshots/screenshot(4).png">
